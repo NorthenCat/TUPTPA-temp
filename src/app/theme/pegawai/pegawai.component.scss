@@ -1,0 +1,51 @@
+.pegawai-tabs {
+  width: 100%;
+}
+
+.pegawai-tabs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 1.25rem;
+}
+
+.pegawai-tabs-nav label {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.pegawai-tabs-nav label:hover {
+  color: #0056b3;
+  background: #f8f9fa;
+}
+
+.pegawai-tabs-nav label.active {
+  color: #0056b3;
+  border-bottom-color: #0056b3;
+  background: #f4f8ff;
+}
+
+.pegawai-tab-content {
+  display: block;
+  border: 1px solid #e9ecef;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: #fff;
+}
+
+@media (max-width: 767.98px) {
+  .pegawai-tabs-nav label {
+    width: 100%;
+    border-bottom: 1px solid #eef1f4;
+  }
+
+  .pegawai-tabs-nav label.active {
+    border-bottom-color: #eef1f4;
+    border-left: 3px solid #0056b3;
+  }
+}

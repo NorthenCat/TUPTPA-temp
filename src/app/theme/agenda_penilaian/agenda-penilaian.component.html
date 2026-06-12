@@ -1,0 +1,240 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card
+      cardTitle="Agenda Penilaian"
+      [hidHeader]="false"
+      [isSkeleton]="false"
+      [loading]="loadingTableBasic"
+    >
+      <p class="text-muted mb-3">Daftar agenda penilaian baru ataupun lama</p>
+
+      <!-- FILTER -->
+      <app-filter-container customClass="p-filter" [loading]="loadingTableBasic">
+        <div class="col-12 col-md-9">
+          <ng-select
+            [(ngModel)]="selectedPeriode"
+            (ngModelChange)="onPeriodeChange($event)"
+            [options]="periodeOptions"
+            bindValue="value"
+            bindLabel="label"
+            [placeholder]="'Pilih Periode'"
+            [ngClass]="'filter'"
+            [notFoundMsg]="'Data tidak ditemukan!'"
+          ></ng-select>
+
+        </div>
+
+        <div class="col-12 col-md-2 ml-auto text-right">
+          <button
+            type="button"
+            class="btn btn-outline-primary py-1 f-14 rounded"
+            (click)="applyPeriodeFilter()"
+          >
+            <i class="icofont icofont-filter"></i> Terapkan
+          </button>
+        </div>
+      </app-filter-container>
+
+      <!-- ACTION BAR -->
+      <div class="row pt-2 align-items-center">
+        <!-- kiri: tombol tambah agenda -->
+        <div class="col-12 col-md-8">
+          <button
+            type="button"
+            class="btn btn-success py-1 f-14 rounded"
+            (click)="openAgendaModal()"
+          >
+            <i class="icofont icofont-plus"></i> Tambah Agenda
+          </button>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="table-responsive pb-1 pt-3">
+        <table
+          datatable
+          [dtOptions]="dtOptions"
+          [dtTrigger]="dtTrigger"
+          class="table table-bordered table-hover table-sm dataTable"
+        >
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" style="width: 60px;">No</th>
+              <th scope="col">Nama Konten</th>
+              <th scope="col" style="width: 180px;">Tanggal Dibuat</th>
+              <th scope="col" style="width: 180px;">Dibuat Oleh</th>
+              <th scope="col" style="width: 140px;">Status</th>
+              <th scope="col" style="width: 180px;">Aksi</th>
+            </tr>
+          </thead>
+        
+          <tbody>
+            <tr *ngFor="let r of rows; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td><div class="font-weight-bold">{{ r.namaKonten }}</div></td>
+              <td>{{ r.tanggalDibuat }}</td>
+              <td class="text-uppercase">{{ r.dibuatOleh }}</td>
+              <td>
+                <span class="badge" [ngClass]="r.status ? 'badge-success' : 'badge-danger'">
+                  {{ r.status ? 'Aktif' : 'Tidak Aktif' }}
+                </span>
+              </td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm mr-1" (click)="onActionClick('edit', r)">
+                  <i class="ti-pencil"></i>
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" (click)="onActionClick('view', r)">
+                  <i class="ti-eye"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody *ngIf="!rows?.length">
+            <tr>
+              <td colspan="6" class="text-center text-muted p-4">Data tidak ditemukan!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </app-card>
+  </div>
+</div>
+
+<!-- MODAL TAMBAH AGENDA - START -->
+<app-ui-modal
+  #modalLarge
+  dialogClass="modal-lg"
+  [containerClick]="false"
+  [hideFooter]="false"
+  [loading]="loadingModal"
+>
+  <div class="app-modal-header">
+    <h5 class="modal-title">Tambah Agenda Penilaian</h5>
+    <button
+      type="button"
+      class="close basic-close"
+      aria-label="Close"
+      (click)="closeAgendaModal()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="app-modal-body">
+    <form class="row" [formGroup]="formAgenda">
+      <!-- Periode -->
+      <div class="col-12">
+        <div class="form-group mb-3">
+          <label class="form-label">Periode</label>
+          <ng-select
+            formControlName="periode"
+            [options]="periodeOptions"
+            [allowClear]="true"
+            [placeholder]="'Pilih periode'"
+            [notFoundMsg]="'Data tidak ditemukan!'"
+            [ngClass]="fa.periode.invalid && fa.periode.touched ? 'custom is-invalid' : (fa.periode.valid ? 'custom is-valid' : 'custom')"
+          ></ng-select>
+
+          <label
+            *ngIf="fa.periode.errors && fa.periode.errors.required && fa.periode.touched"
+            class="invalid-feedback"
+          >
+            Wajib diisi
+          </label>
+        </div>
+      </div>
+
+      <!-- Section Title -->
+      <div class="col-12">
+        <h5 class="mb-2">Agenda Penilaian</h5>
+        <hr class="mt-0" />
+      </div>
+
+      <!-- Steps -->
+      <div class="col-12" *ngFor="let s of agendaSteps; let i = index">
+        <div class="form-group mb-3">
+          <label class="form-label font-weight-bold">{{ s.label }}</label>
+          <div class="row">
+            <!-- Mulai -->
+            <div class="col-12 col-md-6">
+              <div class="mt-input-icon">
+                <input
+                  type="text"
+                  class="form-control"
+                  [value]="s.startDisplay || ''"
+                  placeholder="Pilih Tanggal Mulai"
+                  readonly
+                />
+                <input
+                  #mulaiPicker
+                  type="date"
+                  class="mt-native-date"
+                  (change)="onStepDateChange(i, 'start', $event)"
+                />
+                <button
+                  type="button"
+                  class="mt-icon-btn"
+                  (click)="openNativePicker(mulaiPicker)"
+                  aria-label="Kalender"
+                >
+                  <i class="icofont icofont-calendar"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Akhir -->
+            <div class="col-12 col-md-6 mt-2 mt-md-0">
+              <div class="mt-input-icon">
+                <input
+                  type="text"
+                  class="form-control"
+                  [value]="s.endDisplay || ''"
+                  placeholder="Pilih Tanggal Akhir"
+                  readonly
+                />
+                <input
+                  #akhirPicker
+                  type="date"
+                  class="mt-native-date"
+                  (change)="onStepDateChange(i, 'end', $event)"
+                />
+                <button
+                  type="button"
+                  class="mt-icon-btn"
+                  (click)="openNativePicker(akhirPicker)"
+                  aria-label="Kalender"
+                >
+                  <i class="icofont icofont-calendar"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="app-modal-footer">
+    <div class="col-12 text-right p-0">
+      <button
+        type="button"
+        class="btn btn-light btn-sm mr-2"
+        (click)="closeAgendaModal()"
+      >
+        Batal
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="submitAgenda()"
+        [disabled]="formAgenda.invalid || loadingModal"
+      >
+        Tambah
+      </button>
+    </div>
+  </div>
+</app-ui-modal>
+<!-- MODAL TAMBAH AGENDA - END -->

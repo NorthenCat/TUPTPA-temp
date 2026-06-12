@@ -1,0 +1,10 @@
+{
+  "/tup-tpa": {
+    "target": "https://stg-api-v2.telkomuniversity.ac.id",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "timeout": 120000,
+    "proxyTimeout": 120000
+  }
+}

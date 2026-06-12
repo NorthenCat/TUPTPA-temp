@@ -1,0 +1,14 @@
+<div class="row {{ customClass ? customClass : 'p-1 pb-2' }} border rounded-2 filter-case align-items-center" [class.card-load]="loading">
+  <div *ngIf="!filterLarge && labelOption" class="col-filter-header">
+    <div class="filter-icon">
+      <div class="f-12"><i class="icofont icofont-filter"></i>  {{ label | translate }} &nbsp;</div>
+    </div>
+  </div>
+  <div *ngIf="filterLarge && labelOption" class="col-12 p-1 text-muted text-center">
+      <i class="icofont icofont-filter"></i> <span> {{ label | translate }}</span>
+  </div>
+  <ng-content></ng-content>
+  <div class="card-loader" *ngIf="loading">
+    <img class="spinner-infinite" alt="spinner" src="assets/images/infinity-situ-transp.svg">
+  </div>
+</div>

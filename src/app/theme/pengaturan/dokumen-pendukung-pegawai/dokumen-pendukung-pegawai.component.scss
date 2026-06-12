@@ -1,0 +1,51 @@
+.badge-outline-danger {
+  color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+.badge-outline-success {
+  color: #28a745;
+  border: 1px solid #28a745;
+}
+
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+:host ::ng-deep .btn.btn-outline-warning,
+:host ::ng-deep .btn.btn-outline-primary {
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+
+.middle-content {
+  display: flex;
+  align-items: center;
+  > img {
+    max-width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  span.head-home {
+    padding-right: 3rem !important;
+  }
+}
+
+.img-alert {
+  max-width: 90%;
+  @media (min-width: 576px) {
+    max-width: 30%;
+  }
+
+  .img-center {
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+.taskboard-wrapper.pb-5 {
+  padding-bottom: 6rem !important;
+}

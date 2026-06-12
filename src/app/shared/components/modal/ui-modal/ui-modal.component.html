@@ -1,0 +1,20 @@
+<div (click)="onContainerClicked($event)" class="basic modal fade card-load" tabindex="-1" role="dialog" aria-hidden="true" [ngClass]="{'in': visibleAnimate}" [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
+  <div class="modal-dialog" role="document" [ngClass]="dialogClass">
+    <div class="modal-content">
+      <div *ngIf="!hideHeader" class="modal-header" [ngClass]="headerClass">
+        <ng-content select=".app-modal-header"></ng-content>
+      </div>
+      <div class="modal-body" [ngClass]="bodyClass">
+        <ng-content select=".app-modal-body"></ng-content>
+      </div>
+      <div *ngIf="!hideFooter" class="modal-footer">
+        <ng-content select=".app-modal-footer"></ng-content>
+      </div>
+      <!-- <div class="card-loader" *ngIf="loading" ><i class="pct-loader1 anim-rotate"></i></div> -->
+      <!-- <div class="card-loader" *ngIf="loading" ><i class="spinner-border text-primary"></i></div> -->
+      <div class="card-loader" *ngIf="loading" >
+        <img class="spinner-infinite" src="assets/images/infinity-situ-transp.svg">
+      </div>
+    </div>
+  </div>
+</div>

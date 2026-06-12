@@ -1,0 +1,125 @@
+:host ::ng-deep .p-filter {
+  /* jinakkan padding vertical bawaan container */
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+
+:host ::ng-deep .p-filter .row {
+  align-items: center;
+}
+
+/* =====================
+   SEARCHBAR (stabil, tidak ikut membengkak seperti input-group)
+===================== */
+.mt-search {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+   outline: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.mt-search__input {
+  height: 42px;
+  border-radius: 10px;
+  padding-right: 46px;
+}
+
+.mt-search__icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #6c757d;
+  pointer-events: none;
+}
+
+/* =====================
+   DATATABLE (optional)
+===================== */
+:host ::ng-deep table.dataTable {
+  width: 100% !important;
+}
+
+:host ::ng-deep table.dataTable tbody td {
+  vertical-align: middle;
+}
+
+:host ::ng-deep table.dataTable thead th {
+  white-space: nowrap;
+}
+
+/* =====================
+   BADGE STATUS (optional)
+===================== */
+:host ::ng-deep .badge {
+  padding: 0.45em 0.7em;
+  font-weight: 700;
+}
+
+/* =====================
+   MODAL FORM
+===================== */
+.mt-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+/* date input: text + hidden native picker + icon */
+.mt-input-icon {
+  position: relative;
+
+  .form-control {
+    padding-right: 2.5rem;
+  }
+}
+
+.mt-icon-btn {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+
+  i {
+    font-size: 18px;
+    color: #6c757d;
+  }
+}
+
+.mt-native-date {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  border: 0;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 576px) {
+  :host ::ng-deep .p-filter .text-right {
+    text-align: left !important;
+    margin-top: 0.5rem;
+  }
+
+  .mt-search {
+    max-width: 100%;
+  }
+}
+
+:host ::ng-deep .dataTables_filter {
+  display: none !important;
+}

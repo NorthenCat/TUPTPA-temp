@@ -1,0 +1,53 @@
+<div class="card {{addClass + ' ' + (loading?'card-load':'expanded')}} {{ (isSkeleton && loading) ? 'skeleton-load' : '' }}" [ngClass]="cardClass" [@cardRemove]="cardRemove" #toAnimate animates animatesInitMode="show" [animatesOnInit]="{useVisibility: false, disabled: true}">
+  <div class="card-header {{ isCollapseMenu ? 'collapse' : '' }}" *ngIf="!hidHeader" [ngClass]="headerClass">
+    <img *ngIf="isRector" id="main-logo" src="assets/images/rector.png" alt="" class="logo situ-main rector">
+    <h5 [class.ml-5]="isRector" *ngIf="!customHeader">
+      <i class="icon-header mr-1" [ngClass]="iconHeader" *ngIf="iconHeader"></i> {{ cardTitle }}
+    </h5>
+    <p *ngIf="!customHeader && cardCaption" [ngClass]="captionClass">{{cardCaption}}</p>
+    <div class="card-header-right" *ngIf="this.options && !customHeader" [ngSwitch]="isCollapseMenu">
+      <div *ngSwitchCase="false" class="btn-group card-option dropdown" ngbDropdown>
+        <button type="button" class="btn dropdown-toggle btn-icon" aria-label="button-toggle" ngbDropdownToggle>
+          <i class="feather icon-more-horizontal"></i>
+        </button>
+        <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+          <li class="dropdown-item full-card" (click)="fullCardToggle(toAnimate, '', true)">
+            <a href="javascript:">
+              <span>
+                <i class="feather" [ngClass]="fullIcon"></i> {{this.cardClass === 'full-card' ? 'Restore' : 'Maximize'}}
+              </span>
+            </a>
+          </li>
+          <li *ngIf="this.cardClass !== 'full-card'" class="dropdown-item minimize-card" (click)="collapsedCardToggle()">
+            <a href="javascript:">
+              <span><i class="feather" [ngClass]="collapsedIcon"></i> {{this.collapsedCard === 'collapsed' ? 'Expand' : 'Collapse'}} </span>
+              <span style="display:none"><i class="feather icon-plus"></i></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a href="javascript:" class="collapse-expand f-18" *ngSwitchCase="true" (click)="collapsedCardToggle()">
+        <span><i class="feather" [ngClass]="collapsedIcon"></i></span>
+        <!-- <span style="display:none"><i class="feather icon-plus"></i></span> -->
+      </a>
+      <!-- </div> -->
+    </div>
+    <ng-content *ngIf="customHeader" select=".app-card-header"></ng-content>
+  </div>
+  <div class="content-collapse" [ngClass]="collapsedCard" [@collapsedCard]="collapsedCard" *ngIf="this.options; else subMenuContent">
+    <ng-container *ngTemplateOutlet="subMenuContent"></ng-container>
+  </div>
+  <ng-template #subMenuContent>
+    <div class="card-body" [ngClass]="blockClass">
+      <ng-content></ng-content>
+    </div>
+  </ng-template>
+  <div *ngIf="isCardFooter" class="card-footer" [ngClass]="footerClass">
+    <ng-content select=".app-card-footer"></ng-content>
+  </div>
+  <!-- <div class="card-loader" *ngIf="loadCard"><i class="pct-loader1 anim-rotate"></i></div> -->
+  <!-- <div class="card-loader" *ngIf="loading" ><i class="spinner-border text-primary"></i></div> -->
+  <div class="card-loader" *ngIf="loading && !isSkeleton">
+    <img class="spinner-infinite" alt="spinner" src="assets/images/infinity-situ-transp.svg">
+  </div>
+</div>

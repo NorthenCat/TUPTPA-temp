@@ -1,0 +1,107 @@
+:host ::ng-deep .p-filter.agenda-filter {
+  position: relative;
+}
+
+/* BARIS FILTER – SEJAJAR DENGAN ICON CORONG */
+:host ::ng-deep .p-filter.agenda-filter .agenda-filter-inline {
+  position: absolute;
+  top: 8px;
+  left: 88px;          /* setelah icon corong + teks Filter + | */
+  right: 16px;         /* bikin tombol nempel kanan */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* dropdown kiri, tombol kanan */
+  gap: 12px;
+}
+
+/* DROPDOWN */
+:host ::ng-deep .p-filter.agenda-filter ng-select.filter {
+  flex: 1 1 auto;
+  max-width: 640px;    /* dropdown panjang tapi tetap waras */
+  width: 100%;
+}
+
+/* TINGGI KOMPONEN FILTER */
+:host ::ng-deep .p-filter.agenda-filter ng-select.filter .ng-select-container {
+  height: 36px;
+  min-height: 36px;
+  font-size: 14px;
+  align-items: center;
+}
+
+:host ::ng-deep .p-filter.agenda-filter .btn {
+  height: 36px;
+  white-space: nowrap;
+}
+
+
+:host ::ng-deep .p-filter.agenda-filter .agenda-filter-spacer {
+  height: 56px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  :host ::ng-deep .p-filter.agenda-filter .agenda-filter-inline {
+    position: static;
+    padding: 0 12px 12px;
+    flex-wrap: wrap;
+  }
+
+  :host ::ng-deep .p-filter.agenda-filter ng-select.filter {
+    max-width: none;
+  }
+
+  :host ::ng-deep .p-filter.agenda-filter .btn {
+    width: 100%;
+  }
+
+  :host ::ng-deep .p-filter.agenda-filter .agenda-filter-spacer {
+    display: none;
+  }
+}
+
+:host ::ng-deep .mt-input-icon {
+  position: relative;
+}
+
+/* input text yang tampil */
+:host ::ng-deep .mt-input-icon .form-control {
+  padding-right: 44px; /* ruang untuk icon kalender */
+}
+
+/* native date input wajib hidden total */
+:host ::ng-deep .mt-native-date {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* biar tidak bisa diklik langsung */
+}
+
+/* tombol icon kalender custom */
+:host ::ng-deep .mt-icon-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* ukuran icon mengikuti framework */
+:host ::ng-deep .mt-icon-btn i {
+  font-size: 18px;
+}
+
+/* opsional: kalau icon terlalu “naik/turun” karena line-height theme */
+:host ::ng-deep .mt-icon-btn i::before {
+  line-height: 1;
+}

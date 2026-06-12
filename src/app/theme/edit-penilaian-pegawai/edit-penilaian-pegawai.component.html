@@ -1,0 +1,443 @@
+<section class="dmp-page card">
+  <!-- =================== HEADER =================== -->
+  <div class="dmp-header">
+    <h3 class="dmp-title">{{ pageTitle }}</h3>
+    <p class="dmp-subtitle">{{ pageSubtitle }}</p>
+  </div>
+
+  <!-- ================= INFORMASI UMUM ================= -->
+  <div class="dmp-card dmp-card--info">
+    <div class="dmp-card-header-row">
+      <div class="dmp-card-title">Informasi Umum</div>
+
+      <button
+        type="button"
+        class="btn btn-sm btn-primary dmp-info-edit-btn"
+        (click)="onEditInformasiUmum()">
+        <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M13.2425 2.53955C14.407 1.37488 16.2952 1.37483 17.4599 2.53943C18.6244 3.70393 18.6244 5.59195 17.46 6.75652L16.7171 7.49948C17.7709 8.55749 17.7696 10.2694 16.7132 11.3258L15.2271 12.8119C14.983 13.056 14.5873 13.056 14.3432 12.8119C14.0991 12.5679 14.0991 12.1721 14.3432 11.9281L15.8294 10.4419C16.3975 9.87368 16.3989 8.95326 15.8333 8.38341L7.50155 16.7161C7.16285 17.0549 6.73678 17.293 6.27078 17.4039L2.4364 18.3169C2.22527 18.3671 2.00317 18.3043 1.8497 18.1508C1.69623 17.9973 1.63336 17.7752 1.68363 17.5641L2.59662 13.7295C2.70754 13.2637 2.94555 12.8377 3.28415 12.4991L13.2425 2.53955Z" fill="#747677"/>
+        </svg>
+        Edit
+      </button>
+    </div>
+
+    <div class="dmp-info-table">
+      <div class="dmp-info-row" *ngFor="let info of generalInfo">
+        <div class="dmp-info-label">{{ info.label }}</div>
+        <div class="dmp-info-separator">:</div>
+        <div class="dmp-info-value">{{ info.value }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= WRAPPER KOMPONEN ================= -->
+  <div class="dmp-card dmp-card--wrapper">
+    <!-- SELECT KOMPONEN + BUTTON TAMBAH -->
+    <div class="dmp-wrapper-header">
+      <select [(ngModel)]="selectedKomponen" class="dmp-komponen-select">
+        <option *ngFor="let opt of komponenOptions" [value]="opt">
+          {{ opt }}
+        </option>
+      </select>
+
+      <button
+        type="button"
+        class="btn btn-primary dmp-btn-tambah-komponen"
+        (click)="onTambahKomponen()">
+        <span class="dmp-btn-icon">+</span>
+        Tambah Komponen
+      </button>
+    </div>
+
+    <!-- =================== KOMPONEN 1 =================== -->
+    <div *ngIf="selectedKomponen === 'Komponen 1'" class="dmp-inner-card">
+      <!-- Header Komponen 1 -->
+      <div class="dmp-inner-header">
+        <h3 class="inner-title">Komponen 1: DTKP</h3>
+
+        <div class="dmp-inner-actions">
+          <button
+            type="button"
+            class="btn dmp-btn-outline"
+            (click)="onUbahKomponen()">
+            <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M13.2425 2.53955C14.407 1.37488 16.2952 1.37483 17.4599 2.53943C18.6244 3.70393 18.6244 5.59195 17.46 6.75652L16.7171 7.49948C17.7709 8.55749 17.7696 10.2694 16.7132 11.3258L15.2271 12.8119C14.983 13.056 14.5873 13.056 14.3432 12.8119C14.0991 12.5679 14.0991 12.1721 14.3432 11.9281L15.8294 10.4419C16.3975 9.87368 16.3989 8.95326 15.8333 8.38341L7.50155 16.7161C7.16285 17.0549 6.73678 17.293 6.27078 17.4039L2.4364 18.3169C2.22527 18.3671 2.00317 18.3043 1.8497 18.1508C1.69623 17.9973 1.63336 17.7752 1.68363 17.5641L2.59662 13.7295C2.70754 13.2637 2.94555 12.8377 3.28415 12.4991L13.2425 2.53955Z" fill="#747677"/>
+            </svg>
+            <span>Ubah Komponen</span>
+          </button>
+
+          <button
+            type="button"
+            class="btn dmp-btn-outline"
+            (click)="onTambahButir()">
+            <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M10.4167 3.95825C10.4167 3.61307 10.1369 3.33325 9.79171 3.33325C9.44653 3.33325 9.16671 3.61307 9.16671 3.95825V9.16659H3.95837C3.6132 9.16659 3.33337 9.44641 3.33337 9.79159C3.33337 10.1368 3.6132 10.4166 3.95837 10.4166H9.16671V15.6249C9.16671 15.9701 9.44653 16.2499 9.79171 16.2499C10.1369 16.2499 10.4167 15.9701 10.4167 15.6249V10.4166H15.625C15.9702 10.4166 16.25 10.1368 16.25 9.79159C16.25 9.44641 15.9702 9.16659 15.625 9.16659H10.4167V3.95825Z" fill="#747677"/>
+            </svg>
+            <span>Tambah Butir</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- List DTKP -->
+      <div class="dmp-accordion" *ngFor="let item of dtkpItems">
+        <div class="dmp-acc-header-row">
+          <div class="dmp-acc-title">{{ item.title }}</div>
+
+          <div class="dmp-acc-actions">
+            <button
+              type="button"
+              class="btn dmp-btn-ubah"
+              (click)="onUbahSection(item); $event.stopPropagation()">
+              <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M13.2425 2.53955C14.407 1.37488 16.2952 1.37483 17.4599 2.53943C18.6244 3.70393 18.6244 5.59195 17.46 6.75652L16.7171 7.49948C17.7709 8.55749 17.7696 10.2694 16.7132 11.3258L15.2271 12.8119C14.983 13.056 14.5873 13.056 14.3432 12.8119C14.0991 12.5679 14.0991 12.1721 14.3432 11.9281L15.8294 10.4419C16.3975 9.87368 16.3989 8.95326 15.8333 8.38341L7.50155 16.7161C7.16285 17.0549 6.73678 17.293 6.27078 17.4039L2.4364 18.3169C2.22527 18.3671 2.00317 18.3043 1.8497 18.1508C1.69623 17.9973 1.63336 17.7752 1.68363 17.5641L2.59662 13.7295C2.70754 13.2637 2.94555 12.8377 3.28415 12.4991L13.2425 2.53955Z" fill="#747677"/>
+              </svg>
+              <span>Ubah</span>
+            </button>
+
+            <button
+              type="button"
+              class="btn dmp-btn-tambah"
+              (click)="onTambahSection(item); $event.stopPropagation()">
+              <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M10.4167 3.95825C10.4167 3.61307 10.1369 3.33325 9.79171 3.33325C9.44653 3.33325 9.16671 3.61307 9.16671 3.95825V9.16659H3.95837C3.6132 9.16659 3.33337 9.44641 3.33337 9.79159C3.33337 10.1368 3.6132 10.4166 3.95837 10.4166H9.16671V15.6249C9.16671 15.9701 9.44653 16.2499 9.79171 16.2499C10.1369 16.2499 10.4167 15.9701 10.4167 15.6249V10.4166H15.625C15.9702 10.4166 16.25 10.1368 16.25 9.79159C16.25 9.44641 15.9702 9.16659 15.625 9.16659H10.4167V3.95825Z" fill="white"/>
+              </svg>
+              <span>Tambah</span>
+            </button>
+
+            <button
+              type="button"
+              class="dmp-acc-toggle"
+              (click)="toggleAccordion(dtkpItems, item)">
+              <span class="dmp-acc-chevron" [class.dmp-acc-chevron--open]="item.open">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="dmp-acc-chevron-icon">
+                  <path d="M3.57745 6.91083C3.90289 6.58539 4.43053 6.58539 4.75596 6.91083L10 12.1549L15.2441 6.91083C15.5696 6.58539 16.0972 6.58539 16.4226 6.91083C16.7481 7.23626 16.7481 7.7639 16.4226 8.08934L10.5893 13.9227C10.2639 14.2481 9.73622 14.2481 9.41079 13.9227L3.57745 8.08934C3.25201 7.7639 3.25201 7.23626 3.57745 6.91083Z" fill="#2D2E2E"/>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="dmp-acc-body" *ngIf="item.open">
+          <ng-container [ngSwitch]="item.title">
+            <ul *ngSwitchCase="'Target'" class="dmp-target-list">
+              <li *ngFor="let t of targetTw">{{ t }}</li>
+            </ul>
+
+            <p *ngSwitchDefault class="dmp-placeholder">
+              Konten untuk "{{ item.title }}" akan ditampilkan di sini.
+            </p>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <!-- =================== KOMPONEN 2 =================== -->
+    <div *ngIf="selectedKomponen === 'Komponen 2'" class="dmp-inner-card">
+      <div class="dmp-inner-header">
+        <h3 class="inner-title">Komponen 2: Sikap Kerja</h3>
+
+        <div class="dmp-inner-actions">
+          <button type="button" class="btn dmp-btn-outline" (click)="onUbahKomponen()">
+            <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M13.2425 2.53955C14.407 1.37488 16.2952 1.37483 17.4599 2.53943C18.6244 3.70393 18.6244 5.59195 17.46 6.75652L16.7171 7.49948C17.7709 8.55749 17.7696 10.2694 16.7132 11.3258L15.2271 12.8119C14.983 13.056 14.5873 13.056 14.3432 12.8119C14.0991 12.5679 14.0991 12.1721 14.3432 11.9281L15.8294 10.4419C16.3975 9.87368 16.3989 8.95326 15.8333 8.38341L7.50155 16.7161C7.16285 17.0549 6.73678 17.293 6.27078 17.4039L2.4364 18.3169C2.22527 18.3671 2.00317 18.3043 1.8497 18.1508C1.69623 17.9973 1.63336 17.7752 1.68363 17.5641L2.59662 13.7295C2.70754 13.2637 2.94555 12.8377 3.28415 12.4991L13.2425 2.53955Z" fill="#747677"/>
+            </svg>
+            <span>Ubah Komponen</span>
+          </button>
+
+          <button type="button" class="btn dmp-btn-outline" (click)="onTambahButir()">
+            <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M10.4167 3.95825C10.4167 3.61307 10.1369 3.33325 9.79171 3.33325C9.44653 3.33325 9.16671 3.61307 9.16671 3.95825V9.16659H3.95837C3.6132 9.16659 3.33337 9.44641 3.33337 9.79159C3.33337 10.1368 3.6132 10.4166 3.95837 10.4166H9.16671V15.6249C9.16671 15.9701 9.44653 16.2499 9.79171 16.2499C10.1369 16.2499 10.4167 15.9701 10.4167 15.6249V10.4166H15.625C15.9702 10.4166 16.25 10.1368 16.25 9.79159C16.25 9.44641 15.9702 9.16659 15.625 9.16659H10.4167V3.95825Z" fill="#747677"/>
+            </svg>
+            <span>Tambah Butir</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="dmp-accordion" *ngFor="let s of sikapKerja">
+        <div class="dmp-acc-header-row">
+          <div class="dmp-acc-title">{{ s.title }}</div>
+
+          <div class="dmp-acc-actions">
+            <button type="button" class="btn dmp-btn-ubah" (click)="onUbahSikap(s); $event.stopPropagation()">
+              <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M13.2425 2.53955C14.407 1.37488 16.2952 1.37483 17.4599 2.53943C18.6244 3.70393 18.6244 5.59195 17.46 6.75652L16.7171 7.49948C17.7709 8.55749 17.7696 10.2694 16.7132 11.3258L15.2271 12.8119C14.983 13.056 14.5873 13.056 14.3432 12.8119C14.0991 12.5679 14.0991 12.1721 14.3432 11.9281L15.8294 10.4419C16.3975 9.87368 16.3989 8.95326 15.8333 8.38341L7.50155 16.7161C7.16285 17.0549 6.73678 17.293 6.27078 17.4039L2.4364 18.3169C2.22527 18.3671 2.00317 18.3043 1.8497 18.1508C1.69623 17.9973 1.63336 17.7752 1.68363 17.5641L2.59662 13.7295C2.70754 13.2637 2.94555 12.8377 3.28415 12.4991L13.2425 2.53955Z" fill="#747677"/>
+              </svg>
+              <span>Ubah</span>
+            </button>
+
+            <button type="button" class="btn dmp-btn-tambah" (click)="onTambahButirSikap(s); $event.stopPropagation()">
+              <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M10.4167 3.95825C10.4167 3.61307 10.1369 3.33325 9.79171 3.33325C9.44653 3.33325 9.16671 3.61307 9.16671 3.95825V9.16659H3.95837C3.6132 9.16659 3.33337 9.44641 3.33337 9.79159C3.33337 10.1368 3.6132 10.4166 3.95837 10.4166H9.16671V15.6249C9.16671 15.9701 9.44653 16.2499 9.79171 16.2499C10.1369 16.2499 10.4167 15.9701 10.4167 15.6249V10.4166H15.625C15.9702 10.4166 16.25 10.1368 16.25 9.79159C16.25 9.44641 15.9702 9.16659 15.625 9.16659H10.4167V3.95825Z" fill="white"/>
+              </svg>
+              <span>Tambah</span>
+            </button>
+
+            <button type="button" class="dmp-acc-toggle" (click)="toggleAccordion(sikapKerja, s)">
+              <span class="dmp-acc-chevron" [class.dmp-acc-chevron--open]="s.open">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="dmp-acc-chevron-icon">
+                  <path d="M3.57745 6.91083C3.90289 6.58539 4.43053 6.58539 4.75596 6.91083L10 12.1549L15.2441 6.91083C15.5696 6.58539 16.0972 6.58539 16.4226 6.91083C16.7481 7.23626 16.7481 7.7639 16.4226 8.08934L10.5893 13.9227C10.2639 14.2481 9.73622 14.2481 9.41079 13.9227L3.57745 8.08934C3.25201 7.7639 3.25201 7.23626 3.57745 6.91083Z" fill="#2D2E2E"/>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="dmp-acc-body" *ngIf="s.open">
+          <p class="dmp-text-paragraph">{{ sikapDeskripsi }}</p>
+          <p class="dmp-text-paragraph">{{ sikapDeskripsi }}</p>
+          <p class="dmp-text-paragraph">{{ sikapDeskripsi }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- =================== KOMPONEN 3 =================== -->
+    <!-- =================== KOMPONEN 3 =================== -->
+    <div *ngIf="selectedKomponen === 'Komponen 3'" class="dmp-inner-card">
+
+      <h3 class="inner-title">Komponen 3: Inovasi, Penghargaan &amp; Kontribusi</h3>
+
+      <!-- ========== Bagian Inovasi ========== -->
+      <div class="dmp-ipk-section">
+
+        <div class="dmp-ipk-header">
+          <span class="dmp-ipk-title">Inovasi</span>
+          <span class="dmp-ipk-note">
+            (Jika tabel kosong, berarti belum upload evidence inovasi)
+          </span>
+        </div>
+
+        <div class="table-responsive dmp-ipk-table-wrapper">
+          <table class="table dmp-table">
+            <thead>
+              <tr>
+                <th style="width: 40px;">No</th>
+                <th>Nama Kegiatan</th>
+                <th>Detail Kategori</th>
+                <th style="width: 140px;">Tipe Kategori</th>
+                <th style="width: 150px;">Jabatan</th>
+                <th style="width: 130px;">Tanggal</th>
+                <th style="width: 90px;">Status Exclude</th>
+                <th style="width: 70px;">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let r of inovasiRows">
+                <td>{{ r.no }}</td>
+                <td>{{ r.namaKegiatan }}</td>
+                <td>{{ r.detailKategori }}</td>
+                <td>{{ r.tipeKategori }}</td>
+                <td>{{ r.jabatan }}</td>
+                <td>{{ r.tanggal }}</td>
+                <td>{{ r.statusExclude }}</td>
+                <td class="text-right">{{ r.score | number:'1.2-2' }}</td>
+              </tr>
+
+              <tr class="dmp-table-total">
+                <td colspan="7" class="text-right">Total Score</td>
+                <td class="text-right">
+                  {{ totalInovasiScore | number:'1.2-2' }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- opsional: hanya jika mau tampil sumber -->
+        <div class="dmp-ipk-footer dmp-font-footer">
+          Sumber data dari tanggal 31-05-2023 s.d. 30-09-2023
+        </div> 
+      </div>
+
+      <!-- ========== Bagian Kontribusi ========== -->
+      <div class="dmp-ipk-section">
+
+        <div class="dmp-ipk-header">
+          <span class="dmp-ipk-title">Kontribusi</span>
+        </div>
+
+        <div class="table-responsive dmp-ipk-table-wrapper">
+          <table class="table dmp-table">
+            <thead>
+              <tr>
+                <th style="width: 40px;">No</th>
+                <th>Nama Kegiatan</th>
+                <th>Detail Kategori</th>
+                <th style="width: 140px;">Tipe Kategori</th>
+                <th style="width: 150px;">Jabatan</th>
+                <th style="width: 130px;">Tanggal</th>
+                <th style="width: 90px;">Status Exclude</th>
+                <th style="width: 70px;">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let r of kontribusiRows">
+                <td>{{ r.no }}</td>
+                <td>{{ r.namaKegiatan }}</td>
+                <td>{{ r.detailKategori }}</td>
+                <td>{{ r.tipeKategori }}</td>
+                <td>{{ r.jabatan }}</td>
+                <td>{{ r.tanggal }}</td>
+                <td>{{ r.statusExclude }}</td>
+                <td class="text-right">{{ r.score | number:'1.2-2' }}</td>
+              </tr>
+
+              <tr class="dmp-table-total">
+                <td colspan="7" class="text-right">Total Score</td>
+                <td class="text-right">
+                  {{ totalKontribusiScore | number:'1.2-2' }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- ========== Bagian Penghargaan ========== -->
+      <div class="dmp-ipk-section">
+
+        <div class="dmp-ipk-header">
+          <span class="dmp-ipk-title">Penghargaan</span>
+          <span class="dmp-ipk-note">
+            (Jika tabel kosong, berarti belum upload evidence penghargaan)
+          </span>
+        </div>
+
+        <div class="table-responsive dmp-ipk-table-wrapper">
+          <table class="table dmp-table">
+            <thead>
+              <tr>
+                <th style="width: 40px;">No</th>
+                <th>Nama Kegiatan</th>
+                <th>Detail Kategori</th>
+                <th style="width: 140px;">Tipe Kategori</th>
+                <th style="width: 150px;">Jabatan</th>
+                <th style="width: 130px;">Tanggal</th>
+                <th style="width: 90px;">Status Exclude</th>
+                <th style="width: 70px;">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let r of penghargaanRows">
+                <td>{{ r.no }}</td>
+                <td>{{ r.namaKegiatan }}</td>
+                <td>{{ r.detailKategori }}</td>
+                <td>{{ r.tipeKategori }}</td>
+                <td>{{ r.jabatan }}</td>
+                <td>{{ r.tanggal }}</td>
+                <td>{{ r.statusExclude }}</td>
+                <td class="text-right">{{ r.score | number:'1.2-2' }}</td>
+              </tr>
+
+              <tr class="dmp-table-total">
+                <td colspan="7" class="text-right">Total Score</td>
+                <td class="text-right">
+                  {{ totalPenghargaanScore | number:'1.2-2' }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div> <!-- akhir Komponen 3 -->
+  </div>   <!-- akhir wrapper kartu -->
+</section>
+
+<!-- ================= MODAL: TAMBAH KOMPONEN ================= -->
+<div *ngIf="modalTambahKomponenOpen" class="tk-modal" (click)="closeTambahKomponenOnBackdrop($event)">
+  <div class="tk-modal-dialog" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+    <div class="tk-modal-header">
+      <h3 class="tk-modal-title">Tambah Komponen</h3>
+      <button type="button" class="tk-modal-close" (click)="closeTambahKomponen()" aria-label="Tutup">×</button>
+    </div>
+
+    <form [formGroup]="formTambahKomponen" (ngSubmit)="submitTambahKomponen()" class="tk-modal-body">
+
+      <!-- Nomor Urut -->
+      <label class="tk-label">Nomor Urut</label>
+      <input
+        type="number"
+        class="tk-input"
+        formControlName="nomorUrut"
+        placeholder="Masukkan Nomor Urut"
+      />
+      <div class="tk-error" *ngIf="c('nomorUrut').invalid && c('nomorUrut').touched">
+        Nomor urut wajib diisi
+      </div>
+
+      <!-- Label -->
+      <label class="tk-label">Label</label>
+      <input
+        type="text"
+        class="tk-input"
+        formControlName="label"
+        placeholder="*misal 2018/2019 Genap, atau Triwulan II 2019"
+      />
+      <div class="tk-error" *ngIf="c('label').invalid && c('label').touched">
+        Label wajib diisi
+      </div>
+
+      <!-- Bobot Komponen -->
+      <label class="tk-label">Bobot Komponen</label>
+      <div class="tk-input-suffix">
+        <input
+          type="number"
+          class="tk-input"
+          formControlName="bobot"
+          placeholder="Masukkan Bobot"
+          min="0"
+          max="100"
+          step="0.01"
+        />
+        <span class="tk-suffix">% (Persen)</span>
+      </div>
+      <div class="tk-error" *ngIf="c('bobot').invalid && c('bobot').touched">
+        Bobot wajib diisi (0 - 100)
+      </div>
+
+      <!-- Set Parameter NKI -->
+      <label class="tk-label">Set Parameter NKI</label>
+      <div class="tk-select-wrap">
+        <select class="tk-input tk-select" formControlName="parameterNki">
+          <option value="" disabled>Pilih Parameter</option>
+          <option *ngFor="let opt of parameterNkiOptions" [value]="opt.value">{{ opt.label }}</option>
+        </select>
+      </div>
+      <div class="tk-error" *ngIf="c('parameterNki').invalid && c('parameterNki').touched">
+        Parameter NKI wajib dipilih
+      </div>
+
+      <!-- Hak Akses Penilai -->
+      <label class="tk-label">Hak Akses Penilai</label>
+      <div class="tk-select-wrap">
+        <select class="tk-input tk-select" formControlName="hakAksesPenilai">
+          <option value="" disabled>Pilih Hak Akses</option>
+          <option *ngFor="let opt of hakAksesOptions" [value]="opt.value">{{ opt.label }}</option>
+        </select>
+      </div>
+      <div class="tk-error" *ngIf="c('hakAksesPenilai').invalid && c('hakAksesPenilai').touched">
+        Hak akses wajib dipilih
+      </div>
+
+      <!-- Status Aktif -->
+      <label class="tk-label">Status Aktif</label>
+      <div class="tk-select-wrap">
+        <select class="tk-input tk-select" formControlName="statusAktif">
+          <option value="" disabled>Pilih Status</option>
+          <option [ngValue]="true">Aktif</option>
+          <option [ngValue]="false">Tidak Aktif</option>
+        </select>
+      </div>
+      <div class="tk-error" *ngIf="c('statusAktif').invalid && c('statusAktif').touched">
+        Status wajib dipilih
+      </div>
+
+      <!-- Footer -->
+      <div class="tk-modal-footer">
+        <button type="button" class="btn btn-light tk-btn-ghost" (click)="closeTambahKomponen()">Batal</button>
+        <button type="submit" class="btn tk-btn-primary" [disabled]="formTambahKomponen.invalid">Simpan</button>
+      </div>
+    </form>
+  </div>
+</div>
+

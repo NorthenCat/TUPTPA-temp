@@ -1,0 +1,72 @@
+.btn-pwd {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  z-index: 5;
+}
+
+.form-control.pwd-custom {
+  &.is-valid, &.is-invalid {
+    background-position: right 50px center;
+  }
+}
+
+.img-fluid {
+  height: 35px;
+  max-width: 50%;
+  margin: auto;
+}
+
+.img-login {
+  width: 250px;
+  &.landscape {
+    position: relative;
+    left: -35px;
+  }
+}
+
+.background-bokeh {
+  width: 100vw;
+  height: 100vh;
+  background: #151515;
+}
+
+$particleSize: 20vmin;
+$animationDuration: 16s;
+$amount: 200;
+.background-bokeh span {
+  width: $particleSize;
+  height: $particleSize;
+  border-radius: $particleSize;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  animation-name: move;
+  animation-duration: $animationDuration;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  $colors: (
+    #6c757d,
+    #6a0417,
+    #263238
+  );
+  @for $i from 1 through $amount {
+    &:nth-child(#{$i}) {
+      color: nth($colors, random(length($colors)));
+      top: random(100) * 1%;
+      left: random(100) * 1%;
+      animation-duration: (random($animationDuration * 10) / 10) * 1s + 10s;
+      animation-delay: random(($animationDuration + 10s) * 10) / 10 * -1s;
+      transform-origin: (random(50) - 25) * 1vw (random(50) - 25) * 1vh;
+      $blurRadius: (random() + 0.5) * $particleSize * 0.5;
+      $x: if(random() > 0.5, -1, 1);
+      box-shadow: ($particleSize * 2 * $x) 0 $blurRadius currentColor;
+    }
+  }
+}
+
+@keyframes move {
+  100% {
+    transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+}

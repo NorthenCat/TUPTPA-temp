@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Data Penilaian Pegawai" [hidHeader]="false" [isSkeleton]="false">
+      <!-- MOCK Breadcrumb equivalent -> "Rekap Perhitungan Total Performasi TPA" -->
+      <div class="mb-4">
+        <h6 class="mb-0 text-muted" style="font-weight: 500;">Rekap Perhitungan Total Performasi TPA</h6>
+      </div>
+
+      <!-- Table Section -->
+      <div class="table-responsive mb-3">
+        <table class="table rp-table">
+          <thead>
+            <tr>
+              <th>Komponen Penilaian</th>
+              <th>Porsi (%)</th>
+              <th>Atasan Langsung</th>
+              <th>Atasan Tidak Langsung</th>
+              <th>Nilai</th>
+              <th>Nilai X Porsi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of detailPenilaian">
+              <td>{{ item.komponen }}</td>
+              <td>{{ item.porsi }}</td>
+              <td>{{ item.atasanLangsung }}</td>
+              <td>{{ item.atasanTidakLangsung }}</td>
+              <td>{{ item.nilai }}</td>
+              <td>{{ item.nilaiPorsi | number:'1.2-2' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Scores Section -->
+      <div class="rp-score-section mb-4">
+        <div class="rp-score-header">
+          TOTAL SCORE
+        </div>
+        <div class="rp-score-body">
+          <div class="row rp-score-row">
+            <div class="col-md-3 rp-score-label">Total NKI Murni</div>
+            <div class="col-md-9">: {{ scores.totalNkiMurni | number:'1.2-2' }}</div>
+          </div>
+          <div class="row rp-score-row">
+            <div class="col-md-3 rp-score-label">Nilai Kerja Unit (NKU)</div>
+            <div class="col-md-9">: {{ scores.nilaiKerjaUnit | number:'1.2-2' }}</div>
+          </div>
+          <div class="row rp-score-row">
+            <div class="col-md-3 rp-score-label">Total NKI Akhir</div>
+            <div class="col-md-9">: {{ scores.totalNkiAkhir | number:'1.2-2' }}</div>
+          </div>
+          <div class="row rp-score-row">
+            <div class="col-md-3 rp-score-label">Kelebihan Point (IPK)</div>
+            <div class="col-md-9">: {{ scores.kelebihanPoint | number:'1.2-2' }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Info -->
+      <div class="rp-footer-bullets">
+        <ul>
+          <li>Nilai D-TKP adalah total nilai target dan realisasi</li>
+          <li>Nilai sikap kerja adalah rata-rata nilai dari kedua penilai</li>
+          <li>Nilai kerja Unit (NKU) adalah nilai dari direktorat atau fakultas</li>
+        </ul>
+      </div>
+
+    </app-card>
+  </div>
+</div>

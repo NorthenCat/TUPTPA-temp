@@ -1,0 +1,75 @@
+.rp-subtitle {
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.rp-table {
+  border: 1px solid #e2e5e8;
+  border-radius: 8px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.rp-table thead th {
+  background-color: #e5e5e5;
+  color: #333;
+  font-weight: 600;
+  border-bottom: 1px solid #d4d4d4;
+  padding: 12px 15px;
+  font-size: 12px;
+}
+
+.rp-table tbody td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #f1f1f1;
+  color: #555;
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.rp-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.rp-score-section {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+.rp-score-header {
+  background-color: #3a68ea;
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 20px;
+  font-size: 14px;
+}
+
+.rp-score-body {
+  background-color: #fff;
+  padding: 20px;
+}
+
+.rp-score-row {
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #333;
+}
+
+.rp-score-label {
+  font-weight: 500;
+}
+
+.rp-footer-bullets ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.rp-footer-bullets li {
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 8px;
+}

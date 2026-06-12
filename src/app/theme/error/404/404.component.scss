@@ -1,0 +1,25 @@
+svg.dita-float {
+  // position: absolute;
+  top: 20%;
+  left: 15%;
+  width: 200px;
+  animation: float 5s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+.div-flying {
+  position: absolute;
+  bottom: 30%;
+}

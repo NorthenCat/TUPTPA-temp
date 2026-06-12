@@ -1,0 +1,106 @@
+<div class="row">
+  <div class="col-sm-12">
+
+    <app-card cardTitle="Daftar Dokumen Pendukung Pegawai"
+      [hidHeader]="false" [isSkeleton]="false" [loading]="loadingTable">
+      <!-- FILTER -->
+      <app-filter-container customClass="p-filter" [loading]="loadingTable">
+        <div class="col-12 col-md-3">
+          <ng-select [(ngModel)]="selectedPeriode"
+            [options]="periodeOptions"
+            bindValue="value"
+            bindLabel="label"
+            [placeholder]="'Pilih Periode'"
+            [ngClass]="'filter'"
+            [notFoundMsg]="'Data tidak ditemukan!'">
+          </ng-select>
+        </div>
+
+        <div class="col-12 col-md-3">
+          <ng-select [(ngModel)]="selectedStruktur"
+            [options]="strukturOptions"
+            bindValue="value"
+            bindLabel="label"
+            [placeholder]="'Pilih Struktur Organisasi'"
+            [ngClass]="'filter'"
+            [notFoundMsg]="'Data tidak ditemukan!'">
+          </ng-select>
+        </div>
+
+        <div class="col-12 col-md-3">
+          <ng-select [(ngModel)]="selectedStatusUnggah"
+            [options]="statusUnggahOptions"
+            bindValue="value"
+            bindLabel="label"
+            [placeholder]="'Pilih Status Unggah'"
+            [ngClass]="'filter'"
+            [notFoundMsg]="'Data tidak ditemukan!'">
+          </ng-select>
+        </div>
+
+        <div class="col-12 col-md-2 ml-auto text-right">
+          <button type="button" class="btn btn-outline-primary py-1 f-14 rounded" (click)="onApplyFilter()">
+            <i class="icofont icofont-filter"></i> {{ 'ROOT.apply' | translate }}
+          </button>
+        </div>
+      </app-filter-container>
+
+      <!-- TABLE -->
+      <div class="table-responsive pb-1 pt-2">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+          class="table table-bordered table-hover table-sm dataTable">
+
+          <thead class="thead-light">
+            <tr>
+              <th style="width:60px;">No.</th>
+              <th>Periode Template</th>
+              <th style="width:130px;">NIP</th>
+              <th style="width:170px;">Nama</th>
+              <th>Unit</th>
+              <th>Deskripsi Pekerjaan</th>
+              <th style="width:140px;">Status Unggah</th>
+              <th style="width:110px;">Aksi</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let data of dataTable; let i = index">
+              <td>{{ i + 1 }}</td>
+
+              <td>
+                <div class="font-weight-bold">{{ data.templateName }}</div>
+                <div class="text-muted f-12">{{ data.periodeLabel }}</div>
+              </td>
+
+              <td>{{ data.nip }}</td>
+              <td class="text-uppercase">{{ data.nama }}</td>
+              <td class="text-uppercase">{{ data.unit }}</td>
+              <td class="text-uppercase">{{ data.deskripsiPekerjaan }}</td>
+
+              <td class="text-center">
+                <span
+                  class="badge badge-pill px-2 py-1"
+                  [ngClass]="data.statusUnggah === 'BELUM' ? 'badge-outline-danger' : 'badge-outline-success'">
+                  {{ data.statusUnggahLabel }}
+                </span>
+              </td>
+              <td class="text-center">
+                <button
+                  class="btn btn-outline-warning btn-sm btn-action mr-1"
+                  (click)="onEdit(data)">
+                  <i class="ti-pencil"></i>
+                </button>
+
+                <button
+                  class="btn btn-outline-primary btn-sm btn-action"
+                  (click)="onView(data)">
+                  <i class="ti-eye"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>

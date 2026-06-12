@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-12">
+    <app-card cardTitle="{{ 'ROOT.home' | translate }}" hidHeader="true">
+      <div class="home-tabs">
+        <nav class="home-tabs-nav">
+          <label [class.active]="activeTab === 'profil'" (click)="setActiveTab('profil')">Profil Aplikasi (Halaman
+            Utama)</label>
+          <label [class.active]="activeTab === 'alur'" (click)="setActiveTab('alur')">Alur Penilaian</label>
+          <label [class.active]="activeTab === 'buku'" (click)="setActiveTab('buku')">Buku Panduan Pengguna</label>
+          <label [class.active]="activeTab === 'video'" (click)="setActiveTab('video')">Video Panduan Pengguna</label>
+        </nav>
+
+        <section class="home-tab-content panel-profil" *ngIf="activeTab === 'profil'">
+          <div class="row align-items-center">
+            <div class="col-12 col-lg-6 text-center p-4">
+              <img src="assets/images/dev-ops.svg" alt="Ilustrasi aplikasi" class="home-hero-image">
+            </div>
+            <div class="col-12 col-lg-6 p-4">
+              <h4>{{ 'LOGIN.welcome_to' | translate }} {{ defaultConfig.Application.appName | titlecase }}</h4>
+              <hr class="head">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et sapien nec metus egestas consequat.
+                Integer rhoncus arcu orci, sit amet interdum nibh vestibulum et. Cras ullamcorper viverra sem eu ornare.
+                Donec elit mi, congue in ullamcorper in, rhoncus in libero. Phasellus non elit magna. Fusce scelerisque
+                orci in felis iaculis, ac tempus augue gravida. Quisque elementum euismod tortor sit amet fringilla.
+                Quisque finibus dapibus dignissim.
+              </p>
+              <p>
+                Nullam a leo massa. Proin vel interdum mauris. Interdum et malesuada fames ac ante ipsum primis in
+                faucibus. In accumsan maximus est et scelerisque. Aenean quis mauris varius, tincidunt orci a, luctus
+                enim. Nunc neque risus, sollicitudin ut urna commodo, hendrerit pellentesque nisl. Mauris interdum nulla
+                at justo consectetur facilisis. Ut quis fermentum tortor. Cras nec erat orci. Integer porta non libero
+                id aliquam.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="home-tab-content panel-alur" *ngIf="activeTab === 'alur'">
+          <h4>Alur Penilaian</h4>
+          <img src="assets/images/alur-penilaian.png" alt="Alur Penilaian" class="img-fluid">
+          <p>
+            <br>Alur penilaian menjelaskan langkah-langkah proses dari awal sampai akhir, mulai dari input data hingga
+            validasi hasil penilaian.
+          </p>
+          <ol>
+            <li>Admin SDM membuat templat penilaian sesuai dengan periode yang berjalan. Setelah itu memasukkan NKU dan
+              <br>
+              membangkitkan data atasan dan pegawai. Kemudian membuat agenda sesuai dengan templat yang dibuat,<br>
+              selanjutnya dilakukan pengunggahan master dokumen pendukung oleh bagian SDM.
+            </li>
+            <li>Penilai melakukan verifikasi data pegawai yang akan dinilai, jika ada pegawai yang bukan bawahannya,
+              maka penilai berhak <br> mengajukan perubahan penilai kepada SDM.
+            </li>
+            <li>Pegawai yang akan dinilai diminta mengunggah dokumen pendukung penilaian yang nantinya akan menjadi
+              bahan.</li>
+          </ol>
+        </section>
+
+        <section class="home-tab-content panel-buku" *ngIf="activeTab === 'buku'">
+          <h4>Buku Panduan Pengguna</h4>
+
+          <div class="pdf-container"
+            style="position: relative; overflow: hidden; padding-top: 75%; /* 4:3 aspect ratio */">
+            <iframe src="https://drive.google.com/file/d/193oIW2cfok7nc8jKe2VIT6zOCpAy5f_H/preview"
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allow="autoplay">
+            </iframe>
+          </div>
+        </section>
+
+        <section class="home-tab-content panel-video" *ngIf="activeTab === 'video'">
+          <h4>Video Panduan Pengguna</h4>
+          <div class="video-container" style="position: relative; overflow: hidden; padding-top: 56.25%;">
+            <iframe src="https://www.youtube.com/embed/qWqNOXfJTjU?start=8"
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </section>
+      </div>
+    </app-card>
+  </div>
+</div>

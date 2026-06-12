@@ -1,0 +1,816 @@
+<app-card cardTitle="Target Kinerja Pegawai" [hidHeader]="false" [isSkeleton]="false" [loading]="loadingPage">
+  <div class="card-breadcrumb">
+    Data Penilaian Pegawai / Daftar Data Penilaian Pegawai / Target Kinerja Pegawai
+  </div>
+
+  <div class="tpa-tab-container">
+    <div class="tpa-tab">
+      <button type="button" class="tpa-tab__item" [class.active]="activeTab === 'target'" (click)="goToTab('target')">
+        Target Kinerja Pegawai
+      </button>
+
+      <button type="button" class="tpa-tab__item" [class.active]="activeTab === 'sikap'" (click)="goToTab('sikap')">
+        Sikap Kerja
+      </button>
+
+      <button type="button" class="tpa-tab__item" [class.active]="activeTab === 'inovasi'" (click)="goToTab('inovasi')">
+        Inovasi, Penghargaan dan Kontribusi
+      </button>
+    </div>
+  </div>
+
+  <div class="top-info-wrapper">
+    <div class="top-info-card">
+      <div class="top-info-card__title">Target Kinerja Pegawai</div>
+
+      <div class="top-info-card__body">
+        <div class="info-line">
+          <div class="info-label">Nama Pegawai</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai.nama }}</div>
+        </div>
+
+        <div class="info-line" *ngIf="roleContext === 'PEGAWAI'">
+          <div class="info-label">Periode TPA</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">
+            <select class="form-control" [(ngModel)]="selectedTpaPeriodId" (change)="onPeriodChange($event)" style="border-radius: 10px; height: 34px; max-width: 280px; padding: 2px 8px; font-size: 13px;">
+              <option value="default" disabled>Pilih Periode TPA</option>
+              <option *ngFor="let item of tpaPeriods" [value]="item.id">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="info-line">
+          <div class="info-label">NIP</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai.nip }}</div>
+        </div>
+
+        <div class="info-line">
+          <div class="info-label">Lokasi Kerja</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai.lokasi }}</div>
+        </div>
+
+        <div class="info-line">
+          <div class="info-label">Periode Penilaian</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai.periode }}</div>
+        </div>
+
+        <div class="info-line">
+          <div class="info-label">Deskripsi Kerja Sebagai</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai.deskripsi }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-card>
+
+<div class="tpa-section-card mb-4">
+  <div class="tpa-section-card__body">
+
+    <div class="tpa-box tpa-box--spaced">
+      <div class="tpa-box__header">
+        <div class="tpa-box__title">Objektif</div>
+
+        <button type="button" class="btn btn-outline-primary btn-sm tpa-btn-edit" (click)="onEditObjektif()"
+          [disabled]="isEditDisabled">
+          <i class="icofont icofont-pencil-alt-5 mr-1"></i> Edit
+        </button>
+      </div>
+
+      <div class="tpa-box__body">
+        <textarea class="form-control tpa-textarea" rows="4" placeholder="Enter a description..."
+          [(ngModel)]="objektifText" [disabled]="!isObjektifEdit"></textarea>
+
+        <div class="tpa-form-actions" *ngIf="isSaveCancelVisible">
+          <button type="button" class="btn btn-outline-secondary btn-sm px-4" (click)="onCancelObjektif()">
+            Batal
+          </button>
+
+          <button type="button" class="btn btn-primary btn-sm px-4" (click)="onSaveObjektif()"
+            [disabled]="roleContext === 'PEGAWAI' && !isObjektifValid">
+            Simpan
+          </button>
+        </div>
+
+        <div class="tpa-note-yellow mt-3">
+          <ol class="mb-0 pl-3">
+            <li>Minimal data yang dibutuhkan adalah 8 target kinerja dan maksimal 20 target kinerja pegawai.</li>
+            <li>Target dan Realisasi diisikan berdasarkan TW, serta pastikan seluruh isian harus sesuai dengan template
+              TKP yang telah disusun.</li>
+            <li>Data yang sudah diisikan dan disetujui oleh atasan tidak dapat diedit kembali, pastikan untuk mengecek
+              data sebelum diajukan.</li>
+            <li>Kolom Satuan diisi dengan satuan dari masing-masing indikator target maupun realisasi sesuai dengan
+              kategori yang tersedia.</li>
+            <li>Kolom Ukuran merupakan interpretasi dari nilai target dan realisasi sebagai salah satu parameter
+              ketercapaian dtkp.</li>
+            <li>Kolom score dan score rata-rata akan tampil setelah data yang diisikan telah disetujui oleh atasan
+              langsung.</li>
+            <li>Objektif diisi minimal 5 kata.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="tpa-box">
+      <div class="tpa-box__header">
+        <div class="tpa-box__title">Daftar Target Kinerja</div>
+      </div>
+
+      <div class="tpa-box__body tpa-box__body">
+        <div class="dt-topbar">
+          <div class="dt-topbar__left">
+            <div class="tpa-searchbar-inline">
+              <label class="tpa-searchbar-inline__label mb-0">Search:</label>
+
+              <input type="text" class="form-control tpa-searchbar-inline__input" [(ngModel)]="keyword"
+                (keyup.enter)="onSearch()" (ngModelChange)="onKeywordChange()" />
+            </div>
+          </div>
+
+          <div class="tpa-toolbar__right">
+            <button type="button" class="btn btn-outline-primary btn-sm tpa-btn-outline" (click)="downloadSKI()">
+              <i class="ph-duotone ph-download-simple mr-1"></i> Download SKI
+            </button>
+
+            <ng-container *ngIf="roleContext !== 'PEGAWAI' || currentKondisi !== 'KONDISI_1'">
+              <button type="button" class="btn btn-primary btn-sm tpa-btn-primary ml-2" (click)="openTambahTkp()"
+                [disabled]="isTambahTkpDisabled || dataTable?.length >= 20">
+                <i class="icofont icofont-plus mr-1"></i>
+                Tambah Target Kinerja Pegawai
+              </button>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table id="dtMainTable" datatable [dtOptions]="dtOptions[1]" [dtTrigger]="dtTrigger"
+            class="table tpa-main-table">
+            <thead>
+              <tr>
+                <th style="width:70px">No</th>
+                <th style="min-width:360px">Daftar Target Kinerja Pegawai</th>
+                <th style="width:90px" class="text-center">Satuan</th>
+                <th style="width:90px" class="text-center">Ukuran</th>
+                <th style="width:140px">Referensi</th>
+                <th style="width:150px" class="text-center">Evidence Target</th>
+                <th style="width:150px" class="text-center">Aksi</th>
+                <th style="width:60px" class="text-center"></th>
+              </tr>
+            </thead>
+
+            <!-- Tanpa baris placeholder colspan: DataTables butuh jumlah <td> per baris = jumlah kolom. Kosong = tbody tanpa <tr>. -->
+            <tbody>
+              <ng-container *ngIf="dataTable && dataTable.length > 0; else emptyState">
+                <ng-container *ngFor="let row of pagedMainTable; let i = index">
+                  <tr class="tpa-row-main" [attr.data-rowid]="row.id" [attr.id]="'tkp-row-' + row.id">
+                    <td>{{ ((mainPage - 1) * mainPageSize) + i + 1 }}</td>
+                    <td class="tpa-desc">{{ row.deskripsi }}</td>
+                    <td class="text-center">{{ row.satuan }}</td>
+                    <td class="text-center">{{ row.ukuran }}</td>
+                    <td>{{ row.referensi }}</td>
+                    <td class="text-center">
+                      <button type="button" class="btn btn-outline-success btn-sm tpa-btn-download"
+                        [disabled]="!row.evidenceTargetName">
+                        <i class="ph-duotone ph-download-simple mr-1"></i>
+                        {{ row.evidenceTargetName ? 'Download' : 'Tidak ada file' }}
+                      </button>
+                    </td>
+                    <td class="text-center">
+                      <button type="button" class="btn tpa-icon-btn tpa-icon-btn--danger"
+                        (click)="openDelete(row, $event)" [disabled]="isHapusDtkpDisabled()">
+                        <i class="icofont icofont-trash"></i>
+                      </button>
+                      <button type="button" class="btn tpa-icon-btn tpa-icon-btn--primary"
+                        (click)="openEditTkp(row, $event)">
+                        <i class="icofont icofont-ui-edit"></i>
+                      </button>
+                    </td>
+                    <td class="text-center">
+                      <button type="button" class="btn tpa-expand-btn" style="position: relative;"
+                        (click)="toggleExpandDT(row, $event)">
+                        <i class="icofont" [ngClass]="row.expanded ? 'icofont-simple-up' : 'icofont-simple-down'"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+
+              <ng-template #emptyState>
+                <tr>
+                  <td colspan="8" class="text-center text-muted py-4">
+                    Data tidak ditemukan
+                  </td>
+                </tr>
+              </ng-template>
+            </tbody>
+
+            <tfoot>
+              <tr class="tpa-average-row">
+                <td></td>
+                <td colspan="5" class="font-weight-bold">Rata-rata skor</td>
+                <td colspan="2" class="text-center font-weight-bold">{{ averageScore }}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div class="tpa-main-pagination-wrap">
+          <div class="tpa-main-pagination-info">
+            Rows per page: {{ mainPageInfo.start }} - {{ mainPageInfo.end }}
+          </div>
+
+          <ul class="pagination mb-0 tpa-main-pagination">
+            <li class="page-item" [class.disabled]="mainPage === 1">
+              <a class="page-link" (click)="goToMainPage(1)">&laquo;</a>
+            </li>
+
+            <li class="page-item" [class.disabled]="mainPage === 1">
+              <a class="page-link" (click)="goToMainPage(mainPage - 1)">&lsaquo;</a>
+            </li>
+
+            <li class="page-item" *ngFor="let p of mainPages" [class.active]="p === mainPage">
+              <a class="page-link" (click)="goToMainPage(p)">{{ p }}</a>
+            </li>
+
+            <li class="page-item" [class.disabled]="mainPage === mainTotalPages">
+              <a class="page-link" (click)="goToMainPage(mainPage + 1)">&rsaquo;</a>
+            </li>
+
+            <li class="page-item" [class.disabled]="mainPage === mainTotalPages">
+              <a class="page-link" (click)="goToMainPage(mainTotalPages)">&raquo;</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tpa-actions-spacer"></div>
+
+        <div class="tpa-fixed-actions">
+          <div class="tpa-footer-actions tpa-footer-actions--atasan" *ngIf="roleContext !== 'PEGAWAI'">
+            <button *ngIf="actions.approveTarget.show" type="button"
+              class="btn btn-success tpa-footer-btn-approve-target" [disabled]="actions.approveTarget.disabled"
+              (click)="approveTargetDtkp()">
+              Setujui Target DTKP
+            </button>
+
+            <div *ngIf="showAksiLainnyaDropdown" class="btn-group tpa-aksi-lainnya-group" ngbDropdown
+              placement="top-right" [container]="'body'">
+              <button type="button" class="btn tpa-btn-aksi-lainnya" ngbDropdownToggle>
+                Aksi Lainnya
+              </button>
+              <div class="dropdown-menu dropdown-menu-right tpa-aksi-lainnya-menu" ngbDropdownMenu>
+                <button *ngIf="actions.reviseTarget.show" type="button"
+                  class="dropdown-item tpa-dd-action tpa-dd-action--outline" [disabled]="actions.reviseTarget.disabled"
+                  (click)="reviseTargetDtkp()">
+                  Revisi DTKP
+                </button>
+                <button *ngIf="actions.resetTarget.show" type="button"
+                  class="dropdown-item tpa-dd-action tpa-dd-action--danger-outline"
+                  [disabled]="actions.resetTarget.disabled" (click)="resetTargetDtkp()">
+                  Reset Status Target
+                </button>
+                <button *ngIf="actions.approveRealisasi.show" type="button"
+                  class="dropdown-item tpa-dd-action tpa-dd-action--approve-realisasi"
+                  [disabled]="actions.approveRealisasi.disabled" (click)="approveRealisasiDtkp()">
+                  Setujui Realisasi DTKP
+                </button>
+                <button *ngIf="actions.reviseRealisasi.show" type="button"
+                  class="dropdown-item tpa-dd-action tpa-dd-action--outline"
+                  [disabled]="actions.reviseRealisasi.disabled" (click)="reviseRealisasiDtkp()">
+                  Revisi Realisasi DTKP
+                </button>
+                <button *ngIf="actions.resetRealisasi.show && roleContext !== 'PEGAWAI'" type="button"
+                  class="dropdown-item tpa-dd-action tpa-dd-action--danger-outline"
+                  [disabled]="actions.resetRealisasi.disabled" (click)="resetRealisasiDtkp()">
+                  Reset Status Realisasi
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tpa-pegawai-footer d-flex justify-content-end mt-4"
+          *ngIf="roleContext === 'PEGAWAI' && dataTable && dataTable.length >= 8">
+          <button type="button" class="btn btn-outline-primary mr-2 px-4" (click)="simpanDraftDtkp()">Simpan Draft
+            DTKP</button>
+          <button type="button" class="btn btn-primary px-4" (click)="ajukanDtkp()">Ajukan DTKP</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-ui-modal #modalTambahTkp class="tpa-modal-xl" [containerClick]="false" [hideFooter]="false"
+  [loading]="loadingModalTambah">
+  <div class="app-modal-header">
+    <h5 class="modal-title">Tambah Data Target Kinerja</h5>
+    <button type="button" class="close basic-close" aria-label="Close" (click)="closeTambahTkpHard()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="app-modal-body">
+    <div class="d-flex justify-content-end mb-3">
+      <div class="tpa-modal-actions">
+        <button *ngIf="roleContext !== 'PEGAWAI'" type="button" class="btn btn-outline-danger btn-sm px-3 mr-2"
+          (click)="openDeleteActiveRowTkp()" [disabled]="(rowsTkp?.length || 0) <= MIN_TKP"
+          title="Hapus target yang sedang aktif">
+          <i class="icofont icofont-trash mr-1"></i> Hapus
+        </button>
+
+        <button type="button" class="btn btn-outline-primary btn-sm px-3" (click)="addRowTkp()"
+          [disabled]="rowsTkp?.length >= 20">
+          <i class="icofont icofont-plus mr-1"></i> Tambah
+        </button>
+      </div>
+    </div>
+
+    <div class="tpa-modal-backdrop" *ngIf="showDeleteActiveRowConfirm" (click)="closeDeleteActiveRowTkp()"></div>
+
+    <div class="tpa-modal-wrap" *ngIf="showDeleteActiveRowConfirm">
+      <div class="tpa-modal-card">
+        <button type="button" class="tpa-modal-close" (click)="closeDeleteActiveRowTkp()">&times;</button>
+
+        <div class="tpa-modal-body text-center">
+          <div class="tpa-modal-icon tpa-modal-icon--danger">
+            <i class="icofont icofont-trash"></i>
+          </div>
+          <div class="tpa-modal-title">Hapus target yang sedang aktif?</div>
+          <div class="tpa-modal-subtitle">Data pada halaman ini akan dihapus.</div>
+        </div>
+
+        <div class="tpa-modal-footer tpa-modal-footer--two">
+          <button type="button" class="btn btn-primary btn-lg tpa-btn-wide" (click)="closeDeleteActiveRowTkp()">
+            Batal
+          </button>
+          <button type="button" class="btn btn-outline-secondary btn-lg tpa-btn-wide"
+            (click)="confirmDeleteActiveRowTkp()">
+            Ya, Hapus
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered tpa-popup-table mb-0">
+        <thead class="thead-light">
+          <tr>
+            <th style="width:70px">No</th>
+            <th style="min-width:320px">Daftar Target Kinerja Pegawai</th>
+            <th style="width:180px" class="text-center">Matrix</th>
+            <th style="width:180px" class="text-center">Ukuran</th>
+            <th style="width:200px" class="text-center">Referensi</th>
+            <th style="width:220px" class="text-center">Evidence Referensi</th>
+          </tr>
+        </thead>
+
+        <tbody *ngIf="pagedRowsTkp?.length > 0">
+          <ng-container *ngFor="let row of pagedRowsTkp; let i = index">
+
+            <tr class="tkp-row-main">
+              <td class="text-center">
+                {{ ((pageTkp - 1) * pageSizeTkp) + i + 1 }}
+              </td>
+
+              <td>
+                <input type="text" class="form-control tkp-input" placeholder="Enter key result..."
+                  [(ngModel)]="row.key_result" />
+              </td>
+
+              <td>
+                <ng-select [(ngModel)]="row.matrix_id" [options]="optionsMatrix" [placeholder]="'Pilih Matrix'"
+                  [notFoundMsg]="'Data tidak ditemukan!'" class="tkp-select"></ng-select>
+              </td>
+
+              <td>
+                <ng-select [(ngModel)]="row.measurement" [options]="optionsUkuran" [placeholder]="'Pilih Ukuran'"
+                  [notFoundMsg]="'Data tidak ditemukan!'" class="tkp-select"></ng-select>
+              </td>
+
+              <td>
+                <ng-select [(ngModel)]="row.reference" [options]="optionsReferensi" [placeholder]="'Pilih Referensi'"
+                  [notFoundMsg]="'Data tidak ditemukan!'" class="tkp-select"></ng-select>
+              </td>
+
+              <td class="text-center">
+                <button type="button" class="btn btn-outline-primary btn-sm tkp-btn-upload"
+                  (click)="triggerUploadEvidenceReference(row)">
+                  <i class="ph-duotone ph-upload-simple mr-1"></i> Upload
+                </button>
+
+                <input type="file" class="d-none" accept=".pdf" [attr.id]="'fileEvidenceReference_' + row.__uuid"
+                  (change)="onEvidenceReferenceSelected($event, row)" />
+
+                <div class="tkp-file-name" *ngIf="row.evidenceReferenceName">
+                  {{ row.evidenceReferenceName }}
+                </div>
+              </td>
+            </tr>
+
+            <tr class="tkp-row-panel">
+              <td colspan="6" class="tkp-panel-cell">
+                <div class="tkp-panel-outer">
+                  <div class="tkp-panel__grid tkp-panel-bg">
+
+                    <div class="tkp-panel__head"></div>
+                    <div class="tkp-panel__head text-center">TW1</div>
+                    <div class="tkp-panel__head text-center">TW2</div>
+                    <div class="tkp-panel__head text-center">TW3</div>
+                    <div class="tkp-panel__head text-center">TW4</div>
+
+                    <!-- TARGET -->
+                    <div class="tkp-panel__label">Target</div>
+                    <div>
+                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.targetTw1" />
+                    </div>
+                    <div>
+                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.targetTw2" />
+                    </div>
+                    <div>
+                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.targetTw3" />
+                    </div>
+                    <div>
+                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.targetTw4" />
+                    </div>
+
+                    <!-- ACHIEVEMENT -->
+                    <div class="tkp-panel__label">Achievement</div>
+                    <div>
+                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.achievementTw1" />
+                    </div>
+                    <div>
+                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.achievementTw2" />
+                    </div>
+                    <div>
+                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.achievementTw3" />
+                    </div>
+                    <div>
+                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.achievementTw4" />
+                    </div>
+
+                    <!-- EVIDENCE TARGET -->
+                    <div class="tkp-panel__label">Evidence Target</div>
+
+                    <div class="tkp-panel__evidence tkp-panel__evidence--span2">
+                      <div class="evidence-wrap w-100">
+                        <button type="button" class="btn btn-outline-secondary btn-sm tkp-btn-evidence evidence-long"
+                          [disabled]="!row.evidenceTargetName">
+                          <i class="icofont icofont-file-pdf mr-1"></i>
+                          {{ row.evidenceTarget12Name ? row.evidenceTarget12Name : 'Tidak ada file' }}
+                        </button>
+
+                        <button type="button" class="btn btn-outline-secondary btn-sm evidence-mini"
+                          (click)="triggerUploadEvidenceTarget(row)" aria-label="Upload Evidence Target">
+                          <i class="ph-duotone ph-upload-simple"></i>
+                        </button>
+
+                        <input type="file" class="d-none" accept=".pdf" [attr.id]="'fileEvidenceTarget_' + row.__uuid"
+                          (change)="onEvidenceTargetSelected($event, row)" />
+                      </div>
+                    </div>
+
+                    <div class="tkp-panel__evidence tkp-panel__evidence--span2">
+                      <div class="evidence-wrap w-100">
+                        <button type="button" class="btn btn-outline-secondary btn-sm tkp-btn-evidence evidence-long"
+                          [disabled]="!row.evidenceTargetName">
+                          <i class="icofont icofont-file-pdf mr-1"></i>
+                          {{ row.evidenceTarget34Name ? row.evidenceTarget34Name : 'Tidak ada file' }}
+                        </button>
+
+                        <button type="button" class="btn btn-outline-secondary btn-sm evidence-mini"
+                          (click)="triggerUploadEvidenceTarget(row)" aria-label="Upload Evidence Target">
+                          <i class="ph-duotone ph-upload-simple"></i>
+                        </button>
+
+                        <input
+                          type="file"
+                          class="d-none"
+                          accept=".pdf"
+                          [attr.id]="'fileEvidenceTarget34_' + row.__uuid"
+                          (change)="onEvidenceTargetSelected($event, row, 'TW34')"
+                        />
+                      </div>
+                    </div>
+
+                    <!-- EVIDENCE ACHIEVEMENT -->
+                    <div class="tkp-panel__label">Evidence Realisasi</div>
+
+                    <div class="tkp-panel__evidence tkp-panel__evidence--span2">
+                      <div class="evidence-wrap w-100">
+                        <button type="button" class="btn btn-outline-secondary btn-sm tkp-btn-evidence evidence-long"
+                          [disabled]="!row.evidenceAchievementName">
+                          <i class="icofont icofont-file-pdf mr-1"></i>
+                          {{ row.evidenceAchievementName ? row.evidenceAchievementName : 'Tidak ada file' }}
+                        </button>
+
+                        <button type="button" class="btn btn-outline-secondary btn-sm evidence-mini"
+                          (click)="triggerUploadEvidenceAchievement(row)" aria-label="Upload Evidence Achievement">
+                          <i class="ph-duotone ph-upload-simple"></i>
+                        </button>
+
+                        <input type="file" class="d-none" accept=".pdf"
+                          [attr.id]="'fileEvidenceAchievement_' + row.__uuid"
+                          (change)="onEvidenceAchievementSelected($event, row)" />
+                      </div>
+                    </div>
+
+                    <div class="tkp-panel__evidence tkp-panel__evidence--span2">
+                      <div class="evidence-wrap w-100">
+                        <button type="button" class="btn btn-outline-secondary btn-sm tkp-btn-evidence evidence-long"
+                          [disabled]="!row.evidenceAchievementName">
+                          <i class="icofont icofont-file-pdf mr-1"></i>
+                          {{ row.evidenceAchievementName ? row.evidenceAchievementName : 'Tidak ada file' }}
+                        </button>
+
+                        <button type="button" class="btn btn-outline-secondary btn-sm evidence-mini"
+                          (click)="triggerUploadEvidenceAchievement(row)" aria-label="Upload Evidence Achievement">
+                          <i class="ph-duotone ph-upload-simple"></i>
+                        </button>
+                      </div>
+                    </div>
+
+
+
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+          </ng-container>
+        </tbody>
+
+        <tbody *ngIf="!pagedRowsTkp || pagedRowsTkp.length === 0">
+          <tr>
+            <td colspan="6" class="text-center text-muted py-4">
+              Belum ada data target kinerja.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between mt-3">
+      <div class="text-muted">
+        Show
+        {{ pageInfoTkp.start }}
+        -
+        {{ pageInfoTkp.end }}
+        of
+        {{ pageInfoTkp.total }}
+      </div>
+
+      <ul class="pagination mb-0">
+        <li class="page-item" [class.disabled]="pageTkp === 1">
+          <a class="page-link" (click)="goToPageTkp(1)">&laquo;</a>
+        </li>
+
+        <li class="page-item" [class.disabled]="pageTkp === 1">
+          <a class="page-link" (click)="goToPageTkp(pageTkp - 1)">&lsaquo;</a>
+        </li>
+
+        <li class="page-item" *ngFor="let p of pagesTkp" [class.active]="p === pageTkp">
+          <a class="page-link" (click)="goToPageTkp(p)">{{ p }}</a>
+        </li>
+
+        <li class="page-item" [class.disabled]="pageTkp === totalPagesTkp">
+          <a class="page-link" (click)="goToPageTkp(pageTkp + 1)">&rsaquo;</a>
+        </li>
+
+        <li class="page-item" [class.disabled]="pageTkp === totalPagesTkp">
+          <a class="page-link" (click)="goToPageTkp(totalPagesTkp)">&raquo;</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="alert alert-warning mt-3 mb-0" *ngIf="roleContext !== 'PEGAWAI'">
+      Minimal <b>8</b> target kinerja dan maksimal <b>20</b> target kinerja.
+    </div>
+  </div>
+
+  <div class="app-modal-footer">
+    <div class="d-flex justify-content-end btn-group">
+      <button type="button" class="btn btn-outline-secondary btn-sm px-4" (click)="closeTambahTkp()"
+        [disabled]="loadingModalTkp">
+        Batal
+      </button>
+
+      <button type="button" class="btn btn-primary btn-sm px-4" (click)="saveTambahTkp()" [disabled]="loadingModalTkp">
+        Simpan
+      </button>
+    </div>
+  </div>
+</app-ui-modal>
+
+<app-ui-modal #modalEditTkp [containerClick]="false" [hideFooter]="false" [loading]="loadingModalEditTkp"
+  class="tpa-modal-tkp tpa-modal-xl">
+  <div class="app-modal-header">
+    <h5 class="modal-title">Edit Data Target Kinerja</h5>
+    <button type="button" class="close basic-close" aria-label="Close" (click)="closeEditTkp()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="app-modal-body">
+    <div class="table-responsive">
+      <table class="table table-bordered tpa-popup-table mb-0">
+        <thead class="thead-light">
+          <tr>
+            <th style="width:70px">No</th>
+            <th style="min-width:360px">Daftar Target Kinerja Pegawai</th>
+            <th style="width:180px" class="text-center">Matrix</th>
+            <th style="width:180px" class="text-center">Ukuran</th>
+            <th style="width:200px">Referensi</th>
+            <th style="width:220px" class="text-center">Evidence Target</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>1</td>
+
+            <td>
+              <textarea class="form-control tkp-textarea" rows="2" placeholder="Enter a description..."
+                [(ngModel)]="editTkp.deskripsi"></textarea>
+            </td>
+
+            <td class="text-center">
+              <ng-select class="tkp-select" [(ngModel)]="editTkp.satuan" [options]="optionsSatuan"
+                [placeholder]="'Pilih Satuan'" [notFoundMsg]="'Data tidak ditemukan!'"></ng-select>
+            </td>
+
+            <td class="text-center">
+              <ng-select class="tkp-select" [(ngModel)]="editTkp.ukuran" [options]="optionsUkuran"
+                [placeholder]="'Pilih Ukuran'" [notFoundMsg]="'Data tidak ditemukan!'"></ng-select>
+            </td>
+
+            <td>
+              <ng-select class="tkp-select" [(ngModel)]="editTkp.referensi" [options]="optionsReferensi"
+                [placeholder]="'Pilih Referensi'" [notFoundMsg]="'Data tidak ditemukan!'"></ng-select>
+            </td>
+
+            <td class="text-center">
+              <input #fileEditEvidenceTarget type="file" accept=".pdf" style="display:none"
+                (change)="onEditEvidenceTargetChange($event)" />
+
+              <button type="button" class="btn btn-outline-primary btn-sm tkp-btn-upload"
+                (click)="fileEditEvidenceTarget.click()">
+                <i class="ph-duotone ph-upload-simple"></i> Upload
+              </button>
+
+              <div class="tkp-file-name" *ngIf="editTkp.evidenceTargetName">
+                {{ editTkp.evidenceTargetName }}
+              </div>
+            </td>
+          </tr>
+
+          <tr class="tkp-row-panel">
+            <td colspan="6" class="tkp-panel-cell">
+              <div class="tkp-panel-outer">
+                <div class="tkp-panel__grid tkp-panel-bg">
+                  <div class="tkp-panel__head"></div>
+                  <div class="tkp-panel__head text-center">TW1</div>
+                  <div class="tkp-panel__head text-center">TW2</div>
+                  <div class="tkp-panel__head text-center">TW3</div>
+                  <div class="tkp-panel__head text-center">TW4</div>
+
+                  <div class="tkp-panel__label">Target</div>
+                  <input class="form-control tkp-input" [(ngModel)]="editTkp.targetTw1" />
+                  <input class="form-control tkp-input" [(ngModel)]="editTkp.targetTw2" />
+                  <input class="form-control tkp-input" [(ngModel)]="editTkp.targetTw3" />
+                  <input class="form-control tkp-input" [(ngModel)]="editTkp.targetTw4" />
+
+                  <div class="tkp-panel__label">Realisasi</div>
+                  <input class="form-control tkp-input" [(ngModel)]="editTkp.realisasiTw1" />
+                  <input class="form-control tkp-input" [(ngModel)]="editTkp.realisasiTw2" />
+                  <input class="form-control tkp-input" [(ngModel)]="editTkp.realisasiTw3" />
+                  <input class="form-control tkp-input" [(ngModel)]="editTkp.realisasiTw4" />
+
+                  <div class="tkp-panel__label">Evidence Realisasi</div>
+
+                  <input #fileEditEv12 type="file" accept=".pdf" style="display:none"
+                    (change)="onEditEvidenceRealisasi12Change($event)" />
+
+                  <input #fileEditEv34 type="file" accept=".pdf" style="display:none"
+                    (change)="onEditEvidenceRealisasi34Change($event)" />
+
+                  <div class="tkp-panel__evidence tkp-panel__evidence--span2">
+                    <div class="evidence-wrap w-100">
+                      <button type="button" class="btn btn-outline-secondary btn-sm tkp-btn-evidence evidence-long"
+                        [disabled]="!editTkp.evidenceRealisasi12Name" (click)="downloadEvidenceEdit('TW12')">
+                        <i class="icofont icofont-file-pdf mr-1"></i>
+                        {{ editTkp.evidenceRealisasi12Name ? editTkp.evidenceRealisasi12Name : 'Tidak ada file' }}
+                      </button>
+
+                      <button type="button" class="btn btn-outline-secondary btn-sm evidence-mini"
+                        (click)="fileEditEv12.click()" aria-label="Upload Evidence TW1-2">
+                        <i class="ph-duotone ph-upload-simple"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="tkp-panel__evidence tkp-panel__evidence--span2">
+                    <div class="evidence-wrap w-100">
+                      <button type="button" class="btn btn-outline-secondary btn-sm tkp-btn-evidence evidence-long"
+                        [disabled]="!editTkp.evidenceRealisasi34Name" (click)="downloadEvidenceEdit('TW34')">
+                        <i class="icofont icofont-file-pdf mr-1"></i>
+                        {{ editTkp.evidenceRealisasi34Name ? editTkp.evidenceRealisasi34Name : 'Tidak ada file' }}
+                      </button>
+
+                      <button type="button" class="btn btn-outline-secondary btn-sm evidence-mini"
+                        (click)="fileEditEv34.click()" aria-label="Upload Evidence TW3-4">
+                        <i class="ph-duotone ph-upload-simple"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="app-modal-footer">
+    <div class="d-flex justify-content-end btn-group">
+      <button type="button" class="btn btn-outline-secondary btn-sm px-4" (click)="closeEditTkp()"
+        [disabled]="loadingModalTkp">
+        Batal
+      </button>
+
+      <button type="button" class="btn btn-primary btn-sm px-4" (click)="saveEditTkp()" [disabled]="loadingModalTkp">
+        Simpan
+      </button>
+    </div>
+  </div>
+</app-ui-modal>
+
+<div class="tpa-modal-backdrop" *ngIf="showDeleteConfirm || showDeleteSuccess" (click)="onBackdropClick()"></div>
+
+<div class="tpa-modal-wrap" *ngIf="showDeleteConfirm">
+  <div class="tpa-modal-card">
+    <button type="button" class="tpa-modal-close" (click)="closeDeleteConfirm()" aria-label="Close">
+      &times;
+    </button>
+
+    <div class="tpa-modal-body text-center">
+      <div class="tpa-modal-icon tpa-modal-icon--danger">
+        <i class="icofont icofont-trash"></i>
+      </div>
+
+      <div class="tpa-modal-title">
+        Apakah anda yakin ingin menghapus<br />data ini?
+      </div>
+
+      <div class="tpa-modal-subtitle">
+        Data yang dihapus akan hilang secara permanen
+      </div>
+    </div>
+
+    <div class="tpa-modal-footer tpa-modal-footer--two">
+      <button type="button" class="btn btn-primary btn-lg tpa-btn-wide" (click)="closeDeleteConfirm()"
+        [disabled]="loadingDelete">
+        Batal
+      </button>
+
+      <button type="button" class="btn btn-outline-secondary btn-lg tpa-btn-wide" (click)="confirmDelete()"
+        [disabled]="loadingDelete">
+        Ya, Hapus
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="tpa-modal-wrap" *ngIf="showDeleteSuccess">
+  <div class="tpa-modal-card">
+    <button type="button" class="tpa-modal-close" (click)="closeDeleteSuccess()" aria-label="Close">
+      &times;
+    </button>
+
+    <div class="tpa-modal-body text-center">
+      <div class="tpa-modal-icon tpa-modal-icon--success">
+        <i class="icofont icofont-shield"></i>
+        <span class="tpa-modal-icon-check">
+          <i class="icofont icofont-check"></i>
+        </span>
+      </div>
+
+      <div class="tpa-modal-title">Berhasil Dihapus</div>
+      <div class="tpa-modal-subtitle">Selamat! data berhasil dihapus</div>
+    </div>
+
+    <div class="tpa-modal-footer">
+      <button type="button" class="btn btn-primary btn-lg w-100" (click)="closeDeleteSuccess()">
+        Selesai
+      </button>
+    </div>
+  </div>
+</div>

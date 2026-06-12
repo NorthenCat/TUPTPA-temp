@@ -1,0 +1,404 @@
+<app-card
+  cardTitle="Target Kinerja Pegawai"
+  [hidHeader]="false"
+  [isSkeleton]="false"
+  [loading]="loadingPage"
+>
+  <div class="card-breadcrumb">
+    Data Penilaian Pegawai / Daftar Data Penilaian Pegawai / Target Kinerja Pegawai
+  </div>
+
+  <div class="tpa-tab-container">
+    <div class="tpa-tab">
+      <button
+        type="button"
+        class="tpa-tab__item"
+        [class.active]="activeTab === 'target'"
+        (click)="activeTab = 'target'"
+      >
+        Target Kinerja Pegawai
+      </button>
+
+      <button
+        type="button"
+        class="tpa-tab__item"
+        [class.active]="activeTab === 'sikap'"
+        (click)="activeTab = 'sikap'"
+      >
+        Sikap Kerja
+      </button>
+
+      <button
+        type="button"
+        class="tpa-tab__item"
+        [class.active]="activeTab === 'inovasi'"
+        (click)="activeTab = 'inovasi'"
+      >
+        Inovasi, Penghargaan dan Kontribusi
+      </button>
+    </div>
+  </div>
+
+  <div class="top-info-wrapper">
+    <div class="top-info-card">
+      <div class="top-info-card__title">Target Kinerja Pegawai</div>
+
+      <div class="top-info-card__body">
+        <div class="info-line">
+          <div class="info-label">Nama Pegawai</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai.nama }}</div>
+        </div>
+
+        <div class="info-line">
+          <div class="info-label">NIP</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai.nip }}</div>
+        </div>
+
+        <div class="info-line">
+          <div class="info-label">Lokasi Kerja</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai.lokasi }}</div>
+        </div>
+
+        <div class="info-line">
+          <div class="info-label">Periode Penilaian</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai.periode }}</div>
+        </div>
+
+        <div class="info-line">
+          <div class="info-label">Deskripsi Kerja Sebagai</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai.deskripsi }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="activeTab === 'target'"></div>
+  <div *ngIf="activeTab === 'sikap'"></div>
+  <div *ngIf="activeTab === 'inovasi'"></div>
+</app-card>
+
+<div class="tpa-section-card mb-4">
+  <div class="tpa-section-card__body">
+
+    <!-- BOX 1 -->
+    <div class="tpa-box tpa-box--spaced">
+      <div class="tpa-box__header">
+        <div class="tpa-box__title">Objektif</div>
+
+        <button
+          type="button"
+          class="btn btn-outline-primary btn-sm tpa-btn-edit"
+          (click)="onEditObjektif()"
+        >
+          <i class="icofont icofont-pencil-alt-5 mr-1"></i> Edit
+        </button>
+      </div>
+
+      <div class="tpa-box__body">
+        <textarea
+          class="form-control tpa-textarea"
+          rows="4"
+          placeholder="Enter a description..."
+          [(ngModel)]="objektifText"
+          [disabled]="!isObjektifEdit"
+        ></textarea>
+
+        <div class="tpa-form-actions" *ngIf="isObjektifEdit">
+          <button type="button" class="btn btn-outline-secondary btn-sm px-4" (click)="onCancelObjektif()">
+            Batal
+          </button>
+          <button type="button" class="btn btn-primary btn-sm px-4" (click)="onSaveObjektif()">
+            Simpan
+          </button>
+        </div>
+
+        <div class="tpa-note-yellow mt-3">
+          <ol class="mb-0 pl-3">
+            <li>Minimal data yang dibutuhkan adalah 8 target kinerja dan maksimal 20 target kinerja pegawai.</li>
+            <li>Target dan Realisasi diisikan berdasarkan TW, serta pastikan seluruh isian harus sesuai dengan template TKP yang telah disusun.</li>
+            <li>Data yang sudah diisikan dan disetujui oleh atasan tidak dapat diedit kembali, pastikan untuk mengecek data sebelum diajukan.</li>
+            <li>Kolom Satuan diisi dengan satuan dari masing-masing indikator target maupun realisasi sesuai dengan kategori yang tersedia.</li>
+            <li>Kolom Ukuran merupakan interpretasi dari nilai target dan realisasi sebagai salah satu parameter ketercapaian dtkp.</li>
+            <li>Kolom score dan score rata-rata akan tampil setelah data yang diisikan telah disetujui oleh atasan langsung.</li>
+            <li>Objektif diisi minimal 5 kata.</li>
+          </ol>
+        </div>
+
+        <!-- TABLE STATUS -->
+        <div class="table-responsive tpa-table-gap">
+          <table
+            datatable
+            [dtOptions]="dtOptionsStatus"
+            [dtTrigger]="dtTriggerStatus"
+            class="table tpa-approval-table"
+          >
+            <thead>
+              <tr>
+                <th style="width:70px">No</th>
+                <th>Penilai</th>
+                <th class="text-center">Status Persetujuan Target DTKP</th>
+                <th class="text-center">Status Persetujuan Realisasi DTKP</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let p of statusPenilai; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ p.nama }}</td>
+
+                <td class="text-center">
+                  <span class="pill-status" [ngClass]="p.targetApproved ? 'pill-ok' : 'pill-no'">
+                    {{ p.targetApproved ? 'Disetujui' : 'Tidak Disetujui' }}
+                  </span>
+                </td>
+
+                <td class="text-center">
+                  <span class="pill-status" [ngClass]="p.realisasiApproved ? 'pill-ok' : 'pill-no'">
+                    {{ p.realisasiApproved ? 'Disetujui' : 'Tidak Disetujui' }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BOX 2 -->
+    <div class="tpa-box">
+      <div class="tpa-box__header">
+        <div class="tpa-box__title">Daftar Variabel Penomoran</div>
+      </div>
+
+      <div class="tpa-box__body">
+
+        <div class="tpa-toolbar">
+          <div class="tpa-toolbar__left">
+            <div class="tpa-search">
+              <input
+                type="text"
+                class="tpa-search__input"
+                placeholder="Cari"
+                [(ngModel)]="keyword"
+                (keyup.enter)="onSearch()"
+                (ngModelChange)="onKeywordChange()"
+              />
+              <button type="button" class="tpa-search__btn" (click)="onSearch()">
+                <i class="icofont icofont-search"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="tpa-toolbar__right">
+            <button type="button" class="btn btn-outline-primary btn-sm tpa-btn-outline" (click)="downloadSKI()">
+              <i class="ph-duotone ph-download-simple mr-1"></i> Download SKI
+            </button>
+
+            <button type="button" class="btn btn-primary btn-sm tpa-btn-primary" (click)="openTambahTkp()">
+              <i class="icofont icofont-plus mr-1"></i> Tambah Target Kinerja Pegawai
+            </button>
+          </div>
+        </div>
+
+        <!-- MAIN TABLE -->
+        <div class="table-responsive">
+          <table
+            id="dtMainTable"
+            datatable
+            [dtOptions]="dtOptions[1]"
+            [dtTrigger]="dtTrigger"
+            class="table tpa-main-table"
+          >
+            <thead>
+              <tr>
+                <th style="width:70px">No</th>
+                <th style="min-width:360px">Daftar Target Kinerja Pegawai</th>
+                <th style="width:90px" class="text-center">Satuan</th>
+                <th style="width:90px" class="text-center">Ukuran</th>
+                <th style="width:140px">Referensi</th>
+                <th style="width:150px" class="text-center">Evidence Target</th>
+                <th style="width:150px" class="text-center">Aksi</th>
+                <th style="width:60px" class="text-center"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let row of dataTable; let i = index" [attr.data-rowid]="row.id">
+                <td>{{ i + 1 }}</td>
+                <td class="tpa-desc">{{ row.deskripsi }}</td>
+                <td class="text-center">{{ row.satuan }}</td>
+                <td class="text-center">{{ row.ukuran }}</td>
+                <td>{{ row.referensi }}</td>
+
+                <td class="text-center">
+                  <button type="button" class="btn btn-outline-success btn-sm tpa-btn-download">
+                    <i class="ph-duotone ph-download-simple mr-1"></i> Download
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    type="button"
+                    class="btn tpa-icon-btn tpa-icon-btn--danger btn-delete"
+                    [attr.data-id]="row.id"
+                  >
+                    <i class="icofont icofont-trash"></i>
+                  </button>
+
+
+                  <button type="button" class="btn tpa-icon-btn tpa-icon-btn--primary" (click)="onEditRow(row)">
+                    <i class="icofont icofont-ui-edit"></i>
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button type="button" class="btn tpa-expand-btn" (click)="toggleExpand(row)">
+                    <i class="icofont" [ngClass]="row.expanded ? 'icofont-simple-up' : 'icofont-simple-down'"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+
+            <tfoot>
+              <tr class="tpa-average-row">
+                <td></td>
+                <td colspan="5" class="font-weight-bold">Rata-rata skor</td>
+                <td colspan="2" class="text-center font-weight-bold">{{ averageScore }}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tpa-footer-actions">
+      <button type="button" class="btn tpa-btn-draft" (click)="simpanDraftDTKP()">
+        Simpan Draft DTKP
+      </button>
+
+      <button type="button" class="btn tpa-btn-submit" (click)="ajukanDTKP()">
+        Ajukan DTKP
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========================= -->
+<!-- MODAL KONFIRMASI HAPUS -->
+<!-- (ngx-bootstrap ModalDirective) -->
+<!-- ========================= -->
+<!-- ========================= -->
+<!-- MODAL KONFIRMASI HAPUS (PURE) -->
+<!-- ========================= -->
+<!-- ========================= -->
+<!-- BACKDROP (dipakai 2 modal) -->
+<!-- ========================= -->
+<div
+  class="tpa-modal-backdrop"
+  *ngIf="showDeleteConfirm || showDeleteSuccess"
+  (click)="onBackdropClick()"
+></div>
+
+<!-- ========================= -->
+<!-- MODAL KONFIRMASI HAPUS -->
+<!-- ========================= -->
+<div class="tpa-modal-wrap" *ngIf="showDeleteConfirm">
+  <div class="tpa-modal-card">
+    <button type="button" class="tpa-modal-close" (click)="closeDeleteConfirm()" aria-label="Close">
+      &times;
+    </button>
+
+    <div class="tpa-modal-body text-center">
+      <div class="tpa-modal-icon tpa-modal-icon--danger">
+        <i class="icofont icofont-trash"></i>
+      </div>
+
+      <div class="tpa-modal-title">
+        Apakah anda yakin ingin menghapus<br />data ini?
+      </div>
+
+      <div class="tpa-modal-subtitle">
+        Data yang dihapus akan hilang secara permanen
+      </div>
+    </div>
+
+    <div class="tpa-modal-footer">
+      <button
+        type="button"
+        class="btn btn-primary btn-lg tpa-btn-wide"
+        (click)="closeDeleteConfirm()"
+        [disabled]="loadingDelete"
+      >
+        Batal
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-outline-secondary btn-lg tpa-btn-wide"
+        (click)="confirmDelete()"
+        [disabled]="loadingDelete"
+      >
+        Ya, Hapus
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ========================= -->
+<!-- MODAL SUKSES DIHAPUS -->
+<!-- ========================= -->
+<div class="tpa-modal-wrap" *ngIf="showDeleteSuccess">
+  <div class="tpa-modal-card">
+    <button type="button" class="tpa-modal-close" (click)="closeDeleteSuccess()" aria-label="Close">
+      &times;
+    </button>
+
+    <div class="tpa-modal-body text-center">
+      <div class="tpa-modal-icon tpa-modal-icon--success">
+        <i class="icofont icofont-shield"></i>
+        <span class="tpa-modal-icon-check">
+          <i class="icofont icofont-check"></i>
+        </span>
+      </div>
+
+      <div class="tpa-modal-title">Berhasil Dihapus</div>
+      <div class="tpa-modal-subtitle">Selamat! data berhasil dihapus</div>
+    </div>
+
+    <div class="tpa-modal-footer">
+      <button type="button" class="btn btn-primary btn-lg w-100" (click)="closeDeleteSuccess()">
+        Selesai
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<button
+      class="tab"
+      [class.active]="activeTab === 'target'"
+      (click)="goToTab('target')">
+      Target Kinerja Pegawai
+    </button>
+
+    <button
+      class="tab"
+      [class.active]="activeTab === 'sikap'"
+      (click)="goToTab('sikap')">
+      Sikap Kerja
+    </button>
+
+    <button
+      class="tab"
+      [class.active]="activeTab === 'inovasi'"
+      (click)="goToTab('inovasi')">
+      Inovasi, Penghargaan, dan Kontribusi
+    </button>

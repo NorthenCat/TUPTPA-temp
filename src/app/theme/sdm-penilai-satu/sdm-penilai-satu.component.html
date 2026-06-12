@@ -1,0 +1,274 @@
+<!-- data-atasan-pegawai.component.html -->
+<div class="row">
+  <div class="col-sm-12">
+    <app-card
+      cardTitle="Data Penilaian Pegawai"
+      [hidHeader]="false"
+      [isSkeleton]="false"
+      [loading]="loadingTable"
+    >
+      <!-- FILTER -->
+      <app-filter-container customClass="p-filter" [loading]="loadingTableBasic">
+        <div class="col-12 col-md-4">
+          <ng-select
+            [(ngModel)]="selectedPeriode"
+            (ngModelChange)="onPeriodeChange($event)"
+            [options]="periodeOptions"
+            bindValue="value"
+            bindLabel="label"
+            [placeholder]="'Pilih Periode'"
+            [ngClass]="'filter'"
+            [notFoundMsg]="'Data tidak ditemukan!'"
+          ></ng-select>
+        </div>
+
+        <div class="col-12 col-md-5">
+          <ng-select
+            [(ngModel)]="selectedStruktur"
+            (ngModelChange)="onStrukturChange($event)"
+            [options]="strukturOptions"
+            bindValue="value"
+            bindLabel="label"
+            [placeholder]="'Pilih Struktur Organisasi'"
+            [ngClass]="'filter'"
+            [notFoundMsg]="'Data tidak ditemukan!'"
+            [disabled]="isStrukturDisabled"
+          ></ng-select>
+        </div>
+
+        <div class="col-12 col-md-2 text-right d-flex align-items-center justify-content-end">
+          <button
+            type="button"
+            class="btn btn-outline-primary py-1 f-14 rounded"
+            (click)="applyFilter()"
+            [disabled]="isApplyDisabled"
+          >
+            <i class="icofont icofont-filter"></i> Terapkan
+          </button>
+        </div>
+      </app-filter-container>
+
+
+
+
+      <!-- SEARCH + ACTIONS -->
+      <!-- ACTIONS (yang mau muncul di kanan topbar DT) -->
+      <div class="dt-topbar pt-3 align-items-center">
+        <div class="dt-filter-host" #dtFilterHost></div>
+
+        <div class="ddt-actions-source">
+          <button type="button" class="btn btn-primary py-1 f-14 rounded mr-2" (click)="openGenerateIpk()">
+            <i class="icofont icofont-refresh"></i> Generate Data IPK
+          </button>
+
+          <button type="button" class="btn btn-success py-1 f-14 rounded" (click)="openBangkitkanData()" [disabled]="loadingTable">
+            <i class="icofont icofont-plus"></i> Bangkitkan Data
+          </button>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="table-responsive pb-1 pt-3">
+        <table
+          id="dtPenilaianTable"
+          datatable
+          [dtOptions]="dtOptions[1]"
+          [dtTrigger]="dtTrigger"
+          class="table table-bordered table-hover table-sm dataTable"
+        >
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" style="width:60px;">No</th>
+              <th scope="col">Periode Penilaian</th>
+              <th scope="col">NIP</th>
+              <th scope="col">Nama Pegawai</th>
+              <th scope="col">Jabatan Pegawai</th>
+              <th scope="col">Jumlah Pegawai</th>
+              <th scope="col">Jumlah Penilaian</th>
+              <th scope="col">Penilaian Selesai</th>
+              <th scope="col" style="width:110px;">Status</th>
+            </tr>
+          </thead>
+
+          <tbody *ngIf="dataTable && dataTable.length">
+            <tr *ngFor="let data of dataTable; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ data.periodePenilaian }}</td>
+              <td>{{ data.nip }}</td>
+              <td>{{ data.namaPegawai }}</td>
+              <td>{{ data.jabatanPegawai }}</td>
+              <td class="text-center">{{ data.jumlahPegawai }}</td>
+              <td class="text-center">{{ data.jumlahPenilaian }}</td>
+              <td class="text-center">{{ data.penilaianSelesai }}</td>
+              <td class="text-center">
+                <button type="button" class="btn btn-outline-secondary btn-sm" (click)="onDetail(data)">
+                  <i class="ti-eye"></i> Detail
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>
+
+<!-- MODAL GENERATE IPK - START -->
+<app-ui-modal #modalGenerateIpk [containerClick]="false" [hideFooter]="false" [loading]="loadingModal">
+  <div class="app-modal-header">
+    <h5 class="modal-title">Generate Data IPK</h5>
+    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="closeGenerateIpk()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="app-modal-body">
+    <form class="row" [formGroup]="formGenerateIpk">
+      <div class="col-12">
+        <div class="form-group mb-3">
+          <label class="form-label">Periode Penilaian</label>
+          <ng-select
+            formControlName="periode"
+            [options]="periodeOptions"
+            bindValue="value"
+            bindLabel="label"
+            [placeholder]="'Pilih Periode'"
+            [notFoundMsg]="'Data tidak ditemukan!'"
+            [ngClass]="fgi.periode.invalid && fgi.periode.touched ? 'custom is-invalid' : (fgi.periode.valid ? 'custom is-valid' : 'custom')"
+          ></ng-select>
+          <label *ngIf="fgi.periode.errors?.required && fgi.periode.touched" class="invalid-feedback">
+            Wajib diisi
+          </label>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-group mb-2">
+          <label class="form-label">Struktur Organisasi</label>
+          <ng-select
+            formControlName="struktur"
+            [options]="strukturOptions"
+            bindValue="value"
+            bindLabel="label"
+            [placeholder]="'Pilih Struktur Organisasi'"
+            [notFoundMsg]="'Data tidak ditemukan!'"
+            [ngClass]="fgi.struktur.invalid && fgi.struktur.touched ? 'custom is-invalid' : (fgi.struktur.valid ? 'custom is-valid' : 'custom')"
+          ></ng-select>
+          <label *ngIf="fgi.struktur.errors?.required && fgi.struktur.touched" class="invalid-feedback">
+            Wajib diisi
+          </label>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="app-modal-footer">
+    <div class="col-12 text-right p-0">
+      <button
+        type="button"
+        class="btn btn-light btn-sm mr-2"
+        (click)="closeGenerateIpk()"
+      >
+        Batal
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="confirmGenerateIpk()"
+        [disabled]="formGenerateIpk.invalid || loadingModal"
+      >
+        Simpan
+      </button>
+    </div>
+  </div>
+</app-ui-modal>
+<!-- MODAL GENERATE IPK - END -->
+
+<!-- MODAL BANGKITKAN DATA - START -->
+<app-ui-modal #modalBangkitkanData [containerClick]="false" [hideFooter]="false" [loading]="loadingModalBangkitkan">
+  <div class="app-modal-header">
+    <h5 class="modal-title">Bangkitkan Data</h5>
+    <button type="button" class="close basic-close" aria-label="Close" (click)="closeBangkitkanData()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="app-modal-body">
+    <form class="row" [formGroup]="formBangkitkanData">
+      <div class="col-12">
+        <div class="form-group mb-3">
+          <label class="form-label">Periode Penilaian</label>
+          <ng-select
+            formControlName="periode"
+            [options]="periodeOptions"
+            bindValue="value"
+            bindLabel="label"
+            [placeholder]="'Pilih Periode'"
+            [notFoundMsg]="'Data tidak ditemukan!'"
+            [ngClass]="fbd.periode.invalid && fbd.periode.touched ? 'custom is-invalid' : (fbd.periode.valid ? 'custom is-valid' : 'custom')"
+          ></ng-select>
+          <label *ngIf="fbd.periode.errors && fbd.periode.errors.required && fbd.periode.touched" class="invalid-feedback">
+            Wajib diisi
+          </label>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-group mb-3">
+          <label class="form-label">Struktur Organisasi</label>
+          <ng-select
+            formControlName="struktur"
+            [options]="strukturOptions"
+            bindValue="value"
+            bindLabel="label"
+            [placeholder]="'Pilih Struktur Organisasi'"
+            [notFoundMsg]="'Data tidak ditemukan!'"
+            [ngClass]="fbd.struktur.invalid && fbd.struktur.touched ? 'custom is-invalid' : (fbd.struktur.valid ? 'custom is-valid' : 'custom')"
+          ></ng-select>
+          <label *ngIf="fbd.struktur.errors && fbd.struktur.errors.required && fbd.struktur.touched" class="invalid-feedback">
+            Wajib diisi
+          </label>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-group mb-2">
+          <label class="form-label">Sumber Data</label>
+          <ng-select
+            formControlName="sumberData"
+            [options]="sumberDataOptions"
+            bindValue="value"
+            bindLabel="label"
+            [placeholder]="'Pilih Sumber Data'"
+            [notFoundMsg]="'Data tidak ditemukan!'"
+            [ngClass]="fbd.sumberData.invalid && fbd.sumberData.touched ? 'custom is-invalid' : (fbd.sumberData.valid ? 'custom is-valid' : 'custom')"
+          ></ng-select>
+          <label *ngIf="fbd.sumberData.errors && fbd.sumberData.errors.required && fbd.sumberData.touched" class="invalid-feedback">
+            Wajib diisi
+          </label>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="app-modal-footer">
+    <div class="col-12 text-right p-0">
+      <button type="button" class="btn btn-light btn-sm mr-2" (click)="closeBangkitkanData()">
+        Batal
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="confirmBangkitkanData()"
+        [disabled]="formBangkitkanData.invalid || loadingModalBangkitkan"
+      >
+        Bangkitkan
+      </button>
+    </div>
+  </div>
+</app-ui-modal>
+<!-- MODAL BANGKITKAN DATA - END -->
+
+

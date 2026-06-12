@@ -1,0 +1,286 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card
+      cardTitle="List Manajemen Template"
+      [hidHeader]="false"
+      [isSkeleton]="false"
+      [loading]="loadingTable"
+    >
+      <p class="text-muted mb-3">
+        Daftar template untuk menunjang penilaian performansi Tenaga Penunjang Akademik
+      </p>
+       <div class="row mb-4 align-items-center search-action-container">
+        <div class="col-12 col-md-6">
+          <div class="mt-search">
+            <input
+              type="text"
+              class="form-control mt-search__input"
+              placeholder="Cari"
+              [(ngModel)]="searchTerm"
+              (input)="onSearchChange()"
+            />
+            <i class="icofont icofont-search mt-search__icon"></i>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 text-md-right mt-3 mt-md-0">
+          <button
+            type="button"
+            class="btn btn-primary btn-sm rounded"
+            (click)="openModal()"
+          >
+            <i class="icofont icofont-plus"></i> Tambah Template
+          </button>
+        </div>
+      </div>
+
+
+      <!-- Table (DataTables) -->
+      <div class="table-responsive pb-1 pt-2">
+        <table
+          datatable
+          [dtOptions]="dtOptions"
+          [dtTrigger]="dtTrigger"
+          class="table table-hover table-sm dataTable"
+        >
+          <thead class="thead-light">
+            <tr>
+              <th style="width: 60px;">No</th>
+              <th>Periode Template</th>
+              <th style="width: 120px;">Status</th>
+              <th style="width: 140px;">Jumlah Komponen</th>
+              <th style="width: 180px;">Tanggal Dibuat</th>
+              <th style="width: 220px;">Dibuat Oleh</th>
+              <th style="width: 180px;">Aksi</th>
+            </tr>
+          </thead>
+
+          <tbody *ngIf="rows && rows.length">
+            <tr *ngFor="let row of rows; let i = index">
+              <td>{{ i + 1 }}</td>
+
+              <td>
+                <div class="font-weight-bold">{{ row.nama }}</div>
+                <div class="text-muted small">{{ row.periode }}</div>
+              </td>
+
+              <td>
+                <span
+                  class="badge"
+                  [ngClass]="row.aktif ? 'badge-success' : 'badge-danger'"
+                >
+                  {{ row.aktif ? 'Aktif' : 'Tidak Aktif' }}
+                </span>
+              </td>
+
+              <td>{{ row.jumlahKomponen }}</td>
+              <td>{{ row.createdAt | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+              <td class="text-uppercase">{{ row.dibuatOleh }}</td>
+
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-warning btn-sm mr-1"
+                  (click)="onEdit(row)"
+                >
+                  <i class="ti-pencil"></i>
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm"
+                  (click)="onDetail(row)"
+                >
+                  <i class="ti-eye"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody *ngIf="!rows || !rows.length">
+            <tr>
+              <td colspan="7" class="text-center text-muted p-4">
+                Data tidak ditemukan!
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>
+
+<!-- MODAL DEFAULT - START -->
+<app-ui-modal
+  #modalDefault
+  [containerClick]="false"
+  [hideFooter]="true"
+  [loading]="loadingModal"
+>
+  <div class="app-modal-header">
+    <h5 class="modal-title">Buat Konten Periode Penilaian</h5>
+
+    <button
+      type="button"
+      class="close basic-close"
+      aria-label="Close"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="app-modal-body">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="mt-modal-body">
+      <!-- Nama Periode -->
+      <div class="form-group">
+        <label class="mt-label">Nama Periode</label>
+        <input
+          formControlName="namaPeriode"
+          type="text"
+          class="form-control"
+          placeholder="*misal 2018/2019 Genap, atau Triwulan II 2019"
+        />
+        <div
+          class="text-danger small mt-1"
+          *ngIf="t('namaPeriode') && t('namaPeriode').invalid && t('namaPeriode').touched"
+        >
+          Nama periode wajib diisi
+        </div>
+      </div>
+
+      <!-- Grid 2 kolom -->
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <label class="mt-label">Tanggal Mulai Periode</label>
+          <div class="mt-input-icon">
+            <input
+              formControlName="tglMulai"
+              type="text"
+              class="form-control"
+              placeholder="Pilih Tanggal Mulai"
+              readonly
+            />
+
+            <input
+              #pickerMulai
+              type="date"
+              class="mt-native-date"
+              (change)="onNativeDateChange('tglMulai', $event)"
+            />
+
+            <button
+              type="button"
+              class="mt-icon-btn"
+              aria-label="Kalender"
+              (click)="openNativePicker(pickerMulai)"
+            >
+              <i class="icofont icofont-calendar"></i>
+            </button>
+          </div>
+
+          <div
+            class="text-danger small mt-1"
+            *ngIf="t('tglMulai') && t('tglMulai').invalid && t('tglMulai').touched"
+          >
+            Format tanggal harus dd/mm/yyyy
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="mt-label">Tanggal Akhir Periode</label>
+          <div class="mt-input-icon">
+            <input
+              formControlName="tglAkhir"
+              type="text"
+              class="form-control"
+              placeholder="Pilih Tanggal Akhir"
+              readonly
+            />
+
+            <input
+              #pickerAkhir
+              type="date"
+              class="mt-native-date"
+              (change)="onNativeDateChange('tglAkhir', $event)"
+            />
+
+            <button
+              type="button"
+              class="mt-icon-btn"
+              aria-label="Kalender"
+              (click)="openNativePicker(pickerAkhir)"
+            >
+              <i class="icofont icofont-calendar"></i>
+            </button>
+          </div>
+
+          <div
+            class="text-danger small mt-1"
+            *ngIf="t('tglAkhir') && t('tglAkhir').invalid && t('tglAkhir').touched"
+          >
+            Format tanggal harus dd/mm/yyyy
+          </div>
+        </div>
+      </div>
+
+      <!-- TMT -->
+      <div class="form-group mt-2">
+        <label class="mt-label">Terhitung Mulai Tanggal (TMT)</label>
+        <div class="mt-input-icon">
+          <input
+            formControlName="tmt"
+            type="text"
+            class="form-control"
+            placeholder="Pilih Tanggal"
+            readonly
+          />
+
+          <input
+            #pickerTmt
+            type="date"
+            class="mt-native-date"
+            (change)="onNativeDateChange('tmt', $event)"
+          />
+
+          <button
+            type="button"
+            class="mt-icon-btn"
+            aria-label="Kalender"
+            (click)="openNativePicker(pickerTmt)"
+          >
+            <i class="icofont icofont-calendar"></i>
+          </button>
+        </div>
+
+        <div
+          class="text-danger small mt-1"
+          *ngIf="t('tmt') && t('tmt').invalid && t('tmt').touched"
+        >
+          Format tanggal harus dd/mm/yyyy
+        </div>
+      </div>
+
+      <!-- Status Aktif -->
+      <div class="form-group">
+        <label class="mt-label">Status Aktif</label>
+        <select formControlName="statusAktif" class="form-control">
+          <option [ngValue]="null" disabled>Pilih Status</option>
+          <option [ngValue]="true">Aktif</option>
+          <option [ngValue]="false">Tidak Aktif</option>
+        </select>
+      </div>
+
+      <!-- Footer tombol -->
+      <div class="d-flex justify-content-end mt-3">
+        <button type="button" class="btn btn-secondary btn-sm mr-2" (click)="closeModal()">
+          <i class="icofont icofont-close"></i> Batal
+        </button>
+
+        <button type="submit" class="btn btn-success btn-sm" [disabled]="form.invalid">
+          <i class="icofont icofont-save"></i> Simpan
+        </button>
+      </div>
+    </form>
+  </div>
+</app-ui-modal>
+<!-- MODAL DEFAULT - END -->

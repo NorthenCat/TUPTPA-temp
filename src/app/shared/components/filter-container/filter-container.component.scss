@@ -1,0 +1,111 @@
+.card-load {
+  position: relative;
+  overflow: hidden;
+
+  .card-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: rgba(256, 256, 256, 0.7);
+    z-index: 999;
+
+    .spinner-infinite {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    i {
+      margin: 0 auto;
+      color: #000000;
+      font-size: 24px;
+      align-items: center;
+      display: flex;
+    }
+  }
+}
+
+.filter-case {
+  div[class*="col-"] {
+    padding-left: 2.5px;
+    padding-right: 2.5px;
+  }
+  .filter-icon {
+    text-align: right;
+    color: #c1c1c1 !important;
+    border-right: 1px solid #ddd;
+    font-size: 13px;
+    margin-right: 3px;
+  }
+  div {
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+  }
+  .value .select-group {
+    display: inline-flex !important;
+  }
+  select-dropdown {
+    .select-group {
+      display: table;
+      div {
+        display: table-cell;
+      }
+      // justify-content: space-between;
+    }
+    .disabled {
+      // border-top: 1px solid #ccc;
+      background: #ededed;
+      .select-group {
+        font-weight: 600;
+        color: #535763;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .filter-case {
+    .filter-icon {
+      border: none;
+      text-align: center;
+    }
+    // div {
+    //   padding: 0px;
+    //   .filter,
+    //   .btn {
+    //     margin-bottom: 5px;
+    //   }
+    // }
+  }
+}
+
+.col-filter-header {
+  @media (min-width: 991px) {
+    width: 75px;
+  }
+  @media (max-width: 991px) {
+    margin: 0 auto;
+  }
+}
+
+body.able-pro-dark {
+  .border, ng-select.filter > div {
+    border: 1px solid #000 !important;
+  }
+  .filter-case {
+    .filter-icon {
+      color: #808080 !important;
+      border-right: 1px solid #808080;
+    }
+  }
+}
+
+ng-select.filter > div > div.single {
+  align-items: center;
+  > div {
+    top: 0px !important;
+  }
+}

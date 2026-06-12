@@ -1,0 +1,76 @@
+<perfect-scrollbar *ngIf="this.nextConfig['layout'] === 'vertical'" (clickOutside)="navMob()" [excludeBeforeClick]="true" [exclude]="'#mobile-collapse'" id="nav-ps-next" ngClass="able-pro-scroll" [style.max-width]="'300px'" [style.max-height]="'calc(100vh - 60px)'" [usePSClass]="'next'" [disabled]="null">
+  <div class="navbar-content" (window:resize)="adjustNavbarSize()">
+    <div class="">
+      <div class="main-menu-header p-2">
+        <div class="profile-container py-2">
+          <img class="img-radius" [src]="userProfile.photo" alt="User-Profile-Image" onerror="this.onerror=null; this.src='assets/images/no-user-profile.svg'">
+          <div class="user-details mt-2" (click)="isNavProfile = !isNavProfile; adjustContainer()">
+            <!-- <span class="text-capitalize">{{ userProfile.numberid }}</span> -->
+            <div id="more-details" class="text-capitalize px-1">
+              {{ userProfile.numberid }} <br>
+              {{ userProfile.fullname }} <i class="icofont icofont-caret-down" [ngClass]="{'icofont-caret-up': isNavProfile }"></i>
+            </div>
+          </div>
+          <div class="collapse-profile" id="nav-user-link" [class.show]="isNavProfile">
+            <ul class="list-unstyled">
+              <li class="list-group-item mt-3 mx-2 p-1"><a href="javascript:" (click)="logout()">
+                <i class="ph-duotone ph-door mr-1 f-16"></i>{{ 'ROOT.logout' | translate }}</a>
+              </li>
+            </ul>
+            <app-card [hidHeader]="true" cardClass="text-center bg-c-light m-2">
+              <div class="col text-center">
+                <span class="d-block mt-1">{{ 'ROOT.change_theme' | translate }}</span>
+                <div class="form-group mb-1">
+                  <label class="m-r-10 f-24 mb-0" [class.text-warning]="layoutTypeStorage == 'dark'"><i class="ph-duotone ph-moon-stars"></i></label>
+                  <div class="switch switch-warning d-inline">
+                    <input type="checkbox" id="switch-a-1" [checked]="layoutTypeStorage != 'dark'" (change)="changeLayout($event)" aria-label="change-auto-theme">
+                    <label for="switch-a-1" class="cr"></label>
+                  </div>
+                  <label class="m-l-10 f-26 mb-0" [class.text-warning]="layoutTypeStorage == 'reset'"><i class="ph-duotone ph-sun"></i></label>
+                </div>
+                <hr class="mt-0 mb-2">
+                <div class="form-group form-check pl-3 mb-0">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1" [checked]="autoTheme == 'true' || autoTheme == true" (change)="checkAutoTheme($event)">
+                  <label class="form-check-label f-12 text-left" for="exampleCheck1">{{ 'ROOT.toogle_theme' | translate }}</label>
+                </div>
+              </div>
+            </app-card>
+            <app-card [hidHeader]="true" cardClass="bg-c-light mx-2 my-0">
+              <div class="m-style-scroller">
+                <div class="text-center">
+                  <span class="d-block mb-2">Header</span>
+                </div>
+                <div class="theme-color background-color image mb-0 nav">
+                  <a href="javascript:" [ngClass]="{'active': headerBackgroundColor === 'background-img-1'}" (click)="setHeaderBackground('background-img-1');" data-value="background-img-1" title="with photo" aria-label="background-img-1"><span></span><span></span></a>
+                  <a href="javascript:" [ngClass]="{'active': headerBackgroundColor === 'background-img-2'}" (click)="setHeaderBackground('background-img-2');" data-value="background-img-2" title="no photo" aria-label="background-img-2"><span></span><span></span></a>
+                </div>
+              </div>
+            </app-card>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="nav pcoded-inner-navbar" (clickOutside)="fireOutClick()">
+      <ng-container *ngFor="let item of navigation">
+        <app-nav-group *ngIf="item.type=='group'" [item]="item"></app-nav-group>
+        <app-nav-collapse *ngIf="item.type=='collapse'" [item]="item"></app-nav-collapse>
+        <app-nav-item *ngIf="item.type=='item'" [item]="item"></app-nav-item>
+      </ng-container>
+    </ul>
+    <!-- <app-checking #checking showLine="true" class="check hidden"></app-checking> -->
+  </div>
+</perfect-scrollbar>
+
+<div *ngIf="this.nextConfig['layout'] === 'horizontal'" #navbarWrapper class="navbar-content sidenav-horizontal" id="layout-sidenav">
+  <a href="javascript:" class="sidenav-horizontal-prev" [ngClass]="prevDisabled" (click)="scrollMinus()" aria-label="sidenav-horizontal-prev"></a>
+  <div  class="sidenav-horizontal-wrapper"><!-- add 14-4 viral -->
+    <ul #navbarContent id="side-nav-horizontal" class="nav pcoded-inner-navbar sidenav-inner" (clickOutside)="fireLeave()" (mouseleave)="fireLeave()">
+      <ng-container *ngFor="let item of navigation">
+        <app-nav-group *ngIf="item.type=='group'" [item]="item"></app-nav-group>
+        <app-nav-collapse *ngIf="item.type=='collapse'" [item]="item"></app-nav-collapse>
+        <app-nav-item *ngIf="item.type=='item'" [item]="item"></app-nav-item>
+      </ng-container>
+    </ul>
+  </div>
+  <a href="javascript:" class="sidenav-horizontal-next" [ngClass]="nextDisabled" (click)="scrollPlus()" aria-label="sidenav-horizontal-next"></a>
+</div>

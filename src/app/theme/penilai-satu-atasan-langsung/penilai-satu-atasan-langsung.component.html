@@ -1,0 +1,87 @@
+<!-- penilai-satu-atasan-langsung.component.html -->
+<div class="row">
+  <div class="col-sm-12">
+    <app-card
+      cardTitle="Data Penilaian Pegawai"
+      [hidHeader]="false"
+      [isSkeleton]="false"
+      [loading]="loadingTable"
+    >
+      <!-- FILTER -->
+      <app-filter-container customClass="p-filter" [loading]="loadingTableBasic">
+        <div class="col-12 col-md-9">
+          <ng-select
+            [(ngModel)]="selectedPeriode"
+            (ngModelChange)="onPeriodeChange($event)"
+            [options]="periodeOptions"
+            bindValue="value"
+            bindLabel="label"
+            [placeholder]="'Pilih Periode'"
+            [ngClass]="'filter'"
+            [notFoundMsg]="'Data tidak ditemukan!'"
+          ></ng-select>
+        </div>
+
+        <div class="col-12 col-md-2 text-right d-flex align-items-center justify-content-end">
+          <button
+            type="button"
+            class="btn btn-outline-primary py-1 f-14 rounded"
+            (click)="applyFilter()"
+            [disabled]="isApplyDisabled"
+          >
+            <i class="icofont icofont-filter"></i> Terapkan
+          </button>
+        </div>
+      </app-filter-container>
+
+      <!-- TABLE -->
+      <div class="table-responsive pb-1 pt-3">
+        <table
+          datatable
+          [dtOptions]="dtOptions[1]"
+          [dtTrigger]="dtTrigger"
+          class="table table-bordered table-hover table-sm dataTable"
+        >
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" style="width:60px;">No</th>
+              <th scope="col">Periode Penilaian</th>
+              <th scope="col">NIP</th>
+              <th scope="col">Nama Pegawai</th>
+              <th scope="col">Jabatan Pegawai</th>
+              <th scope="col">Jumlah Pegawai</th>
+              <th scope="col">Jumlah Penilaian</th>
+              <th scope="col">Penilaian Selesai</th>
+              <th scope="col" style="width:110px;">Status</th>
+            </tr>
+          </thead>
+
+          <tbody *ngIf="dataTable && dataTable.length">
+            <tr *ngFor="let data of dataTable; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>
+                <div class="f-13 font-weight-bold">{{ data.periodeTitle }}</div>
+                <div class="f-12 text-muted">{{ data.periodeSubtitle }}</div>
+              </td>
+              <td>{{ data.nip }}</td>
+              <td>{{ data.namaPegawai }}</td>
+              <td>{{ data.jabatanPegawai }}</td>
+              <td class="text-center">{{ data.jumlahPegawai }}</td>
+              <td class="text-center">{{ data.jumlahPenilaian }}</td>
+              <td class="text-center">{{ data.penilaianSelesai }}</td>
+              <td class="text-center">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn-sm"
+                  (click)="onDetail(data)"
+                >
+                  <i class="ti-eye"></i> Detail
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>

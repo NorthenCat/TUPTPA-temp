@@ -1,0 +1,93 @@
+<div class="auth-wrapper align-items-stretch aut-bg-img">
+  <div class="flex-grow-1">
+    <div class="h-100 d-md-flex align-items-center auth-side-img">
+      <div class="col-sm-10 auth-content w-auto">
+        <!-- <div class="col-sm-10 auth-content w-auto text-center" style="height: 90%; position: relative; display: inline-block; overflow: hidden;">
+        </div> -->
+        <img src="assets/images/dev-ops-4.png" alt="" class="img-login landscape mb-4">
+        <h4 class="text-white font-weight-normal">{{ 'LOGIN.welcome_to' | translate }}</h4>
+        <h1 class="text-white text-capitalize">{{ defApp }}</h1>
+        <h5 class="text-white font-weight-normal">Telkom University </h5>
+        <img src="assets/images/auth/auth-logo.png" alt="" class="img-fluid mt-4">
+        <!-- <particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles> -->
+      </div>
+    </div>
+    <div class="auth-side-form">
+      <div class="auth-content">
+        <form [formGroup]="loginForm" (submit)="doLogin($event)">
+          <img src="assets/images/dev-ops-4.png" alt="" style="margin: auto;" class="mb-4 d-block d-xl-none d-lg-none img-login">
+          <!-- <h3 class="text-c-telu f-w-400 text-uppercase d-none d-xl-block d-lg-block">{{ defApp }}</h3> -->
+          <h6 class="mb-4 text-inverse f-w-400 d-none d-xl-block d-lg-block">Single Account, Single Sign On login</h6>
+          <h3 class="text-c-telu text-center f-w-400 text-uppercase d-block d-xl-none d-lg-none">{{ defApp }}</h3>
+          <h6 class="mb-4 text-center text-inverse f-w-400 d-block d-xl-none d-lg-none">Single Account, Single Sign On login</h6>
+          <div class="form-floating mb-3">
+            <input type="text" class="floating-control" id="username" autocomplete="username"
+            required formControlName="username" aria-label="username" placeholder="Username SSO"
+            [ngClass]="lf.username.invalid && lf.username.touched?'is-invalid':(lf.username.valid?'is-valid':'')"
+            >
+            <label for="username">Username</label>
+            <div class="error-info" *ngIf="lf.username.errors?.required">Please input username.</div>
+          </div>
+          <div class="form-floating mb-3">
+            <input [type]="passwordHidden?'password':'text'" class="floating-control pass-custom" id="password"
+            required formControlName="password" aria-label="password" placeholder="Password SSO" autocomplete="current-password"
+            [ngClass]="lf.password.invalid && lf.password.touched?'is-invalid':(lf.password.valid?'is-valid':'')"
+            >
+            <label for="password">Password</label>
+            <button type="button" class="btn btn-sm btn-pwd" (click)="passwordHidden = !passwordHidden" aria-label="show-hidden-password">
+              <i class="fa fa-{{ passwordHidden?'eye':'eye-slash' }}"></i>
+            </button>
+            <div class="error-info" *ngIf="lf.password.errors?.required">{{ 'ERROR.required' | translate }}</div>
+          </div>
+          <!-- <div class="input-group mb-3">
+            <input type="text" class="form-control" name="username" required formControlName="username" placeholder="Username SSO" [ngClass]="loginForm.controls.username.invalid && (loginForm.controls.username.dirty || loginForm.controls.username.touched)?'is-invalid':(loginForm.controls.username.valid?'is-valid':'')" autocomplete="username" id="username">
+            <label *ngIf="{'is-invalid': loginForm.controls.username.invalid && (loginForm.controls.username.dirty || loginForm.controls.username.touched)}" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback" for="username">Please input username.</label>
+          </div> -->
+          <!-- <div class="input-group mb-4">
+            <input [type]="passwordHidden?'password':'text'" class="form-control pwd-custom" name="password" required formControlName="password" placeholder="Password" [ngClass]="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)?'is-invalid':(loginForm.controls.password.valid?'is-valid':'')" autocomplete="current-password" id="password">
+            <button type="button" class="btn btn-sm btn-pwd" (click)="passwordHidden = !passwordHidden" aria-label="show-hidden-password">
+              <i class="fa fa-{{ passwordHidden?'eye':'eye-slash' }}"></i>
+            </button>
+            <label *ngIf="{'is-invalid': loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)}" id="validation-password-error" class="error jquery-validation-error small form-text invalid-feedback" for="password">Please enter password.</label>
+          </div> -->
+          <!-- <button class="btn btn-red event-btn btn-block mb-0" type="submit" [disabled]="loginForm.invalid || loading">
+            <span *ngIf="this.loading" class="spinner-border spinner-border-sm" role="status"></span>
+            <span *ngIf="this.loading" class="load-text"> Loading...</span>
+            <span *ngIf="!this.loading" class="btn-text"><i class="situicon situicon-telu"></i> Login</span>
+          </button> -->
+          <button class="btn btn-red event-btn btn-block mb-0 d-flex justify-content-center" type="submit" [disabled]="loginForm.invalid || loading">
+            <span *ngIf="this.loading" class="spinner-grow spinner-grow-sm mr-1 align-self-center" role="status"></span>
+            <span *ngIf="this.loading" class="btn-text"> {{ 'ROOT.loading' | translate }}...</span>
+            <span *ngIf="!this.loading" class="btn-text d-flex align-self-center"><i class="satuicon satuicon-telu mr-1 align-self-center"></i> Login SSO</span>
+          </button>
+          <div class="text-center">
+            <div class="saprator cust my-4 d-block d-xl-none d-lg-none"><span style="font-size: 12px;">Powered By:</span></div>
+            <img src="assets/images/auth/SITU.png" alt="" class="img-fluid mb-4 d-block d-xl-none d-lg-none">
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="background-bokeh">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</div>

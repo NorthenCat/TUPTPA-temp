@@ -1,0 +1,201 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Daftar Nilai Kerja Unit" [hidHeader]="false" [isSkeleton]="false" [loading]="loadingTable">
+      <!-- FILTER -->
+      <app-filter-container customClass="p-filter" loading="{{loadingTableBasic}}">
+        <div class="col-12 col-md-4">
+          <ng-select [(ngModel)]="selectedPeriode" [options]="periodeOptions" [placeholder]="'Pilih Periode'"
+            [ngClass]="'filter'" [notFoundMsg]="'Data tidak ditemukan!'">
+          </ng-select>
+        </div>
+        <div class="col-12 col-md-4">
+          <ng-select [(ngModel)]="selectedStruktur" [options]="strukturOptions"
+            [placeholder]="'Pilih Struktur Organisasi'" [ngClass]="'filter'" [notFoundMsg]="'Data tidak ditemukan!'">
+          </ng-select>
+        </div>
+        <div class="col-12 col-md-2 ml-auto text-right">
+          <button type="button" class="btn btn-outline-primary py-1 f-14 rounded" (click)="applyFilter()">
+            <i class="icofont icofont-filter"></i> {{ 'ROOT.apply' | translate }}
+          </button>
+        </div>
+      </app-filter-container>
+
+      <!-- ACTION BAR -->
+      <div class="row pt-2">
+        <div class="col-12 col-md-8">
+
+          <button type="button" class="btn btn-success py-1 f-14 rounded mr-2" (click)="openUploadExcel()">
+            <i class="icofont icofont-plus"></i> Tambahkan Data Excel
+          </button>
+
+          <button type="button" class="btn btn-success py-1 f-14 rounded" (click)="openPerData()">
+            <i class="icofont icofont-plus"></i> Tambahkan Data per Data
+          </button>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="table-responsive pb-1 pt-0">
+        <table id="dtNkuTable" datatable [dtOptions]="dtOptions[1]" [dtTrigger]="dtTrigger"
+          class="table table-bordered table-hover table-sm dataTable">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" style="width: 60px;">No</th>
+              <th scope="col">Periode Penilaian</th>
+              <th scope="col">Unit/Fakultas</th>
+              <th scope="col" style="width: 120px;" class="text-center">Nilai (%)</th>
+              <th scope="col" style="width: 120px;" class="text-center">Status</th>
+            </tr>
+          </thead>
+
+          <tbody *ngIf="dataTable?.length">
+            <tr *ngFor="let row of dataTable; let i = index">
+              <td>{{ i + 1 }}</td>
+
+              <td>
+                <div class="font-weight-bold">{{ row.periodeName }}</div>
+                <small class="text-muted">{{ row.periodeLabel }}</small>
+              </td>
+
+              <td>{{ row.unitName }}</td>
+
+              <td class="text-center">
+                {{ row.nilai || 0 }}
+              </td>
+
+              <td class="text-center">
+                <button type="button" class="btn btn-warning btn-sm" (click)="openEditPerData(row)">
+                  <i class="ti-pencil"></i> Ubah
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>
+
+<!-- MODAL UPLOAD EXCEL - START -->
+<app-ui-modal #modalUploadExcel [containerClick]="false" [hideFooter]="false" [loading]="loadingModal">
+  <div class="app-modal-header">
+    <h5 class="modal-title">Tambah NKU</h5>
+    <button type="button" class="close basic-close" aria-label="Close" (click)="closeUploadExcel()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="app-modal-body">
+    <form class="row" [formGroup]="formUploadExcel">
+      <!-- Tahun/Triwulan -->
+      <div class="col-12">
+        <div class="form-group mb-3">
+          <label class="form-label">Tahun/Triwulan</label>
+          <ng-select formControlName="periode" [options]="periodeOptions" [allowClear]="true"
+            [placeholder]="'Pilih Periode'" [notFoundMsg]="'Data tidak ditemukan!'"
+            [ngClass]="fu.periode.invalid && fu.periode.touched ? 'custom is-invalid' : (fu.periode.valid ? 'custom is-valid' : 'custom')">
+          </ng-select>
+        </div>
+      </div>
+
+      <!-- Upload Excel -->
+      <div class="col-12">
+        <div class="form-group mb-2">
+          <label class="form-label">Unggah File Excel</label>
+
+          <input #fileInput type="file" accept=".xls,.xlsx" style="display: none" (change)="onFileSelected($event)" />
+
+          <div class="d-flex align-items-center">
+            <button type="button" class="btn btn-primary btn-sm mr-2" (click)="triggerPickFile()">
+              <i class="icofont icofont-upload-alt"></i> Upload Bukti
+            </button>
+            <span class="text-muted">{{ selectedFileName || 'No File Chosen' }}</span>
+          </div>
+
+          <small class="text-muted d-block mt-1">Format: .xls / .xlsx</small>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="app-modal-footer">
+    <div class="col-12 text-right p-0">
+      <button type="button" class="btn btn-light btn-sm mr-2" (click)="closeUploadExcel()">
+        Batal
+      </button>
+
+      <button type="button" class="btn btn-primary btn-sm" (click)="saveUploadExcel()"
+        [disabled]="formUploadExcel.invalid || loadingModal">
+        Simpan
+      </button>
+    </div>
+  </div>
+</app-ui-modal>
+
+<!-- MODAL TAMBAH NKU PER DATA - START -->
+<app-ui-modal #modalPerData [containerClick]="false" [hideFooter]="false" [loading]="loadingModalPerData">
+  <div class="app-modal-header">
+    <h5 class="modal-title">{{ perDataMode === 'edit' ? 'Ubah NKU per Data' : 'Tambah NKU per Data' }}</h5>
+    <button type="button" class="close basic-close" aria-label="Close" (click)="closePerData()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="app-modal-body">
+    <form class="row" [formGroup]="formPerData">
+
+      <div class="col-12">
+        <div class="form-group mb-3">
+          <label class="form-label">Periode</label>
+          <ng-select formControlName="periode" [options]="modalPeriodeOptions" [allowClear]="true"
+            [placeholder]="'Pilih Periode'" [notFoundMsg]="'Data tidak ditemukan!'"
+            [ngClass]="fp.periode.invalid && fp.periode.touched ? 'custom is-invalid' : (fp.periode.valid ? 'custom is-valid' : 'custom')">
+          </ng-select>
+
+          <label *ngIf="fp.periode.errors?.required && fp.periode.touched" class="invalid-feedback">
+            Wajib diisi
+          </label>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-group mb-3">
+          <label class="form-label">Nilai NKU</label>
+          <input type="number" class="form-control" formControlName="nilai" placeholder="Masukkan Nilai NKU"
+            [ngClass]="fp.nilai.invalid && fp.nilai.touched ? 'is-invalid' : (fp.nilai.valid ? 'is-valid' : '')" />
+          <div class="error-info" *ngIf="fp.nilai.errors?.required && fp.nilai.touched">Wajib diisi</div>
+          <div class="error-info" *ngIf="fp.nilai.errors?.min && fp.nilai.touched">Minimal 0</div>
+          <div class="error-info" *ngIf="fp.nilai.errors?.max && fp.nilai.touched">Maksimal 1000</div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-group mb-2">
+          <label class="form-label">Unit/Fakultas</label>
+          <ng-select formControlName="unit" [options]="modalUnitOptions" [allowClear]="true"
+            [placeholder]="'Pilih Unit atau Fakultas'" [notFoundMsg]="'Data tidak ditemukan!'"
+            [ngClass]="fp.unit.invalid && fp.unit.touched ? 'custom is-invalid' : (fp.unit.valid ? 'custom is-valid' : 'custom')">
+          </ng-select>
+
+          <label *ngIf="fp.unit.errors?.required && fp.unit.touched" class="invalid-feedback">
+            Wajib diisi
+          </label>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="app-modal-footer">
+    <div class="col-12 text-right p-0">
+      <button type="button" class="btn btn-light btn-sm mr-2" (click)="closePerData()">
+        Batal
+      </button>
+
+      <button type="button" class="btn btn-primary btn-sm" (click)="savePerData()"
+        [disabled]="formPerData.invalid || loadingModalPerData">
+        Simpan
+      </button>
+    </div>
+  </div>
+</app-ui-modal>
+<!-- MODAL TAMBAH NKU PER DATA - END -->

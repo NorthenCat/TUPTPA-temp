@@ -1,0 +1,106 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Daftar Data NKI" [hidHeader]="false" [isSkeleton]="false" [loading]="loadingTable">
+      <!-- FILTER SECTION -->
+      <div class="nki-filter-section">
+        <div class="row align-items-end">
+          <div class="col-12 col-md-2">
+            <label class="nki-filter-label">Periode</label>
+          </div>
+          <div class="col-12 col-md-10">
+            <ng-select [(ngModel)]="selectedPeriode" [options]="periodeOptions" [placeholder]="'Pilih Periode'"
+              [notFoundMsg]="'Data tidak ditemukan!'" [ngClass]="'filter'"></ng-select>
+          </div>
+        </div>
+
+        <div class="row align-items-end mt-3">
+          <div class="col-12 col-md-2">
+            <label class="nki-filter-label">Struktur Organisasi</label>
+          </div>
+          <div class="col-12 col-md-10">
+            <ng-select [(ngModel)]="selectedStruktur" [options]="strukturOptions"
+              [placeholder]="'Pilih Struktur Organisasi'" [notFoundMsg]="'Data tidak ditemukan!'"
+              [ngClass]="'filter'"></ng-select>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="nki-action-bar">
+        <button type="button" class="btn nki-btn nki-btn--ipk" (click)="exportIpk()">
+          <i class="ph-duotone ph-download-simple mr-1"></i> Export IPK
+        </button>
+
+        <button type="button" class="btn nki-btn nki-btn--excel" (click)="exportExcel()">
+          <i class="ph-duotone ph-download-simple mr-1"></i> Export Excel
+        </button>
+
+        <button type="button" class="btn nki-btn nki-btn--umpan" (click)="unduhUmpanBalik()">
+          <i class="ph-duotone ph-download-simple mr-1"></i> Unduh Umpan Balik
+        </button>
+
+        <button type="button" class="btn nki-btn nki-btn--bangkit" (click)="membangkitkan()">
+          <i class="ph-duotone ph-plus-circle mr-1"></i> Membangkitkan
+        </button>
+      </div>
+
+      <!-- SEARCH BAR -->
+      <!-- <div class="nki-search-bar">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" [(ngModel)]="keyword" (keyup.enter)="onSearch()"
+            (ngModelChange)="onKeywordChange()" />
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" (click)="onSearch()">
+              <i class="icofont icofont-search-1"></i>
+            </button>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- TABLE -->
+      <div class="table-responsive pb-1 pt-0">
+        <table id="dtNkiTable" datatable [dtOptions]="dtOptions[1]" [dtTrigger]="dtTrigger"
+          class="table table-bordered table-hover table-sm dataTable nki-table">
+          <thead class="nki-thead">
+            <tr>
+              <th scope="col" style="width: 50px;">No</th>
+              <th scope="col" style="min-width: 160px;">Periode Penilaian</th>
+              <th scope="col" style="width: 100px;">NIP</th>
+              <th scope="col" style="min-width: 160px;">Nama Pegawai</th>
+              <th scope="col" style="min-width: 200px;">Unit Atau Program Studi</th>
+              <th scope="col" style="width: 90px;" class="text-center">Status Pegawai</th>
+              <th scope="col" style="width: 100px;" class="text-center">Nilai Kerja INdividu</th>
+              <th scope="col" style="width: 100px;" class="text-center">Kelebihan Point</th>
+              <th scope="col" style="width: 100px;" class="text-center">Sttaus Approve...</th>
+              <th scope="col" style="width: 100px;" class="text-center">Aksi</th>
+            </tr>
+          </thead>
+
+          <tbody *ngIf="dataTable?.length">
+            <tr *ngFor="let row of dataTable; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ row.periodePenilaian }}</td>
+              <td>{{ row.nip }}</td>
+              <td>{{ row.namaPegawai }}</td>
+              <td>{{ row.unitProdi }}</td>
+              <td class="text-center">{{ row.statusPegawai }}</td>
+              <td class="text-center">{{ row.nilaiKerjaIndividu }}</td>
+              <td class="text-center">{{ row.kelebihanPoint | number:'1.2-2' }}</td>
+              <td class="text-center">{{ row.statusApprove }}</td>
+              <td class="text-center">
+                <button type="button" class="btn btn-warning btn-sm nki-btn-detail" (click)="openDetail(row)">
+                  <i class="icofont icofont-eye-alt mr-1"></i> Detail
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FOOTER INFO -->
+      <div class="nki-footer-info">
+        {{ sumberDataInfo }}
+      </div>
+    </app-card>
+  </div>
+</div>

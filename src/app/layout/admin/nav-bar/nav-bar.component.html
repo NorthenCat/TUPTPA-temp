@@ -1,0 +1,21 @@
+<div class="container" *ngIf="this.nextConfig.layout === 'horizontal' && this.nextConfig.subLayout === 'horizontal-2'; else mainHeader">
+  <ng-container *ngTemplateOutlet="mainHeader"></ng-container>
+</div>
+<ng-template #mainHeader>
+  <div class="m-header">
+    <a href="javascript:" class="mobile-menu" id="mobile-collapse" (click)="navCollapse()"><span></span></a>
+    <a [routerLink]="['/home']" class="b-brand">
+      <!-- <img id="main-logo" src="assets/images/logo.png" alt="" class="logo satu-main"> -->
+      <div class="main-logo">
+        <!-- <img src="assets/images/sirama.svg" aria-label="app-logo">{{ appName }} -->
+        <i class="satuicon satuicon-satu-framework main-icon mr-1"></i> {{ appName }}
+      </div>
+      <img src="assets/images/logo-icon.png" alt="" class="logo-thumb">
+    </a>
+    <a class="mob-toggler" [ngClass]="{'on' : this.menuClass}" href="javascript:" (click)="toggleMobOption()"><i class="feather icon-more-vertical"></i></a>
+  </div>
+  <div class="collapse navbar-collapse" [style.display]="this.collapseStyle">
+    <app-nav-left class="mr-auto"></app-nav-left>
+    <app-nav-right class="ml-auto"></app-nav-right>
+  </div>
+</ng-template>

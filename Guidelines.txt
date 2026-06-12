@@ -1,0 +1,29 @@
+Binding data
+{{}} => Oneway 
+[] => Oneway
+[()] => Two Way
+() => Event
+
+
+Directive yang umum dipakai
+ngModel
+ngFor
+ngIf
+
+
+Tambah Menu
+1. Copy File Home & Rename sesuai nama menu
+2. Tambahkan menu item di file navigation.ts
+3. Mapping url & files ke app-routing.module
+4. Tambah Guard Jika perlu di auth.guard
+
+
+API
+1. Mapping url & parameter(jika ada) api di endpoint.ts
+2. Mapping api di app.services.ts
+
+
+Datatable 
+1. Pastikan ada DataTablesModule di [...].module.ts
+2. Inisiasi dtOptions & dtTrigger contoh ada di form-table.component.ts
+3. Pastikan ada tag datatable, dtOptions dan dtTrigger di [...].component.html

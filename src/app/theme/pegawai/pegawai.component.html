@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Pegawai" [hidHeader]="false">
+      <div class="pegawai-tabs">
+        <nav class="pegawai-tabs-nav">
+          <label [class.active]="activeTab === 'target-kinerja'" (click)="setActiveTab('target-kinerja')">Target Kinerja Pegawai</label>
+          <label [class.active]="activeTab === 'sikap-kerja'" (click)="setActiveTab('sikap-kerja')">Sikap Kerja</label>
+          <label [class.active]="activeTab === 'inovasi-kontribusi'" (click)="setActiveTab('inovasi-kontribusi')">Inovasi Penghargaan dan Kontribusi</label>
+        </nav>
+
+        <!-- TARGET KINERJA PEGAWAI TAB -->
+        <section class="pegawai-tab-content" *ngIf="activeTab === 'target-kinerja'">
+          <app-filter-container customClass="p-filter" [loading]="false">
+            <div class="col-12 col-md-9">
+              <!-- Filter Select Placeholder -->
+              <ng-select
+                [placeholder]="'Pilih Periode'"
+                [ngClass]="'filter'"
+              ></ng-select>
+            </div>
+            <div class="col-12 col-md-2 text-right d-flex align-items-center justify-content-end">
+              <button type="button" class="btn btn-outline-primary py-1 f-14 rounded">
+                <i class="icofont icofont-filter"></i> Terapkan
+              </button>
+            </div>
+          </app-filter-container>
+
+          <div class="table-responsive pb-1 pt-3">
+            <table class="table table-bordered table-hover table-sm">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" style="width:60px;">No</th>
+                  <th scope="col">Periode Penilaian</th>
+                  <th scope="col">Nama Target</th>
+                  <th scope="col">Deskripsi</th>
+                  <th scope="col">Status</th>
+                  <th scope="col" style="width:110px;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="6" class="text-center text-muted">Data target kinerja tidak ditemukan (Stubbed)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SIKAP KERJA TAB -->
+        <section class="pegawai-tab-content" *ngIf="activeTab === 'sikap-kerja'">
+          <h5>Sikap Kerja</h5>
+          <p class="text-muted">Data penilaian sikap kerja pegawai akan ditampilkan di sini.</p>
+        </section>
+
+        <!-- INOVASI PENGHARGAAN DAN KONTRIBUSI TAB -->
+        <section class="pegawai-tab-content" *ngIf="activeTab === 'inovasi-kontribusi'">
+          <h5>Inovasi Penghargaan dan Kontribusi</h5>
+          <p class="text-muted">Daftar inovasi, penghargaan, dan kontribusi pegawai pada institusi.</p>
+        </section>
+
+      </div>
+    </app-card>
+  </div>
+</div>

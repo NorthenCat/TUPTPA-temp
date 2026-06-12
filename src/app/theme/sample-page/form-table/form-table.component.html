@@ -1,0 +1,471 @@
+<div class="row">
+  <div class="col-12">
+    <app-card cardTitle="Form Controls" headerClass="text-center" [isSkeleton]="false" [loading]="loadingTableBasic">
+      <form action="javascript:">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" placeholder="Email" autocomplete="email">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Password</label>
+            <input type="password" class="form-control" id="inputPassword4" placeholder="Password" autocomplete="new-password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Address</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="Jl. Telekomunikasi no.1">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress2">Address 2</label>
+          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" id="inputCity">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">State</label>
+            <select id="inputState" class="form-control">
+              <option selected>select</option>
+              <option>Large select</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputZip">Zip</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">Check me out</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </form>
+    </app-card>
+  </div>
+  <div class="col-12 col-md-4">
+    <app-card cardTitle="Readonly & Disabled Form" [options]="true" [loading]="loadingTableBasic">
+      <form action="javascript:">
+        <div class="form-group row">
+          <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control-plaintext" id="staticEmail" value="email@telu.ac.id" readonly>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputReadonly" class="col-sm-3 col-form-label">Readonly</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="inputReadonly" placeholder="Readonly" value="123456" readonly>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputDisabled" class="col-sm-3 col-form-label">Disabled</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="inputDisabled" placeholder="Disabled" value="stardhtz" disabled>
+          </div>
+        </div>
+        <fieldset class="form-group">
+          <div class="row">
+            <label for="inputPassword3" class="col-sm-3 col-form-label">Radios</label>
+            <div class="col-sm-9">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                <label class="form-check-label" for="gridRadios1">First radio</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <label class="form-check-label" for="gridRadios2">Second radio</label>
+              </div>
+              <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+                <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group row">
+          <div class="col-sm-3 label">Checkbox</div>
+          <div class="col-sm-9">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck1">
+              <label class="form-check-label" for="gridCheck1">Example checkbox 1</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck2" disabled>
+              <label class="form-check-label" for="gridCheck2">Example checkbox 2</label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </app-card>
+  </div>
+  <div class="col-12 col-md-8">
+    <app-card cardTitle="Checkboxes & Radios" [loading]="loadingTableBasic" iconHeader="ph-duotone ph-check-square f-22">
+      <div class="row">
+        <div class="col-md-6">
+          <h5 class="mt-3">Checkboxes</h5>
+          <hr>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck1">
+            <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h5 class="mt-3">Switches</h5>
+          <hr>
+          <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customswitch1">
+            <label class="custom-control-label" for="customswitch1">Check this custom Switches</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h5 class="mt-4">Radios</h5>
+          <hr>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+            <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+            <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+          </div>
+          <h5 class="mt-4">Inline</h5>
+          <hr>
+          <div class="custom-control custom-radio custom-control-inline mb-3">
+            <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+            <label class="custom-control-label" for="customRadioInline1">Toggle this custom radio</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline mb-3">
+            <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+            <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h5 class="mt-4">With Validation</h5>
+          <hr>
+          <form action="javascript:" class="was-validated">
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
+              <label class="custom-control-label" for="customControlValidation1">Check this custom checkbox</label>
+              <div class="invalid-feedback">Example invalid feedback text</div>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
+              <label class="custom-control-label" for="customControlValidation2">Toggle this custom radio</label>
+            </div>
+            <div class="custom-control custom-radio mb-3">
+              <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" required>
+              <label class="custom-control-label" for="customControlValidation3">Or toggle this other custom radio</label>
+              <div class="invalid-feedback">More example invalid feedback text</div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <app-card cardTitle="Float Form" blockClass="p-2 pt-3" headerClass="text-center text-md-left"
+    [isCollapseMenu]="true" [isCollapsedCard]="false" [loading]="loadingTable"
+    >
+      <form [formGroup]="formUsers">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="form-floating mb-3">
+              <input type="text" class="floating-control" id="username" autocomplete="username"
+              required formControlName="username" aria-label="username" placeholder="username"
+              [ngClass]="fu.username.invalid && fu.username.touched?'is-invalid':(fu.username.valid?'is-valid':'')"
+              >
+              <label for="username">Username</label>
+              <div class="error-info" *ngIf="fu.username.errors?.required">{{ 'ERROR.required' | translate }}</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-floating mb-3">
+              <input type="password" class="floating-control" id="password" autocomplete="current-password"
+              required formControlName="password" aria-label="password" placeholder="password"
+              [ngClass]="fu.password.invalid && fu.password.touched?'is-invalid':(fu.password.valid?'is-valid':'')"
+              >
+              <label for="password">Password</label>
+              <div class="error-info" *ngIf="fu.password.errors?.required">{{ 'ERROR.required' | translate }}</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-floating mb-2">
+              <ng-select id="position" formControlName="position" [options]="positionOption"
+              class="floating-control"  [allowClear]="true"
+              [placeholder]="'ROOT.select_one'|translate" [notFoundMsg]="'ROOT.no_data_found'|translate"
+              [ngClass]="fu.position.invalid && fu.position.touched?'is-invalid':(fu.position.valid?'is-valid':'')">
+              </ng-select>
+              <label for="position">Position</label>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-floating mb-3">
+              <input type="email" class="floating-control" id="email"
+              required formControlName="email" aria-label="email" placeholder="email"
+              [ngClass]="fu.email.invalid && fu.email.touched?'is-invalid':(fu.email.valid?'is-valid':'')"
+              >
+              <label for="email">Email</label>
+              <div class="error-info" *ngIf="fu.email.errors?.required">{{ 'ERROR.required' | translate }}</div>
+              <div class="error-info" *ngIf="fu.email.errors?.email">{{ 'ERROR.email' | translate }}</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-floating mb-3">
+              <input type="number" class="floating-control" id="age"
+              required formControlName="age" aria-label="age" placeholder="age"
+              [ngClass]="fu.age.invalid && fu.age.touched?'is-invalid':(fu.age.valid?'is-valid':'')"
+              >
+              <label for="age">Age</label>
+              <div class="error-info" *ngIf="fu.age.errors?.required">{{ 'ERROR.required' | translate }}</div>
+              <div class="error-info" *ngIf="fu.age.errors?.min">{{ 'ERROR.min_age' | translate }}</div>
+              <div class="error-info" *ngIf="fu.age.errors?.max">{{ 'ERROR.max_age' | translate }}</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-floating mb-3">
+              <input type="text" class="floating-control" id="country" autocomplete="country"
+              required formControlName="country" aria-label="country" placeholder="country"
+              [ngClass]="fu.country.invalid && fu.country.touched?'is-invalid':(fu.country.valid?'is-valid':'')"
+              >
+              <label for="country">Negara</label>
+              <div class="error-info" *ngIf="fu.country.errors?.required">{{ 'ERROR.required' | translate }}</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-floating mb-3">
+              <textarea type="password" class="floating-control min-hei-76" id="description"
+              required formControlName="description" aria-label="description" placeholder="description"
+              [ngClass]="fu.description.invalid && fu.description.touched?'is-invalid':(fu.description.valid?'is-valid':'')">
+              </textarea>
+              <label for="description">Description</label>
+              <div class="error-info" *ngIf="fu.description.errors?.required">{{ 'ERROR.required' | translate }}</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-floating mb-3">
+              <input type="file" class="floating-control" id="photo" name="photo" formControlName="photo" aria-label="photo"
+              [ngClass]="fu.photo.invalid && fu.photo.touched?'is-invalid':(fu.photo.valid?'is-valid':'')"
+              aria-label="photo" placeholder="photo"
+              >
+              <label for="photo">Foto</label>
+              <div class="error-info" *ngIf="fu.photo.errors?.required">{{ 'ERROR.required' | translate }}</div>
+              <!-- <div class="error-info" *ngIf="errSize">Ukuran file melebihi 20MB!</div> -->
+              <!-- <div class="error-info" *ngIf="errFormat">Format file yang diperkenankan adalah .pdf, .jpg, .jpeg, .png!</div> -->
+            </div>
+          </div>
+          <div class="col-12 text-right">
+            <div class="form-group mb-2">
+              <div class="btn-group">
+                <button type="button" (click)="resetFormFloat()" class="btn btn-warning">
+                  <i class="icofont icofont-refresh"></i> {{ 'ROOT.reset' | translate }}
+                </button>
+                <button type="submit" class="btn btn-primary" [disabled]="formUsers.invalid">
+                  <i class="ti-save"></i> {{ 'ROOT.save' | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </app-card>
+  </div>
+  <div class="col-12">
+    <app-card cardTitle="Form Validation" blockClass="p-2" cardClass="card-datatable" headerClass="text-center text-md-left"
+    [hidHeader]="false" [loading]="loadingTable">
+      <form [formGroup]="formPlayers" class="md-float-material form-material" action="javascript:">
+        <!-- <div class="col-12"> -->
+          <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <div class="form-group mb-2">
+                <label class="form-label">{{ 'ROOT.player_name' | translate }}</label>
+                <ng-select name="name" formControlName="person" [options]="playersOption" [allowClear]="true"
+                  [placeholder]="'ROOT.select_one'|translate" [notFoundMsg]="'ROOT.no_data_found'|translate"
+                  [ngClass]="fp.person.invalid && fp.person.touched?'custom is-invalid':(fp.person.valid?'custom is-valid':'custom')">
+                </ng-select>
+                <label *ngIf="fp.person.errors?.required && fp.person.touched" class="invalid-feedback">Please input position!</label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <div class="form-group mb-2">
+                <label class="form-label">{{ 'ROOT.position' | translate }}</label>
+                <input
+                  type="text" class="form-control" name="position" required formControlName="position" aria-label="position"
+                  [ngClass]="fp.position.invalid && fp.position.touched?'is-invalid':(fp.position.valid?'is-valid':'')"
+                >
+                <label *ngIf="fp.position.errors?.required && fp.position.touched" class="invalid-feedback">Please input position!</label>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+              <div class="form-group mb-2">
+                <label class="form-label">{{ 'ROOT.country' | translate }}</label>
+                <input
+                  type="text" class="form-control" name="country" required formControlName="country" aria-label="country"
+                  [ngClass]="fp.country.invalid && fp.country.touched?'is-invalid':(fp.country.valid?'is-valid':'')"
+                >
+                <label *ngIf="fp.country.errors?.required && fp.country.touched" class="invalid-feedback">Please input country!</label>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+              <div class="form-group mb-2">
+                <label class="form-label">{{ 'ROOT.nns' | translate }}</label>
+                <input
+                  type="number" min="1" max="99" class="form-control" name="number" required formControlName="number" aria-label="number"
+                  [ngClass]="fp.number.invalid && fp.number.touched?'is-invalid':(fp.number.valid?'is-valid':'')"
+                >
+                <label *ngIf="fp.number.errors?.required && fp.number.touched" class="invalid-feedback">Please input number!</label>
+                <label *ngIf="fp.number.errors?.max && fp.number.touched" class="invalid-feedback">Maximum number is 99!</label>
+              </div>
+            </div>
+            <div class="col-12 text-right">
+              <div class="form-group mb-2">
+                <div class="btn-group">
+                  <button type="button" (click)="resetForm()" class="btn btn-warning btn-sm">
+                    <i class="icofont icofont-refresh"></i> {{ 'ROOT.reset' | translate }}
+                  </button>
+                  <button type="submit" class="btn btn-primary btn-sm" [disabled]="formPlayers.invalid">
+                    <i class="ti-save"></i> {{ 'ROOT.save' | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- </div> -->
+      </form>
+    </app-card>
+  </div>
+  <div class="col-12">
+    <app-card cardTitle="Datatable Serverside" blockClass="p-2" cardClass="card-datatable" headerClass="text-center text-md-left"
+     [hidHeader]="false" iconHeader="ph-duotone ph-table f-22" [options]="true" [loading]="loadingTable">
+      <p class="p-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <div class="table-responsive pb-1 pt-2">
+        <table datatable [dtOptions]="dtOptions[0]" class="table table-bordered table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th width="10" scope="col">No.</th>
+              <th scope="col">ID</th>
+              <th scope="col">Question</th>
+              <th scope="col">Answer</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="dataFaq?.length != 0">
+            <tr *ngFor="let data of dataFaq; let i = index;">
+              <th scope="row">{{ no + i }}</th>
+              <td>{{ data.id }}</td>
+              <td>{{ data.question }}</td>
+              <td>{{ data.answer }}</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="dataFaq?.length == 0 && !loadingTable">
+            <tr>
+              <td colspan="4" class="no-data-available text-center">
+                <div class="col-12 text-center pb-3">
+                  <app-no-data-found></app-no-data-found>
+                </div>
+              </td>
+              <td class="hidden"></td>
+              <td class="hidden"></td>
+              <td class="hidden"></td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="dataFaq?.length == 0 && loadingTable">
+            <tr>
+              <td colspan="4" class="no-data-available text-center">{{ 'ROOT.loading_data' | translate }}....</td>
+              <td class="hidden"></td>
+              <td class="hidden"></td>
+              <td class="hidden"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-12">
+    <app-card cardTitle="Datatable Basic" cardClass="card-datatable" headerClass="text-center text-md-left"
+    [hidHeader]="false" iconHeader="ph-duotone ph-table f-22" [loading]="loadingTableBasic">
+      <div class="row">
+        <div class="col-12 px-0">
+          <app-filter-container customClass="p-filter" [loading]="loadingTableBasic">
+            <div class="col-12 col-md-3">
+              <ng-select name="owner" [(ngModel)]="office" [options]="officeOption"
+                [placeholder]="'Pilih Office'" [ngClass]="'filter'"
+                [notFoundMsg]="'Data tidak ditemukan!'">
+              </ng-select>
+            </div>
+            <div class="col-12 col-md-2">
+              <ng-select name="owner" [(ngModel)]="office" [options]="officeOption"
+                [placeholder]="'Pilih Office'" [ngClass]="'filter'"
+                [notFoundMsg]="'Data tidak ditemukan!'">
+              </ng-select>
+            </div>
+            <div class="col-12 col-md-2 ml-auto text-right">
+              <button type="button" class="btn btn-outline-primary py-1 f-14 rounded">
+                <i class="icofont icofont-filter"></i> {{ 'ROOT.apply' | translate }}
+              </button>
+            </div>
+          </app-filter-container>
+        </div>
+      </div>
+      <div class="table-responsive pb-1 pt-2">
+        <table datatable [dtOptions]="dtOptions[1]" [dtTrigger]="dtTrigger" class="table table-bordered table-hover table-sm dataTable">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">No.</th>
+              <th scope="col">Name</th>
+              <th scope="col">Position</th>
+              <th scope="col">Office</th>
+              <th scope="col">Age</th>
+              <th scope="col">Date</th>
+              <th scope="col">Salary</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="dataBasic?.length != 0">
+            <tr *ngFor="let data of dataBasic; let i = index;">
+              <th scope="row">{{ i+1 }}</th>
+              <td>{{ data.name }}</td>
+              <td>{{ data.position }}</td>
+              <td>{{ data.office }}</td>
+              <td>{{ data.age }}</td>
+              <td>{{ data.date }}</td>
+              <td>{{ data.salary }}</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="dataBasic?.length == 0 && !loadingTableBasic">
+            <tr>
+              <td colspan="7" class="no-data-available text-center">Data tidak ditemukan!</td>
+              <td class="hidden"></td>
+              <td class="hidden"></td>
+              <td class="hidden"></td>
+              <td class="hidden"></td>
+              <td class="hidden"></td>
+              <td class="hidden"></td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="dataBasic?.length == 0 && loadingTableBasic">
+            <tr>
+              <td colspan="7" class="no-data-available text-center">Loading Data....</td>
+              <td class="hidden"></td>
+              <td class="hidden"></td>
+              <td class="hidden"></td>
+              <td class="hidden"></td>
+              <td class="hidden"></td>
+              <td class="hidden"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>
+

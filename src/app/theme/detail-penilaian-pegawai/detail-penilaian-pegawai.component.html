@@ -1,0 +1,233 @@
+<section class="dmp-page card">
+  <!-- =================== HEADER =================== -->
+  <div class="dmp-header">
+    <h3 class="dmp-title">{{ pageTitle }}</h3>
+    <p class="dmp-subtitle">{{ pageSubtitle }}</p>
+  </div>
+
+  <!-- ================= INFORMASI UMUM ================= -->
+  <div class="dmp-card dmp-card--info">
+    <div class="dmp-card-header-row">
+      <div class="dmp-card-title">Informasi Umum</div>
+    </div>
+
+    <div class="dmp-info-table">
+      <div class="dmp-info-row" *ngFor="let info of generalInfo">
+        <div class="dmp-info-label">{{ info.label }}</div>
+        <div class="dmp-info-separator">:</div>
+        <div class="dmp-info-value">{{ info.value }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= WRAPPER KOMPONEN ================= -->
+  <div class="dmp-card dmp-card--wrapper">
+    <!-- SELECT KOMPONEN + BUTTON TAMBAH -->
+    <div class="dmp-wrapper-header">
+      <select [(ngModel)]="selectedKomponen" class="dmp-komponen-select">
+        <option *ngFor="let opt of komponenOptions" [value]="opt">
+          {{ opt }}
+        </option>
+      </select>
+    </div>
+
+    <!-- =================== KOMPONEN 1 =================== -->
+    <div
+      *ngIf="selectedKomponen === 'Pilih Komponen' || selectedKomponen === 'Komponen 1'"
+      class="dmp-inner-card"
+    >
+      <!-- Header Komponen 1 -->
+      <div class="dmp-inner-header">
+        <h3 class="inner-title">Komponen 1: DTKP</h3>
+      </div>
+
+      <!-- List DTKP -->
+      <div class="dmp-accordion" *ngFor="let item of dtkpItems">
+        <div class="dmp-acc-header-row">
+          <div class="dmp-acc-title">{{ item.title }}</div>
+        </div>
+
+        <div class="dmp-acc-body" *ngIf="item.open">
+          <ng-container [ngSwitch]="item.title">
+            <ul *ngSwitchCase="'Target'" class="dmp-target-list">
+              <li *ngFor="let t of targetTw">{{ t }}</li>
+            </ul>
+
+            <p *ngSwitchDefault class="dmp-placeholder">
+              Konten untuk "{{ item.title }}" akan ditampilkan di sini.
+            </p>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <!-- =================== KOMPONEN 2 =================== -->
+    <div *ngIf="selectedKomponen === 'Komponen 2'" class="dmp-inner-card">
+      <div class="dmp-inner-header">
+        <h3 class="inner-title">Komponen 2: Sikap Kerja</h3>
+      </div>
+
+      <div class="dmp-accordion" *ngFor="let s of sikapKerja">
+        <div class="dmp-acc-header-row">
+          <div class="dmp-acc-title">{{ s.title }}</div>
+        </div>
+
+        <div class="dmp-acc-body" *ngIf="s.open">
+          <p class="dmp-text-paragraph">{{ sikapDeskripsi }}</p>
+          <p class="dmp-text-paragraph">{{ sikapDeskripsi }}</p>
+          <p class="dmp-text-paragraph">{{ sikapDeskripsi }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- =================== KOMPONEN 3 =================== -->
+    <div
+      *ngIf="selectedKomponen === 'Pilih Komponen' || selectedKomponen === 'Komponen 3'"
+      class="dmp-inner-card"
+    >
+      <h3 class="inner-title">Komponen 3: Inovasi, Penghargaan &amp; Kontribusi</h3>
+
+      <!-- ========== Bagian Inovasi ========== -->
+      <div class="dmp-ipk-section">
+
+        <div class="dmp-ipk-header">
+          <span class="dmp-ipk-title">Inovasi</span>
+          <span class="dmp-ipk-note">
+            (Jika tabel kosong, berarti belum upload evidence inovasi)
+          </span>
+        </div>
+
+        <div class="table-responsive dmp-ipk-table-wrapper">
+          <table class="table dmp-table">
+            <thead>
+              <tr>
+                <th style="width: 40px;">No</th>
+                <th>Nama Kegiatan</th>
+                <th>Detail Kategori</th>
+                <th style="width: 140px;">Tipe Kategori</th>
+                <th style="width: 150px;">Jabatan</th>
+                <th style="width: 130px;">Tanggal</th>
+                <th style="width: 90px;">Status Exclude</th>
+                <th style="width: 70px;">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let r of inovasiRows">
+                <td>{{ r.no }}</td>
+                <td>{{ r.namaKegiatan }}</td>
+                <td>{{ r.detailKategori }}</td>
+                <td>{{ r.tipeKategori }}</td>
+                <td>{{ r.jabatan }}</td>
+                <td>{{ r.tanggal }}</td>
+                <td>{{ r.statusExclude }}</td>
+                <td class="text-right">{{ r.score | number:'1.2-2' }}</td>
+              </tr>
+
+              <tr class="dmp-table-total">
+                <td colspan="7" class="text-right">Total Score</td>
+                <td class="text-right">
+                  {{ totalInovasiScore | number:'1.2-2' }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- opsional: hanya jika mau tampil sumber -->
+        <div class="dmp-ipk-footer dmp-font-footer">
+          Sumber data dari tanggal 31-05-2023 s.d. 30-09-2023
+        </div> 
+      </div>
+
+      <!-- ========== Bagian Kontribusi ========== -->
+      <div class="dmp-ipk-section">
+
+        <div class="dmp-ipk-header">
+          <span class="dmp-ipk-title">Kontribusi</span>
+        </div>
+
+        <div class="table-responsive dmp-ipk-table-wrapper">
+          <table class="table dmp-table">
+            <thead>
+              <tr>
+                <th style="width: 40px;">No</th>
+                <th>Nama Kegiatan</th>
+                <th>Detail Kategori</th>
+                <th style="width: 140px;">Tipe Kategori</th>
+                <th style="width: 150px;">Jabatan</th>
+                <th style="width: 130px;">Tanggal</th>
+                <th style="width: 90px;">Status Exclude</th>
+                <th style="width: 70px;">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let r of kontribusiRows">
+                <td>{{ r.no }}</td>
+                <td>{{ r.namaKegiatan }}</td>
+                <td>{{ r.detailKategori }}</td>
+                <td>{{ r.tipeKategori }}</td>
+                <td>{{ r.jabatan }}</td>
+                <td>{{ r.tanggal }}</td>
+                <td>{{ r.statusExclude }}</td>
+                <td class="text-right">{{ r.score | number:'1.2-2' }}</td>
+              </tr>
+
+              <tr class="dmp-table-total">
+                <td colspan="7" class="text-right">Total Score</td>
+                <td class="text-right">
+                  {{ totalKontribusiScore | number:'1.2-2' }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ========== Bagian Penghargaan ========== -->
+      <div class="dmp-ipk-section">
+        <div class="dmp-ipk-header">
+          <span class="dmp-ipk-title">Penghargaan</span>
+          <span class="dmp-ipk-note">
+            (Jika tabel kosong, berarti belum upload evidence penghargaan)
+          </span>
+        </div>
+
+        <div class="table-responsive dmp-ipk-table-wrapper">
+          <table class="table dmp-table">
+            <thead>
+              <tr>
+                <th style="width: 40px;">No</th>
+                <th>Nama Kegiatan</th>
+                <th>Detail Kategori</th>
+                <th style="width: 140px;">Tipe Kategori</th>
+                <th style="width: 150px;">Jabatan</th>
+                <th style="width: 130px;">Tanggal</th>
+                <th style="width: 90px;">Status Exclude</th>
+                <th style="width: 70px;">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let r of penghargaanRows">
+                <td>{{ r.no }}</td>
+                <td>{{ r.namaKegiatan }}</td>
+                <td>{{ r.detailKategori }}</td>
+                <td>{{ r.tipeKategori }}</td>
+                <td>{{ r.jabatan }}</td>
+                <td>{{ r.tanggal }}</td>
+                <td>{{ r.statusExclude }}</td>
+                <td class="text-right">{{ r.score | number:'1.2-2' }}</td>
+              </tr>
+
+              <tr class="dmp-table-total">
+                <td colspan="7" class="text-right">Total Score</td>
+                <td class="text-right">
+                  {{ totalPenghargaanScore | number:'1.2-2' }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div> <!-- akhir Komponen 3 -->
+  </div>   <!-- akhir wrapper kartu -->
+</section>

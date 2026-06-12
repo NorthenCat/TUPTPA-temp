@@ -1,0 +1,1400 @@
+/* breadcrumb di dalam card */
+.card-breadcrumb {
+  color: #8a8f98;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.tpa-tab-container {
+  background: #efefef;
+  border-radius: 12px;
+  padding: 4px;              
+  margin-bottom: 20px;
+}
+
+.tpa-tab {
+  display: flex;
+  gap: 4px;                  
+}
+
+/* item dibagi 3, kecil */
+.tpa-tab__item {
+  flex: 1;
+  text-align: center;
+
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+  background: transparent;
+  color: #333;
+
+  padding: 8px 10px;         
+  font-size: 13px;           
+  font-weight: 600;
+
+  border-radius: 10px;
+  cursor: pointer;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.tpa-tab__item:focus,
+.tpa-tab__item:active,
+.tpa-tab__item:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* aktif: biru FULL */
+.tpa-tab__item.active {
+  background: #4e6bd8 !important;
+  color: #fff !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* hover halus */
+.tpa-tab__item:not(.active):hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.tpa-tab { gap: 0; }
+.tpa-tab__item { border-radius: 12px; }
+
+/* TOP INFO CARD */
+.top-info-wrapper {
+  margin-top: 16px;
+}
+
+/* card utama */
+.top-info-card {
+  background: #fff;
+  border: 1px solid #e3e3e3;   /* border tipis abu */
+  border-radius: 10px;
+  padding: 18px 22px;
+}
+
+/* judul */
+.top-info-card__title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 14px;
+  color: #111;
+}
+
+/* body */
+.top-info-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* baris info (INI KUNCI UTAMA) */
+.info-line {
+  display: grid;
+  grid-template-columns: 220px 14px 1fr; /* label | : | value */
+  column-gap: 8px;
+  align-items: start;
+  font-size: 13.5px;
+}
+
+/* text */
+.info-label {
+  font-weight: 500;
+  color: #222;
+}
+
+.info-sep {
+  font-weight: 700;
+  text-align: center;
+}
+
+.info-value {
+  color: #111;
+  word-break: break-word;
+  white-space: normal;
+}
+
+/* mobile (AKHIR TOP INFO CARD */
+@media (max-width: 576px) {
+  .info-line {
+    grid-template-columns: 150px 10px 1fr;
+    font-size: 12.5px;
+  }
+}
+
+
+/* ===== CARD BESAR (WRAPPER) ===== */
+.tpa-section-card {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tpa-section-card__body {
+  padding: 16px;
+}
+
+/* ===== KOTAK DALAM ===== */
+.tpa-box {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  overflow: visible !important;
+}
+
+.tpa-box--spaced {
+  margin-bottom: 16px;
+}
+
+.tpa-box__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid #ededed;
+}
+
+.tpa-box__title {
+  font-weight: 700;
+  font-size: 18px;
+  color: #222;
+}
+
+.tpa-box__body {
+  padding: 16px;
+}
+
+/* ===== BUTTONS ===== */
+.tpa-btn-edit,
+.tpa-btn-outline,
+.tpa-btn-primary {
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-weight: 600;
+}
+
+/* ===== TEXTAREA ===== */
+.tpa-textarea {
+  border-radius: 8px;
+  border: 1px solid #e3e3e3;
+  resize: none;
+  font-size: 13px;
+  padding: 12px;
+}
+
+.tpa-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* ===== NOTE KUNING ===== */
+.tpa-note-yellow {
+  background: #fdeec8;
+  border: 1px solid #f2d48a;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12px;
+  color: #4b4b4b;
+  margin-bottom: 20px;
+
+  ol {
+    margin: 0;
+    padding-left: 18px;
+
+    li {
+      margin-bottom: 4px;
+      line-height: 1.35;
+    }
+  }
+}
+
+/* ===== TABLE STATUS ===== */
+.tpa-table-gap {
+  margin-top: 12px;
+}
+
+.tpa-approval-table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid #ededed;
+}
+
+.tpa-approval-table thead th {
+  background: #dedede !important;
+  color: #333;
+  font-weight: 700;
+  font-size: 12.5px;
+  border: 0 !important;
+  padding: 14px 16px !important;
+  vertical-align: middle;
+}
+
+.tpa-approval-table tbody td {
+  border: 0 !important;
+  padding: 14px 16px !important;
+  font-size: 12.5px;
+  color: #333;
+  vertical-align: middle;
+}
+
+.tpa-approval-table tbody tr:nth-child(even) {
+  background: #f3f3f3;
+}
+
+.tpa-approval-table tbody tr:nth-child(odd) {
+  background: #fff;
+}
+
+.status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px; 
+  line-height: 1;
+}
+
+.status-icon--ok {
+  color: #2e7d32; 
+}
+
+.status-icon--no {
+  color: #c62828; 
+}
+
+/* pill status */
+.pill-status {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 8px;
+  background: #fff;
+  line-height: 1;
+}
+
+.pill-ok {
+  color: #2e7d32;
+  border: 1px solid #7cc58a;
+}
+
+.pill-no {
+  color: #d32f2f;
+  border: 1px solid #ef8a8a;
+}
+
+/* ===== TOOLBAR (SEARCH + BUTTONS) ===== */
+.tpa-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.tpa-toolbar__left { flex: 1; }
+
+.tpa-toolbar__right {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* ============================================ SEARCH DATATABLES ============================================ */
+.dt-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.dt-topbar__left {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+}
+
+.tpa-toolbar__right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-left: auto;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.tpa-searchbar-inline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tpa-searchbar-inline__label {
+  margin: 0 !important;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  line-height: 38px;
+}
+
+.tpa-searchbar-inline__input {
+  width: 240px !important;
+  min-width: 240px !important;
+  max-width: 240px !important;
+  height: 38px !important;
+  border-radius: 12px;
+  padding: 6px 12px;
+  margin: 0 !important;
+}
+
+.tpa-toolbar__right .btn {
+  width: auto !important;
+  white-space: nowrap;
+}
+
+.tpa-btn-outline,
+.tpa-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.tpa-searchbar-inline__input {
+  width: 240px !important;
+  min-width: 240px !important;
+  max-width: 240px !important;
+  height: 38px !important;
+
+  border: 1px solid #dcdcdc !important;   /* garis abu-abu */
+  border-radius: 10px !important;         /* bentuk oval seperti contoh */
+  background: #fff !important;
+
+  padding: 6px 14px !important;
+  box-shadow: none !important;
+}
+
+.tpa-searchbar-inline__input:focus {
+  border: 1px solid #dcdcdc !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+
+/* ===== TABLE MAIN ===== */
+.tpa-main-table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #ededed;
+}
+
+.tpa-main-table thead th {
+  background: #dedede !important;
+  font-weight: 700;
+  font-size: 12.5px;
+  border: 0 !important;
+  padding: 14px 16px !important;
+}
+
+.tpa-main-table tbody td {
+  border: 0 !important;
+  padding: 14px 16px !important;
+  font-size: 12.5px;
+  vertical-align: middle;
+}
+
+.tpa-desc {
+  color: #444;
+  line-height: 1.35;
+}
+
+/* detail row */
+.tpa-detail-row td {
+  background: #f5f5f5;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+/* grid TW */
+.tpa-tw-grid {
+  display: grid;
+  grid-template-columns: 140px repeat(4, 1fr);
+  gap: 10px 14px;
+  padding: 12px 6px;
+}
+
+.tpa-tw-grid__head,
+.tpa-tw-grid__label {
+  font-weight: 700;
+  font-size: 12px;
+  color: #333;
+}
+
+/* tombol evidence */
+.tpa-evidence-btn {
+  border-radius: 8px;
+  min-width: 46px;
+}
+
+/* tombol download */
+.tpa-btn-download {
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+/* icon buttons aksi */
+.tpa-icon-btn {
+  border-radius: 10px;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 4px;
+}
+
+.tpa-icon-btn--danger {
+  border: 1px solid #ff5a5a;
+  color: #ff5a5a;
+  background: #fff;
+}
+
+.tpa-icon-btn--primary {
+  border: 1px solid #3f63d3;
+  color: #3f63d3;
+  background: #fff;
+}
+
+
+
+/* expand button */
+.tpa-expand-btn {
+  background: transparent;
+  border: 0;
+  font-size: 18px;
+  color: #666;
+}
+
+/* rata-rata skor row */
+.tpa-average-row td {
+  background: #dbe3f7;
+  border: 0 !important;
+  padding: 14px 16px !important;
+}
+
+/* ===== Datatable pagination styling ===== */
+:host ::ng-deep div.dataTables_wrapper div.dataTables_info {
+  padding-top: 12px;
+  font-size: 12.5px;
+  color: #666;
+}
+
+:host ::ng-deep div.dataTables_wrapper div.dataTables_paginate {
+  padding-top: 10px;
+}
+
+:host ::ng-deep .dataTables_paginate .pagination {
+  margin: 0;
+  gap: 6px;
+}
+
+:host ::ng-deep .dataTables_paginate .pagination .page-link {
+  border: 0;
+  background: transparent;
+  color: #666;
+  font-size: 12.5px;
+  padding: 6px 10px;
+  border-radius: 50%;
+}
+
+:host ::ng-deep .dataTables_paginate .pagination .page-item.active .page-link {
+  background: #3f63d3;
+  color: #fff;
+  border-radius: 50%;
+}
+
+:host ::ng-deep .dataTables_paginate .pagination .page-item.disabled .page-link {
+  color: #bbb;
+}
+
+:host ::ng-deep .dataTables_wrapper .dataTables_paginate .pagination,
+:host ::ng-deep .tpa-fake-paginate .pagination {
+  margin: 0;
+  justify-content: flex-end;
+}
+
+/* Pagination footer khusus tabel utama - samakan dengan desain role pegawai */
+:host ::ng-deep #dtMainTable_wrapper .dataTables_info {
+  float: left;
+  padding-top: 0 !important;
+  margin-top: 14px;
+  color: #6f7785;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+:host ::ng-deep #dtMainTable_wrapper .dataTables_paginate {
+  float: right;
+  padding-top: 0 !important;
+  margin-top: 8px;
+}
+
+:host ::ng-deep #dtMainTable_wrapper .dataTables_paginate .pagination {
+  gap: 2px;
+  align-items: center;
+}
+
+:host ::ng-deep #dtMainTable_wrapper .dataTables_paginate .page-link {
+  border: 0 !important;
+  background: transparent !important;
+  color: #727b8a !important;
+  min-width: 28px;
+  height: 28px;
+  border-radius: 999px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px !important;
+  box-shadow: none !important;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+:host ::ng-deep #dtMainTable_wrapper .dataTables_paginate .page-item.active .page-link {
+  background: #3f63d3 !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+:host ::ng-deep #dtMainTable_wrapper .dataTables_paginate .page-item.disabled .page-link {
+  color: #c3c9d4 !important;
+}
+
+/* ===== ACTION FOOTER BUTTON ===== */
+.tpa-footer-actions {
+  height: auto;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.084px;
+
+  /* samakan feel dengan btn-sm + tpa-btn-primary */
+  display: flex;
+  padding-bottom: var(--Numbers-5, 20px);
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--Numbers-4, 16px);
+  align-self: stretch;
+}
+
+/* Footer atasan: utama + dropdown Aksi Lainnya */
+.tpa-footer-actions--atasan {
+  flex-wrap: wrap;
+}
+
+.tpa-footer-btn-approve-target {
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 8px 18px;
+}
+
+.tpa-aksi-lainnya-group {
+  box-shadow: none;
+  position: relative;
+  z-index: 100;
+}
+
+.tpa-btn-aksi-lainnya {
+  background: #fff;
+  border: 1px solid #c9c9c9;
+  color: #333;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 8px 16px;
+
+  &::after {
+    margin-left: 0.5rem;
+  }
+
+  &:hover:not(:disabled) {
+    background: #f7f7f7;
+    border-color: #b0b0b0;
+    color: #222;
+  }
+}
+
+.tpa-aksi-lainnya-menu {
+  min-width: 240px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  border: 1px solid #e0e0e0;
+}
+
+.tpa-dd-action {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  white-space: normal;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+.tpa-dd-action--outline {
+  background: #fff;
+  border: 1px solid #d6d6d6 !important;
+  color: #444;
+
+  &:hover:not(:disabled) {
+    background: #f5f5f5;
+  }
+}
+
+.tpa-dd-action--danger-outline {
+  background: #fff;
+  border: 1px solid #dc3545 !important;
+  color: #dc3545;
+
+  &:hover:not(:disabled) {
+    background: #fff5f5;
+  }
+}
+
+/* Biru lembut seperti mockup "Setujui Realisasi" */
+.tpa-dd-action--approve-realisasi {
+  background: #b8c7ff;
+  border: 1px solid #6b7fd7 !important;
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background: #a3b5f5;
+    color: #fff;
+  }
+}
+
+/* Simpan Draft */
+.tpa-btn-draft {
+  background: #fff;
+  border: 1px solid #d6d6d6;
+  color: #7a7a7a;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 10px;
+  min-width: 120px;
+  height: 36px;
+  font-size: 13px;
+
+  &:hover {
+    background: #f5f5f5;
+  }
+}
+
+/* Ajukan DTKP */
+.tpa-btn-submit {
+  background: #3f8a4c;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 10px;
+  min-width: 120px;
+  height: 36px;
+  font-size: 13px;
+
+  &:hover {
+    background: #34753f;
+  }
+}
+
+/* =====ACTION BAR ===== */
+
+/* scroll di dalam Box 2 */
+.tpa-box__body--scroll {
+  max-height: 100vh;        
+  overflow-y: auto;
+  position: relative;
+  padding-bottom: 120px !important;
+}
+
+
+/* sticky action bar di bawah area scroll box */
+.tpa-fixed-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 50;
+  overflow: visible;
+
+  background: #fff;
+  border-top: 1px solid rgba(0,0,0,.08);
+  margin-left: -16px;
+  margin-right: -16px;
+
+  padding: 12px 16px;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.tpa-actions-spacer { height: 24px; }
+
+@media (max-width: 576px) {
+  .tpa-box__content { padding-bottom: 140px; }
+  .tpa-footer-actions .btn { width: 100%; }
+}
+
+.tpa-fixed-actions .btn {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.tpa-fixed-actions .btn:focus,
+.tpa-fixed-actions .btn:active {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+
+/* FORCE PAGINATION TAMPIL */
+:host ::ng-deep div.dataTables_wrapper div.dataTables_paginate {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+:host ::ng-deep div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+  display: flex !important;
+}
+
+:host ::ng-deep #dtMainTable_wrapper .dataTables_paginate,
+:host ::ng-deep #dtMainTable_wrapper .dataTables_info {
+  display: none !important;
+}
+
+.tpa-main-pagination-wrap {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tpa-main-pagination-info {
+  color: #6f7785;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.tpa-main-pagination {
+  gap: 2px;
+  align-items: center;
+}
+
+.tpa-main-pagination .page-link {
+  border: 0 !important;
+  background: transparent !important;
+  color: #727b8a !important;
+  min-width: 28px;
+  height: 28px;
+  border-radius: 999px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px !important;
+  box-shadow: none !important;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.tpa-main-pagination .page-item.active .page-link {
+  background: #3f63d3 !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.tpa-main-pagination .page-item.disabled .page-link {
+  color: #c3c9d4 !important;
+}
+
+/* Biar expand bisa munculin data, toggle 
+:host ::ng-deep td.tpa-child-row {
+  padding: 0 !important;
+  border: 0 !important;
+}*/
+.tpa-icon-btn {
+  position: relative;
+  z-index: 5;
+}
+
+:host ::ng-deep tr.tpa-child-row-manual {
+  display: table-row !important;
+}
+
+:host ::ng-deep tr.tpa-child-row-manual > td {
+  display: table-cell !important;
+  padding: 0 !important;
+  background: #efefef !important;
+  border: 0 !important;
+}
+
+:host ::ng-deep tr.tpa-child-row-manual .tkp-panel-outer {
+  display: block !important;
+  width: 100% !important;
+  background: #efefef !important;
+  padding: 10px 12px 14px 12px !important;
+}
+
+/* delete detaoil tkp */
+.tpa-icon-btn[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Wrapper biar konten punya padding normal */
+:host ::ng-deep .tpa-child-wrap {
+  padding: 18px 22px;
+  background: #f3f3f3; 
+}
+
+/* Grid 5 kolom: label + TW1..TW4 */
+:host ::ng-deep .tpa-tw-grid2 {
+  display: grid;
+  grid-template-columns: 180px repeat(4, minmax(120px, 1fr));
+  row-gap: 14px;
+  column-gap: 18px;
+  align-items: center;
+}
+
+:host ::ng-deep .tpa-tw-grid2__head {
+  font-weight: 600;
+  color: #333;
+}
+
+:host ::ng-deep .tpa-tw-grid2__label {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Biar button uploadnya gak numpuk */
+:host ::ng-deep .tpa-child-wrap .tpa-evidence-btn {
+  min-width: 54px;
+  height: 44px;
+  border-radius: 12px;
+}
+
+//modal tambah target kinerja pegawai
+/* =========================
+   MODAL SIZE (XL) + SCROLL
+========================= */
+:host ::ng-deep app-ui-modal.tpa-modal-xl .modal-dialog {
+  max-width: 1140px;
+  width: calc(100% - 2rem);
+}
+
+:host ::ng-deep app-ui-modal.tpa-modal-xl .modal-body,
+:host ::ng-deep app-ui-modal.tpa-modal-xl .app-modal-body {
+  max-height: calc(100vh - 220px);
+  overflow: auto;
+}
+
+.tpa-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px; 
+}
+
+.tpa-modal-actions .btn {
+  border-radius: 12px;  
+  height: 38px;        
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* =========================
+   TABLE (HEADER + CELL)
+========================= */
+.tpa-popup-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+.tpa-popup-table thead th {
+  background: #eeeeee;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  font-size: 12px;
+  padding: 14px 12px;
+  border-bottom: 1px solid #e3e3e3;
+  vertical-align: middle;
+}
+
+.tpa-popup-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+/* Lebarin kolom deskripsi */
+.tpa-popup-table th:nth-child(2),
+.tpa-popup-table td:nth-child(2) {
+  width: 360px;
+}
+
+/* =========================
+   INPUT / SELECT CONSISTENT
+========================= */
+.tkp-input {
+  height: 40px;
+  min-height: 40px;
+  border-radius: 10px;
+  background-color: #ffffff !important;
+}
+
+:host ::ng-deep .tkp-select .ng-select-container {
+  height: 40px;
+  min-height: 40px;
+  border-radius: 10px;
+}
+
+/* Upload button */
+.tkp-btn-upload,
+.tkp-btn-evidence {
+  height: 40px;
+  border-radius: 10px;
+  padding: 0 18px;
+  background-color: #ffffff;
+}
+
+/* File name */
+.tkp-file-name {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #7a7a7a;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Outer: cuma untuk "gutter" putih (jarak), tanpa background */
+.tkp-panel-outer {
+  padding: 10px 12px 14px 12px;
+  background: transparent;
+}
+
+/* Kotak rounded: INI yang harus abu-abuuu */
+.tkp-panel {
+  background: #efefef;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+/* Grid TW */
+.tkp-panel__grid {
+  display: grid;
+  grid-template-columns: 180px repeat(4, 1fr);
+  gap: 12px 16px;
+  align-items: center;
+}
+
+/* Header TW */
+.tkp-panel__head {
+  font-weight: 600;
+  font-size: 12px;
+  color: #333;
+}
+
+/* Label kiri */
+.tkp-panel__label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #2d2e2e;
+}
+
+/* Evidence row layout */
+.tkp-panel__evidence {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Evidence TW1-2 / TW3-4 span 2 kolom */
+.tkp-panel__evidence--span2 {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tkp-panel__evidence--span2 {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+:host ::ng-deep .tkp-panel__grid {
+  display: grid;
+  grid-template-columns: 180px repeat(4, 1fr);
+  gap: 12px 16px;
+  align-items: center;
+}
+
+:host ::ng-deep .tkp-panel__evidence {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* INI YANG KUNCI */
+:host ::ng-deep .tkp-panel__evidence--span2 {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+
+
+/* =========================
+   INPUT DI DALAM PANEL HARUS PUTIH
+========================= */
+.tkp-row-panel .tkp-panel input.form-control,
+.tkp-row-panel .tkp-panel .form-control {
+  background: #ffffff !important;
+  border: 1px solid #e2e2e2 !important; /* lebih terang dari bg panel */
+  border-radius: 10px;
+  height: 40px;
+  box-shadow: none !important;
+}
+
+
+/* ng-select di dalam panel juga putih */
+:host ::ng-deep .tkp-panel ng-select .ng-select-container {
+  background-color: #ffffff !important;
+  border: 1px solid #dcdcdc;
+  box-shadow: none;
+}
+
+/* cell panel tidak boleh punya background putih */
+:host ::ng-deep .tkp-row-panel td.tkp-panel-cell {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+/* outer hanya untuk jarak (gutter) */
+:host ::ng-deep .tkp-panel-outer {
+  padding: 10px 12px 14px 12px;
+  background: #efefef !important;
+}
+
+:host ::ng-deep .tkp-panel-bg {
+  background: #efefef !important;
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+
+/* grid layout */
+:host ::ng-deep .tkp-panel__grid {
+  display: grid;
+  grid-template-columns: 180px repeat(4, 1fr);
+  gap: 12px 16px;
+  align-items: center;
+}
+
+/* label kiri */
+:host ::ng-deep .tkp-panel__label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #2d2e2e;
+}
+
+/* header TW */
+:host ::ng-deep .tkp-panel__head {
+  font-weight: 600;
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+}
+
+/* input selalu putih + border lebih terang dari panel */
+:host ::ng-deep .tkp-panel-bg .form-control {
+  background: #ffffff !important;
+  border: 1px solid #e2e2e2 !important;
+  border-radius: 10px;
+  height: 40px;
+  box-shadow: none !important;
+}
+
+/* ng-select putih juga */
+:host ::ng-deep .tkp-panel-bg ng-select .ng-select-container {
+  background: #ffffff !important;
+  border: 1px solid #e2e2e2 !important;
+  border-radius: 10px;
+  min-height: 40px;
+  box-shadow: none !important;
+}
+
+// modal edit target kinerja pegawai
+.evidence-wrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.evidence-long{
+  flex:1;
+  height:42px;
+  border:1px solid #dcdcdc;
+  border-radius:10px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 14px;
+}
+
+.evidence-mini{
+  width:42px;
+  height:42px;
+  border:1px solid #dcdcdc;
+  border-radius:10px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+//modal hapus 
+.tpa-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  z-index: 1050;
+}
+
+.tpa-modal-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 1051;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.tpa-modal-card {
+  position: relative;
+  width: calc(100% - 32px); // mobile safe
+  max-width: 720px;         // desktop limit
+  background: #fff;
+  border-radius: 16px;
+}
+
+
+.tpa-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+  color: #666;
+  cursor: pointer;
+}
+
+.tpa-modal-body {
+  padding: 60px 48px 28px 48px;
+}
+
+.tpa-modal-title {
+  margin-top: 16px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1f1f1f;
+}
+
+.tpa-modal-subtitle {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #8a8a8a;
+}
+
+.tpa-modal-footer {
+  padding: 18px 28px 28px 28px;
+}
+
+.tpa-modal-footer--two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.tpa-btn-wide {
+  width: 100%;
+  border-radius: 12px;
+  height: 56px;
+  font-weight: 600;
+}
+
+.tpa-modal-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tpa-modal-icon--danger {
+  color: #e64a3b;
+}
+
+.tpa-modal-icon--danger i {
+  font-size: 96px;
+}
+
+.tpa-modal-icon--success {
+  position: relative;
+  color: #4967f2;
+}
+
+.tpa-modal-icon--success i.icofont-shield {
+  font-size: 96px;
+}
+
+.tpa-modal-icon-check {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tpa-modal-icon-check i {
+  font-size: 20px;
+  color: #4967f2;
+}
+
+
+
+
+
+
+
+
+
+.middle-content {
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  > img {
+    max-width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  span.head-home {
+    padding-right: 3rem !important;
+  }
+}
+
+.img-alert {
+  max-width: 90%;
+  @media (min-width: 576px) {
+    max-width: 30%;
+  }
+
+  .img-center {
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+.taskboard-wrapper.pb-5 {
+  padding-bottom: 6rem !important;
+}
+
+/* Menu "Aksi Lainnya" dirender di body (ngbDropdown container); perlu styling global pierce */
+::ng-deep .dropdown-menu.tpa-aksi-lainnya-menu {
+  min-width: 240px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  border: 1px solid #e0e0e0;
+  z-index: 2000 !important;
+}
+
+::ng-deep .dropdown-menu.tpa-aksi-lainnya-menu .tpa-dd-action {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  white-space: normal;
+}
+
+::ng-deep .dropdown-menu.tpa-aksi-lainnya-menu .tpa-dd-action:last-child {
+  margin-bottom: 0;
+}
+
+::ng-deep .dropdown-menu.tpa-aksi-lainnya-menu .tpa-dd-action--outline {
+  background: #fff;
+  border: 1px solid #d6d6d6 !important;
+  color: #444;
+}
+
+::ng-deep .dropdown-menu.tpa-aksi-lainnya-menu .tpa-dd-action--danger-outline {
+  background: #fff;
+  border: 1px solid #dc3545 !important;
+  color: #dc3545;
+}
+
+::ng-deep .dropdown-menu.tpa-aksi-lainnya-menu .tpa-dd-action--approve-realisasi {
+  background: #b8c7ff;
+  border: 1px solid #6b7fd7 !important;
+  color: #fff;
+}

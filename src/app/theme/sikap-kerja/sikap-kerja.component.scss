@@ -1,0 +1,478 @@
+/* breadcrumb di dalam card */
+.card-breadcrumb {
+  color: #8a8f98;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.tpa-tab-container {
+  background: #efefef;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.tpa-tab {
+  display: flex;
+  gap: 0;
+}
+
+/* item dibagi 3, kecil */
+.tpa-tab__item {
+  flex: 1;
+  text-align: center;
+
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+  background: transparent;
+  color: #333;
+
+  padding: 8px 10px;
+  font-size: 13px;
+  font-weight: 600;
+
+  border-radius: 12px;
+  cursor: pointer;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tpa-tab__item:focus,
+.tpa-tab__item:active,
+.tpa-tab__item:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* aktif: biru FULL */
+.tpa-tab__item.active {
+  background: #4e6bd8 !important;
+  color: #fff !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* hover halus */
+.tpa-tab__item:not(.active):hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* TOP INFO CARD */
+.top-info-wrapper {
+  margin-top: 16px;
+}
+
+/* card utama */
+.top-info-card {
+  background: #fff;
+  border: 1px solid #e3e3e3;
+  border-radius: 10px;
+  padding: 18px 22px;
+}
+
+/* judul */
+.top-info-card__title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 14px;
+  color: #111;
+}
+
+/* body */
+.top-info-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* baris info */
+.info-line {
+  display: grid;
+  grid-template-columns: 220px 14px 1fr;
+  column-gap: 8px;
+  align-items: start;
+  font-size: 13.5px;
+}
+
+/* text */
+.info-label {
+  font-weight: 500;
+  color: #222;
+}
+
+.info-sep {
+  font-weight: 700;
+  text-align: center;
+}
+
+.info-value {
+  color: #111;
+  word-break: break-word;
+  white-space: normal;
+}
+
+/* mobile */
+@media (max-width: 576px) {
+  .info-line {
+    grid-template-columns: 150px 10px 1fr;
+    font-size: 12.5px;
+  }
+}
+
+/* ===== SECTION CARD (HARMONY/EXCELLENT/INTEGRITY/FEEDBACK) ===== */
+.section-card {
+  background: #f2f2f2;
+  border: 1px solid #e3e3e3;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.section-header {
+  background: #4e6bd8;
+  color: #fff;
+  padding: 10px 14px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.section-header--clickable {
+  width: 100%;
+  border: 0;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.section-header--clickable:focus,
+.section-header--clickable:active {
+  border: 0;
+  outline: none;
+  box-shadow: none;
+}
+
+.section-header__icon {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.section-header__icon.open {
+  transform: rotate(180deg);
+}
+
+/* body dibuat putih supaya kontras seperti card dalam */
+.section-body {
+  background: #fff;
+  padding: 16px 18px;
+  border-top: 1px solid #e3e3e3;
+}
+
+/* rapihin spacing radio list */
+.section-body .custom-control {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/* biar label radio ga mepet & rapi */
+.section-body .custom-control-label {
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* opsional: bikin radio sedikit lebih modern */
+.section-body .custom-control-input:checked ~ .custom-control-label::before {
+  border-color: #4e6bd8;
+}
+
+.section-body .custom-control-input:checked ~ .custom-control-label::after {
+  background-color: #4e6bd8;
+}
+
+/* ===== SUBSECTION SIKAP KERJA ===== */
+.sikap-subsection {
+  background: #ffffff;
+  border: 1px solid #e3e3e3;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.sikap-subsection:last-child {
+  margin-bottom: 0;
+}
+
+.sikap-subsection__top {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e3e3e3;
+  background: #ffffff;
+}
+
+.sikap-subsection__content {
+  display: grid;
+  grid-template-columns: 340px 560px;
+  gap: 64px;
+  justify-content: center;
+  align-items: start;
+
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 24px 16px;
+  background: #ffffff;
+}
+
+.sikap-score-input {
+  display: grid;
+  grid-template-columns: 110px 180px;
+  gap: 18px;
+  align-items: center;
+  justify-content: end;
+
+  width: 320px;
+  margin-left: auto;
+  padding-top: 36px;
+}
+
+.sikap-score-input__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0;
+}
+
+.sikap-score-input__field {
+  width: 150px;
+  height: 44px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.sikap-keterangan {
+  font-size: 13px;
+  color: #333;
+}
+
+.sikap-keterangan__title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.sikap-keterangan__row {
+  display: grid;
+  grid-template-columns: 320px 120px;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.sikap-keterangan__note {
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #d9534f;
+}
+
+/* ===== RESULT SECTION ===== */
+.result-section__body {
+  background: #ffffff;
+}
+
+.result-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 14px;
+}
+
+.result-score-grid {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.result-score-card {
+  background: #fff;
+  border: 1px solid #d8d8d8;
+  border-radius: 10px;
+  width: 210px;
+  min-height: 114px;
+  padding: 10px 12px 8px;
+  text-align: center;
+}
+
+.result-score-card__label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.result-score-card__value {
+  font-size: 20px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #1f1f1f;
+  margin-bottom: 8px;
+}
+
+.result-score-card__hint {
+  font-size: 12px;
+  color: #9b9b9b;
+}
+
+.result-feedback {
+  display: grid;
+  grid-template-columns: 150px 16px 1fr;
+  align-items: start;
+  gap: 8px;
+}
+
+.result-feedback__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+  line-height: 1.5;
+}
+
+.result-feedback__sep {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.result-feedback__value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+  line-height: 1.5;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 991px) {
+  .result-title {
+    font-size: 14px;
+  }
+
+  .result-score-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .result-score-card__label {
+    font-size: 14px;
+  }
+
+  .result-score-card__value {
+    font-size: 30px;
+  }
+
+  .result-score-card__hint {
+    font-size: 14px;
+  }
+
+  .result-feedback {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .result-feedback__label,
+  .result-feedback__sep,
+  .result-feedback__value {
+    font-size: 13px;
+  }
+
+  .result-feedback__sep {
+    display: none;
+  }
+
+  .sikap-subsection__content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-content: start;
+
+    max-width: 100%;
+    padding: 18px 16px;
+  }
+
+  .sikap-score-input {
+    grid-template-columns: 100px 1fr;
+    justify-content: start;
+
+    width: auto;
+    margin-left: 0;
+    padding-top: 0;
+  }
+
+  .sikap-score-input__field {
+    width: 140px;
+  }
+
+  .sikap-keterangan__row {
+    grid-template-columns: 1fr 100px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sikap-score-input {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .sikap-keterangan__row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
+
+/* ===== EXISTING GLOBAL STYLE ===== */
+.middle-content {
+  display: flex;
+  align-items: center;
+}
+
+.middle-content > img {
+  max-width: 100%;
+}
+
+@media (min-width: 992px) {
+  span.head-home {
+    padding-right: 3rem !important;
+  }
+}
+
+.img-alert {
+  max-width: 90%;
+}
+
+@media (min-width: 576px) {
+  .img-alert {
+    max-width: 30%;
+  }
+}
+
+.img-alert .img-center {
+  display: inline-block;
+  width: 100%;
+}
+
+.taskboard-wrapper.pb-5 {
+  padding-bottom: 6rem !important;
+}

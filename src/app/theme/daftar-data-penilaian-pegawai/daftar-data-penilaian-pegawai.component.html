@@ -1,0 +1,231 @@
+<div class="row">
+  <div class="col-sm-12">
+
+    <app-card
+      cardTitle="Data Atasan dan Pegawai"
+      [hidHeader]="false"
+      [isSkeleton]="false"
+      [loading]="loadingTable"
+    >
+
+      <!-- breadcrumb kecil -->
+      <p class="text-muted f-13 mb-3">
+        Data Penilaian Pegawai / Daftar Data Penilaian Pegawai
+      </p>
+
+      <!-- ===== SECTION BOX: PROFIL + CATATAN (NYAMBUNG) ===== -->
+      <div class="section-box">
+        <!-- ===== PROFIL + INFO ===== -->
+        <div class="profile-section">
+          <div class="profile-left">
+            <div class="photo-card">
+              <img
+                [src]="headerProfil.foto ? headerProfil.foto : 'assets/images/user/img-avatar-2.jpg'"
+                alt="Foto Pegawai"
+              />
+            </div>
+          </div>
+
+          <div class="profile-right">
+            <!-- Profil Pegawai -->
+            <div class="info-card mb-3">
+              <div class="info-card__header">Profil Pegawai</div>
+              <div class="info-card__body">
+                <div class="info-grid">
+                  <div class="info-row">
+                    <div class="info-label">Nama</div>
+                    <div class="info-sep">:</div>
+                    <div class="info-value">{{ headerProfil.nama }}</div>
+                  </div>
+
+                  <div class="info-row">
+                    <div class="info-label">NIP</div>
+                    <div class="info-sep">:</div>
+                    <div class="info-value">{{ headerProfil.nip }}</div>
+                  </div>
+
+                  <div class="info-row">
+                    <div class="info-label">Unit</div>
+                    <div class="info-sep">:</div>
+                    <div class="info-value">{{ headerProfil.unit }}</div>
+                  </div>
+
+                  <div class="info-row">
+                    <div class="info-label">Jabatan</div>
+                    <div class="info-sep">:</div>
+                    <div class="info-value">{{ headerProfil.jabatan }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Info Pimpinan -->
+            <div class="info-card">
+              <div class="info-card__header">Info Pimpinan</div>
+              <div class="info-card__body">
+                <div class="info-grid info-grid--2col">
+                  <div class="info-row">
+                    <div class="info-label">Penilai Pertama</div>
+                    <div class="info-sep">:</div>
+                    <div class="info-value">{{ headerPimpinan.penilaiPertama }}</div>
+                  </div>
+
+                  <div class="info-row">
+                    <div class="info-label">Penilai Kedua</div>
+                    <div class="info-sep">:</div>
+                    <div class="info-value">{{ headerPimpinan.penilaiKedua }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ===== CATATAN ===== -->
+        <div class="note-card mt-3">
+          <div class="note-card__title">
+            <i class="icofont icofont-info-circle"></i> Catatan
+          </div>
+          <ul class="note-card__list mb-0">
+            <li>Penilai 1 adalah Atasan Langsung dan Penilai 2 adalah Atasan Tidak Langsung</li>
+            <li>D-TKP (Target dan Realisasi) hanya di approve oleh Atasan Langsung</li>
+            <li>Sikap Kerja dinilai oleh Atasan Langsung dan Atasan Tidak Langsung</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ===== SECTION BOX: PERIODE + TABLE ===== -->
+      <div class="section-box mt-3">
+        <!-- ===== PERIODE ===== -->
+        <div class="periode-wrapper">
+          <div class="text-center">
+            <h6 class="mb-0 font-weight-bold">
+              PERIODE TelU Point TPA Genap 2024-2025
+            </h6>
+            <small class="text-muted">
+              Berlaku dari 05/26/2025 s.d. 08/29/2025
+            </small>
+          </div>
+
+          <!-- ===== TABLE ===== -->
+          <div class="table-responsive mt-3">
+            <table
+              datatable
+              [dtOptions]="dtOptions[1]"
+              [dtTrigger]="dtTrigger"
+              class="table table-bordered table-hover table-sm"
+            >
+              <thead class="thead-light text-center">
+                <tr>
+                  <th style="width: 60px;">No</th>
+                  <th style="width: 140px;">Aksi</th>
+                  <th style="width: 120px;">NIP</th>
+                  <th style="min-width: 180px;">Nama Pegawai</th>
+                  <th style="min-width: 260px;">Unit / Program Studi</th>
+                  <th style="min-width: 160px;">Status Target DTKP</th>
+                  <th style="min-width: 220px;">status Approve Target DTKP Penilai Langsung</th>
+                  <th style="min-width: 240px;">status Approve Target DTKP Penilai Tidak Langsung</th>
+                  <th style="min-width: 160px;">Status Realisasi DTKP</th>
+                  <th style="min-width: 200px;">Status Approve Realisasi DTKP Penilai Langsung</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let row of dataTable; let i = index">
+                  <td class="text-center">{{ i + 1 }}</td>
+
+                  <td class="text-center">
+                    <button
+                      class="btn btn-success btn-sm px-3"
+                      (click)="onPenilaian(row)"
+                    >
+                      <i class="icofont icofont-plus"></i> Penilaian
+                    </button>
+                  </td>
+
+                  <td>{{ row.nip }}</td>
+                  <td>{{ row.namaPegawai }}</td>
+                  <td>{{ row.unitProgramStudi }}</td>
+
+                  <!-- contoh status: bisa diganti pakai getStatusIcon(row.statusTarget) -->
+                  <td class="text-center">
+                    <i
+                      *ngIf="row.statusTkp === 'Y'"
+                      class="icofont icofont-check text-success"
+                    ></i>
+
+                    <i
+                      *ngIf="row.statusTkp === 'N'"
+                      class="icofont icofont-close text-danger"
+                    ></i>
+
+                    <span *ngIf="row.statusTkp !== 'Y' && row.statusTkp !== 'N'">-</span>
+                  </td>
+
+                  <td class="text-center">
+                    <i
+                      *ngIf="row.statusApproveTargetPenilaiLangsung === 'Y'"
+                      class="icofont icofont-check text-success"
+                    ></i>
+
+                    <i
+                      *ngIf="row.statusApproveTargetPenilaiLangsung === 'N'"
+                      class="icofont icofont-close text-danger"
+                    ></i>
+
+                    <span *ngIf="row.statusApproveTargetPenilaiLangsung !== 'Y' && row.statusApproveTargetPenilaiLangsung !== 'N'">-</span>
+                  </td>
+
+                  <td class="text-center">
+                    <i
+                      *ngIf="row.statusApproveTarget2 === 'Y'"
+                      class="icofont icofont-check text-success"
+                    ></i>
+
+                    <i
+                      *ngIf="row.statusApproveTarget2 === 'N'"
+                      class="icofont icofont-close text-danger"
+                    ></i>
+
+                    <span *ngIf="row.statusApproveTarget2 !== 'Y' && row.statusApproveTarget2 !== 'N'">-</span>
+                  </td>
+
+                  <td class="text-center">
+                    <i
+                      *ngIf="row.statusAchievement === 'Y'"
+                      class="icofont icofont-check text-success"
+                    ></i>
+
+                    <i
+                      *ngIf="row.statusAchievement === 'N'"
+                      class="icofont icofont-close text-danger"
+                    ></i>
+
+                    <span *ngIf="row.statusAchievement !== 'Y' && row.statusAchievement !== 'N'">-</span>
+                  </td>
+
+                  <td class="text-center">
+                    <i
+                      *ngIf="row.statusApproveAchievement === 'Y'"
+                      class="icofont icofont-check text-success"
+                    ></i>
+
+                    <i
+                      *ngIf="row.statusApproveAchievement === 'N'"
+                      class="icofont icofont-close text-danger"
+                    ></i>
+
+                    <span *ngIf="row.statusApproveAchievement !== 'Y' && row.statusApproveAchievement !== 'N'">-</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+    </app-card>
+  </div>
+</div>

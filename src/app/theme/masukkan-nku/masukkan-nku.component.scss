@@ -1,0 +1,144 @@
+/* Card + layout helper */
+.middle-content {
+  display: flex;
+  align-items: center;
+
+  > img {
+    max-width: 100%;
+  }
+}
+
+/* Header tabel (sesuai contoh list-vendor) */
+.thead-light {
+  background-color: #a94442; /* bisa kamu samakan dengan theme utama */
+  color: white;
+}
+
+/* Filter container padding (biar mirip box "Filters") */
+:host ::ng-deep .p-filter {
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  padding: 16px 12px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background: #fff;
+}
+
+/* Label kecil di atas ng-select */
+.f-12 {
+  font-size: 12px;
+}
+
+/* Biar ng-select terlihat konsisten */
+:host ::ng-deep .filter {
+  min-height: 38px;
+}
+
+/* Tombol action */
+.btn {
+  border-radius: 8px;
+}
+
+/* Search bar (kanan) biar rapih seperti screenshot */
+.input-group {
+  .form-control {
+    height: 38px;
+    border-radius: 8px 0 0 8px;
+  }
+
+  .btn {
+    height: 38px;
+    border-radius: 0 8px 8px 0;
+  }
+}
+
+/* Kolom tabel */
+.table {
+  th,
+  td {
+    vertical-align: middle;
+  }
+
+  td {
+    font-size: 13px;
+  }
+}
+
+/* Responsive small tweak */
+@media (min-width: 992px) {
+  span.head-home {
+    padding-right: 3rem !important;
+  }
+}
+
+/* Optional: kalau kamu pakai gambar/alert di page ini */
+.img-alert {
+  max-width: 90%;
+
+  @media (min-width: 576px) {
+    max-width: 30%;
+  }
+
+  .img-center {
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+/* Optional spacing bawah kalau ada taskboard wrapper (ikut template existing) */
+.taskboard-wrapper.pb-5 {
+  padding-bottom: 6rem !important;
+}
+
+//button upload modal
+.app-modal-body .btn-primary {
+  border-radius: 10px;
+}
+
+:host ::ng-deep .modal-backdrop.show {
+  z-index: 1040 !important;
+}
+
+:host ::ng-deep .modal.show {
+  z-index: 1050 !important;
+}
+
+:host ::ng-deep .modal.show .modal-dialog {
+  z-index: 1060 !important;
+}
+
+.input-group-append .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group-append i {
+  line-height: 1;
+}
+
+
+:host ::ng-deep #dtNkuTable_wrapper .dataTables_filter label {
+  position: relative;
+  top: -6px; // naikin label + input bareng
+}
+
+:host ::ng-deep #dtNkuTable_wrapper .dt-row-top,
+:host ::ng-deep #dtNkuTable_wrapper .dataTables_filter label {
+  align-items: center !important;
+}
+
+:host ::ng-deep #dtNkuTable_wrapper .dataTables_filter label {
+  margin: 0 !important;
+  line-height: 1 !important;
+}
+
+:host ::ng-deep div.dataTables_wrapper .dt-row-top {
+  align-items: center !important;
+  margin-top: -6px !important; /* naik dikit */
+}
+
+:host ::ng-deep #dtNkuTable_wrapper .dataTables_filter{
+  margin-top: -6px !important; /* coba -4, -6, -8 */
+}
+

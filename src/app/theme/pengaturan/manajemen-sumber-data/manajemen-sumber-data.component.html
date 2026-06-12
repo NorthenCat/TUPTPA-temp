@@ -1,0 +1,148 @@
+<div class="row">
+  <div class="col-sm-12">
+
+    <app-card 
+      cardTitle="Manajemen Sumber Data" 
+      [hidHeader]="false" 
+      [isSkeleton]="false" 
+      [loading]="loadingTable"
+    >
+      <p class="text-muted mb-3">Daftar Manajemen Sumber Data</p>
+
+      <div class="row align-items-center mb-2">
+        <div class="col-12 col-md-6">
+          <button type="button" class="btn btn-success btn-sm rounded" (click)="openForm('create', null)">
+            <i class="icofont icofont-plus"></i> Tambah Query
+          </button>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="table-responsive pb-1 pt-2">
+        <table
+          datatable
+          [dtOptions]="dtOptions"
+          [dtTrigger]="dtTrigger"
+          class="table table-bordered table-hover table-sm dataTable"
+        >
+          <thead class="thead-light">
+            <tr>
+              <th style="width: 60px;">No</th>
+              <th>Nama Query</th>
+              <th>Nama View</th>
+              <th>Diinput Oleh</th>
+              <th style="width: 170px;">Tanggal Input</th>
+              <th style="width: 110px;">Aksi</th>
+            </tr>
+          </thead>
+
+          <tbody *ngIf="dataTable?.length !== 0">
+            <tr *ngFor="let d of dataTable; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ d.namaData }}</td>
+              <td>{{ d.namaViewQuery }}</td>
+              <td>{{ d.createdBy }}</td>
+              <td>{{ d.createdAt }}</td>
+              <td class="text-center">
+                <button class="btn btn-outline-warning btn-sm btn-action mr-1" (click)="openForm('edit', d)">
+                  <i class="ti-pencil"></i>
+                </button>
+                <button class="btn btn-outline-primary btn-sm btn-action" (click)="goDetail(d)">
+                  <i class="ti-eye"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>
+
+<!-- MODAL -->
+<app-ui-modal #modalDefault [containerClick]="false" [hideFooter]="false" [loading]="loadingModal">
+  <div class="app-modal-header modal-md-header">
+    <h5 class="modal-title modal-md-title">Tambah Manajemen Data</h5>
+    <button
+      type="button"
+      class="close basic-close"
+      data-dismiss="modal"
+      aria-label="Close"
+      (click)="closeForm()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="app-modal-body modal-md-body">
+    <form class="row" [formGroup]="formManajemenData">
+      <div class="col-12">
+        <div class="form-group mb-3">
+          <label class="form-label label-lg">Nama Data</label>
+          <input
+            type="text"
+            class="form-control input-lg"
+            formControlName="namaData"
+            placeholder="Masukkan Nama Data"
+            [ngClass]="fv.namaData.invalid && fv.namaData.touched ? 'is-invalid' : (fv.namaData.valid ? 'is-valid' : '')"
+          />
+          <div class="error-info" *ngIf="fv.namaData.errors?.required && fv.namaData.touched">Wajib diisi</div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-group mb-3">
+          <label class="form-label label-lg">Nama View Query</label>
+          <input
+            type="text"
+            class="form-control input-lg"
+            formControlName="namaViewQuery"
+            placeholder="Masukkan Nama View Query"
+            [ngClass]="fv.namaViewQuery.invalid && fv.namaViewQuery.touched ? 'is-invalid' : (fv.namaViewQuery.valid ? 'is-valid' : '')"
+          />
+          <div class="error-info" *ngIf="fv.namaViewQuery.errors?.required && fv.namaViewQuery.touched">Wajib diisi</div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-group mb-2">
+          <label class="form-label label-lg">Tambah Tombol Bangkitkan</label>
+
+          <ng-select
+            formControlName="tombolBangkitkan"
+            [options]="opsiBangkitkan"
+            [allowClear]="true"
+            [placeholder]="'Pilih Status'"
+            [notFoundMsg]="'Data tidak ditemukan!'"
+            [ngClass]="fv.tombolBangkitkan.invalid && fv.tombolBangkitkan.touched
+              ? 'custom is-invalid'
+              : (fv.tombolBangkitkan.valid ? 'custom is-valid' : 'custom')"
+          >
+          </ng-select>
+
+          <label *ngIf="fv.tombolBangkitkan.errors?.required && fv.tombolBangkitkan.touched" class="invalid-feedback">
+            Wajib dipilih
+          </label>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="app-modal-footer">
+    <div class="col-12 text-right p-0">
+      <button type="button" class="btn btn-light btn-sm mr-2 btn-modal" (click)="closeForm()">
+        Batal
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-primary btn-sm btn-modal"
+        (click)="confirmSave()"
+        [disabled]="formManajemenData.invalid || loadingModal"
+      >
+        Simpan
+      </button>
+    </div>
+  </div>
+</app-ui-modal>
+<!-- MODAL DEFAULT - END -->

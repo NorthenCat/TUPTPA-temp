@@ -1,0 +1,7 @@
+<app-apex-chart *ngIf="!loading; else showLoading" [chartID]="chartId" [chartConfig]="configChart"></app-apex-chart>
+
+<ng-template #showLoading>
+  <div class="d-flex justify-content-center">
+    <img class="spinner-infinite" src="assets/images/infinity-situ-transp.svg">
+  </div>
+</ng-template>

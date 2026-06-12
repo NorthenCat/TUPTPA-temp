@@ -1,0 +1,35 @@
+/* sdm-penilai-satu.component.scss */
+:host ::ng-deep .p-filter .d-flex {
+  min-height: 40px; // biar sejajar dengan tinggi ng-select
+}
+
+
+.middle-content {
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  > img {
+    max-width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  span.head-home {
+    padding-right: 3rem !important;
+  }
+}
+
+.img-alert {
+  max-width: 90%;
+  @media (min-width: 576px) {
+    max-width: 30%;
+  }
+
+  .img-center {
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+.taskboard-wrapper.pb-5 {
+  padding-bottom: 6rem !important;
+}

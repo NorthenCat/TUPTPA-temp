@@ -1,0 +1,459 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* SCSS */
+@import "scss/style";
+
+.modal-xxl {
+  max-width: 98% !important;
+  @media (min-width: 1800px) {
+    max-width: 1600px !important;
+  }
+}
+
+.table-initial {
+  display: initial;
+}
+
+.row.pro-head {
+  display: table !important;
+  .col.align-middle {
+    display: table-cell;
+  }
+}
+
+// td.dataTables_empty {
+//   display: none !important;
+// }
+
+.card-switch {
+  display: none;
+  transform: scaleX(0);
+  opacity: 0;
+  animation: anim .3s ease-in-out;
+  &.show {
+    display: block;
+    transform: scaleX(1);
+    opacity: 1;
+    transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+  }
+}
+
+@keyframes anim {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  10% {
+    display: block;
+    opacity: 0.5;
+    transform: scaleX(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+input[type="radio"], input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+  left: 4px;
+  top: 3px;
+  height: 100%;
+  z-index: 1;
+}
+
+.form-check-input {
+  position: absolute;
+  margin-top: -3px;
+  margin-left: 0px;
+}
+
+.form-check-label {
+  margin-left: 5px;
+}
+
+.text-telu {
+  color: #e01a3f !important;
+}
+
+.bg-telu {
+  background-color: #e01a3f !important;
+}
+
+ng-select.lang select-dropdown > div .filter {
+  display: none !important;
+}
+
+input[disabled].form-control, textarea[disabled].form-control, ng-select > div.disabled {
+  background-color: $body-bg;
+  color: #909090 !important;
+  cursor: not-allowed !important;
+  pointer-events: all !important;
+  & > div.single > div.placeholder {
+    color: #909090 !important;
+    cursor: not-allowed !important;
+    pointer-events: all !important;
+  }
+}
+
+input[readonly].form-control, textarea[readonly].form-control, ng-select > div.readonly {
+  background-color: transparent;
+  color: #909090 !important;
+  cursor: context-menu !important;
+  pointer-events: all !important;
+  & > div.single > div.placeholder {
+    color: #909090 !important;
+    cursor: context-menu !important;
+    pointer-events: all !important;
+  }
+}
+
+ng-select > div.disabled > div.single > div.clear, ng-select > div.disabled > div.single > div.toggle {
+  display: none;
+}
+
+ul.navbar-nav.ml-auto {
+  li.lang {
+    width: 93px;
+  }
+  @media (max-width: 991px) {
+    li.lang {
+      width: 75px !important;
+    }
+  }
+}
+
+.spinner-infinite {
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;
+  vertical-align: text-bottom;
+  margin: 0 auto;
+}
+
+
+a.drp-icon.dropdown-toggle.dropdown-toggle {
+  cursor: pointer;
+  &:hover {
+    color: #e01a3f;
+  }
+}
+
+.row.pro-head {
+  display: table !important;
+  .col.align-middle {
+    display: table-cell;
+  }
+}
+
+// DATATABLE CUSTOMIZED - BEGIN
+
+.dataTables_wrapper .dataTables_processing {
+  background: transparent;
+}
+
+.row.border-b {
+  border-radius: 0.55rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+  &:last-child {
+    border-bottom: none !important;
+  }
+}
+
+div.row > div {
+  // padding-right: 10px !important;
+  // padding-left: 10px !important;
+  .card {
+    border-radius: 0.7rem;
+    .carousel-inner {
+      border-radius: 5px;
+    }
+  }
+}
+
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.card {
+  margin-bottom: 10px;
+}
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+.col-7, .col-8, .col-9, .col-10, .col-11, .col-12,
+.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6,
+.col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12,
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,
+.col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12,
+.col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6,
+.col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12,
+.col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6,
+.col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12,
+.col-md-auto, .col-lg, .col-lg-auto, .col-xl, .col-xl-auto
+.col, .col-auto, .col-sm, .col-sm-auto, .col-md {
+  padding-right: 5px;
+  padding-left: 5px;
+  .card {
+    border-radius: $border-radius;
+    .carousel-inner {
+      border-radius: 5px;
+    }
+  }
+}
+
+.dataTables_info {
+  font-size: 11px;
+  color: #b5b5b5;
+}
+
+.modal-content {
+  border-radius: $border-radius;
+  border: none;
+}
+
+.card-img, .card-img-top {
+  border-radius: $border-radius;
+}
+
+.bd-bottom {
+  border-radius: $border-radius;
+  border-bottom: 1px solid #e2e5e8;
+}
+
+.theme-color.nav {
+  > a {
+    width: calc(100% / 2 - 4px);
+  }
+}
+
+table.dataTable tbody td, table.dataTable tbody th,
+table.dataTable tfoot td, table.dataTable tfoot th,
+table.dataTable thead td, table.dataTable thead th {
+  padding: 0.6rem 0.5rem;
+}
+
+// td.dataTables_empty {
+//   display: none !important;
+// }
+
+table {
+  width: 100%;
+  margin: 0 auto;
+  clear: both;
+  border-collapse: separate;
+  border-spacing: 0;
+  &.table-bordered {
+    border: 1px solid #e2e5e8 !important;
+  }
+  &.dataTable[class*="table-"], &.table {
+    border-radius: $border-radius;
+    thead th {
+      &:first-child {
+        border-radius: $border-rad-ul;
+      }
+      &:last-child {
+        border-radius: $border-rad-ur;
+      }
+      &:first-child:last-child {
+        border-radius: $border-rad-top;
+      }
+    }
+    tbody {
+      tr:nth-last-child(1), tbody tr:last-child {
+        th:first-child {
+          border-radius: $border-rad-br;
+        }
+        td:first-child {
+          border-radius: $border-rad-br;
+        }
+        td:last-child {
+          border-radius: $border-rad-bl;
+        }
+        td:first-child:last-child {
+          border-radius: $border-rad-bottom;
+        }
+      }
+      tr > td.no-data-available {
+        border-radius: 0 0 0.50rem 0.50rem !important;
+      }
+    }
+  }
+  &.table:not(.dataTable) {
+    thead.thead-light th, thead.thead-light ~ tbody td {
+      border-color: #ffffff;
+    }
+  }
+}
+
+input {
+  caret-color: $accent-color;
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
+}
+
+// DATATABLE CUSTOMIZED - END
+
+div.middle-content {
+  display: table;
+  .button-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.text-white h5 {
+  color: #fff !important;
+}
+
+.bg-light-dark {
+  background-color: #e9ecef !important;
+}
+.bg-peminatan {
+  background-color: #ceddff  !important;
+}
+.bg-prodi {
+  background-color: #ffdfea !important;
+}
+.bg-default {
+  background-color: #fff5db !important;
+}
+.bg-pilihan {
+  background-color: #c6e1db !important;
+}
+
+.text-peminatan {
+  color: #bed2ff !important;
+}
+.text-prodi {
+  color: #ffc2d7 !important;
+}
+.text-default {
+  color: #fff5db !important;
+}
+.text-pilihan {
+  color: #a3d2c7 !important;
+}
+
+.bg-tidak-bentrok {
+  background-color: #9cdd51  !important;
+  border-radius: 0.7rem;
+  font-size: 12px;
+}
+.bg-bentrok {
+  background-color: #fb2d53 !important;
+  border-radius: 0.7rem;
+  font-size: 12px;
+  color: #fff;
+}
+
+.text-tidak-bentrok {
+  color: #9cdd51 !important;
+}
+.text-bentrok {
+  color: #fb2d53 !important;
+}
+
+img.min-16 {
+  margin-top: -15px !important;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.modal-dialog.header-telu
+.modal-header {
+  padding: 0;
+  .app-modal-header {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 0.7rem;
+    padding: 0.5rem 0 !important;
+    text-align: center !important;
+    background-color: $telu-color !important;
+    .modal-title {
+      color: #fff !important;
+    }
+    .basic-close {
+      top: 7px;
+    }
+  }
+}
+
+.btn {
+  border-radius: 0.7rem;
+  &.btn-sm {
+    // border-radius: 5px;
+    font-size: 13px;
+  }
+  // i {
+  //   vertical-align: baseline;
+  // }
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
+}
+
+.profile-container .collapse-profile::-webkit-scrollbar {
+  height: 0px;
+  width: 0px;
+}
+
+.list-group-item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* width */
+::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.7);
+  -webkit-border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+  border-radius: 10px;
+  background: rgba(17, 17, 17, 0.2);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+  }
+
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(17, 17, 17, 0.5);
+}
+
+:root {
+  -webkit-scrollbar-color: rgb(210,210,210) rgb(46,54,69) !important;
+  -webkit-scrollbar-width: thin !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgb(210,210,210) rgb(46,54,69) !important;
+}
+

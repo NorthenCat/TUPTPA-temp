@@ -1,0 +1,118 @@
+.no-data h4 {
+  color: #e01a3f !important;
+  font-family: Ubuntu;
+  text-transform: capitalize;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0px;
+}
+
+@media (max-width: 680px) {
+  svg.dita-float {
+    width: 100px;
+    animation: float 5s ease-in-out infinite;
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 110px);
+    z-index: 1;
+  }
+  svg.text-no-data {
+    font: 5.5em 'Ubuntu';
+    width: auto;
+    margin: 0 auto;
+    left: 30px;
+    position: relative;
+  }
+  .text-no-data {
+    width: 130px;
+    margin: 0 auto;
+    left: 30px;
+    position: relative;
+  }
+  .no-data h4 {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 681px) {
+  svg.dita-float {
+    width: 100px;
+    animation: float 5s ease-in-out infinite;
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 130px);
+    z-index: 1;
+  }
+  svg.text-no-data {
+    font: 5.5em 'Ubuntu';
+    width: auto;
+    margin: 0 auto;
+    left: 60px;
+    position: relative;
+  }
+  .text-no-data {
+    width: 160px;
+    margin: 0 auto;
+    left: 30px;
+    position: relative;
+  }
+}
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+@media (min-width: 992px) {
+  .middle-content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+.text-copy {
+  fill: none;
+  stroke: white;
+  stroke-dasharray: 6% 29%;
+  stroke-width: 2.5px;
+  stroke-dashoffset: 0%;
+  animation: stroke-offset 8.5s infinite linear;
+}
+
+.text-copy:nth-child(1){
+stroke: #e01a3f;
+animation-delay: -1;
+}
+
+.text-copy:nth-child(2){
+stroke: #a7a7a7;
+animation-delay: -2s;
+}
+
+.text-copy:nth-child(3){
+stroke: #BD0034;
+animation-delay: -3s;
+}
+
+.text-copy:nth-child(4){
+stroke: #ccc;
+animation-delay: -4s;
+}
+
+.text-copy:nth-child(5){
+stroke: #e01a3f;
+animation-delay: -5s;
+}
+
+@keyframes stroke-offset{
+100% {stroke-dashoffset: -35%;}
+}

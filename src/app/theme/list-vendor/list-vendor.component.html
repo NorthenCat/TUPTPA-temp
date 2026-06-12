@@ -1,0 +1,141 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="{{ 'Kumpulan Vendor' }}" [hidHeader]="false" [isSkeleton]="false" [loading]="loadingTable">
+      <app-filter-container customClass="p-filter" loading="{{loadingTableBasic}}">
+        <div class="col-12 col-md-3">
+          <ng-select [(ngModel)]="selectedStatus" [options]="activeStatus" [placeholder]="'Pilih Status'"
+            [ngClass]="'filter'" [notFoundMsg]="'Data tidak ditemukan!'">
+          </ng-select>
+        </div>
+        <div class="col-12 col-md-2">
+          <ng-select [(ngModel)]="selectedType" (ngModelChange)="getData()" [options]="vendorType"
+            placeholder="Pilih Tipe" [ngClass]="'filter'" [notFoundMsg]="'Data tidak ditemukan!'">
+          </ng-select>
+        </div>
+        <div class="col-12 col-md-3">
+          <ng-select [(ngModel)]="selectedRating" [options]="activeRating" [placeholder]="'Pilih Rating'"
+            [ngClass]="'filter'" [notFoundMsg]="'Data tidak ditemukan!'">
+          </ng-select>
+        </div>
+        <div class="col-12 col-md-2 ml-auto text-right">
+          <button type="button" class="btn btn-outline-primary py-1 f-14 rounded" (click)="getData()">
+            <i class="icofont icofont-filter"></i> {{ 'ROOT.apply' | translate }}
+          </button>
+        </div>
+      </app-filter-container>
+      <div class="row pt-2">
+        <div class="col-12 col-md-2 ml-auto text-right">
+          <button type="button" class="btn btn-outline-success py-1 f-14 rounded" (click)="openForm('create', null)">
+            <i class="icofont icofont-plus"></i> {{ 'ROOT.add_data' | translate }}
+          </button>
+        </div>
+      </div>
+      
+      <div class="table-responsive pb-1 pt-2">
+        <table datatable [dtOptions]="dtOptions[1]" [dtTrigger]="dtTrigger"
+          class="table table-bordered table-hover table-sm dataTable">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">No.</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Deskripsi</th>
+              <th scope="col">Rating</th>
+              <th scope="col">Status</th>
+              <th scope="col">Kategori</th>
+              <th scope="col">Aksi</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="dataTable?.length != 0">
+            <tr *ngFor="let data of dataTable; let i = index;">
+              <th scope="row">{{ i+1 }}</th>
+              <td>{{ data.name }}</td>
+              <td>{{ data.desc }}</td>
+              <td>{{ data.rating }}</td>
+              <td>{{ data.statusLabel }}</td>
+              <td>{{ data.vendortypename }}</td>
+              <td>
+                <button 
+                  class="btn btn-warning btn-sm me-1" 
+                  (click)="openForm('edit', data)">
+                  <i class="ti-pencil"></i>
+                </button>
+                <button 
+                  class="btn btn-primary btn-sm" 
+                  (click)="onView(data)">
+                  <i class="ti-eye"></i>
+                </button>
+              </td>
+
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+    </app-card>
+  </div>
+</div>
+
+<!-- MODAL DEFAULT - START -->
+<app-ui-modal #modalDefault [containerClick]="false" [hideFooter]="false" [loading]="loadingModal">
+  <div class="app-modal-header">
+    <h5 class="modal-title">Form {{formType==='create'?'Tambah':'Ubah'}}</h5>
+    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="closeForm()"><span
+        aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="app-modal-body">
+    <form class="row" [formGroup]="formVendor">
+      <div class="col-12">
+        <div class="form-group mb-2">
+          <label class="form-label">{{ 'ROOT.type' | translate }}</label>
+          <ng-select formControlName="vendortypeid" [options]="vendorType" [allowClear]="true"
+            [placeholder]="'ROOT.select_one'|translate" [notFoundMsg]="'ROOT.no_data_found'|translate"
+            [ngClass]="fv.vendortypeid.invalid && fv.vendortypeid.touched?'custom is-invalid':(fv.vendortypeid.valid?'custom is-valid':'custom')">
+          </ng-select>
+          <label *ngIf="fv.vendortypeid.errors?.required && fv.vendortypeid.touched" class="invalid-feedback">{{
+            'ERROR.required' | translate }}</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-group mb-3">
+          <label class="form-label">{{ 'ROOT.name' | translate }}</label>
+          <input type="text" class="form-control" formControlName="name" placeholder="Input nama vendor"
+            [ngClass]="fv.name.invalid && fv.name.touched?'is-invalid':(fv.name.valid?'is-valid':'')">
+          <div class="error-info" *ngIf="fv.name.errors?.required">{{ 'ERROR.required' | translate }}</div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-group mb-3">
+          <label class="form-label">{{ 'ROOT.desc' | translate }}</label>
+          <input type="text" class="form-control" formControlName="desc" placeholder="Input Deskripsi Vendor"
+            [ngClass]="fv.desc.invalid && fv.desc.touched?'is-invalid':(fv.desc.valid?'is-valid':'')">
+          <div class="error-info" *ngIf="fv.desc.errors?.required">{{ 'ERROR.required' | translate }}</div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-group mb-2">
+          <label class="form-label">{{ 'ROOT.status' | translate }}</label>
+          <ng-select formControlName="activestatus" [options]="optionsActiveStatus" [allowClear]="false"
+            [placeholder]="'ROOT.select_one'|translate" [notFoundMsg]="'ROOT.no_data_found'|translate"
+            [ngClass]="fv.activestatus.invalid && fv.activestatus.touched?'custom is-invalid':(fv.activestatus.valid?'custom is-valid':'custom')">
+          </ng-select>
+          <label *ngIf="fv.activestatus.errors?.required && fv.activestatus.touched" class="invalid-feedback">{{
+            'ERROR.required' | translate }}</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="app-modal-footer">
+    <div class="col-12 text-right middle-content p-0 btn-group">
+      <button type="button" class="btn btn-secondary btn-sm" (click)="closeForm()">
+        <i class="icofont icofont-close"></i> {{ 'ROOT.close' | translate }}
+      </button>
+      <button type="button" class="btn btn-success btn-sm" (click)="confirmSave()">
+        <i class="icofont icofont-save"></i> {{ 'ROOT.save' | translate }}
+      </button>
+    </div>
+  </div>
+</app-ui-modal>
+<!-- MODAL DEFAULT - END -->

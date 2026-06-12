@@ -1,0 +1,354 @@
+<app-card
+  cardTitle="IPK (Inovasi, Penghargaan, dan Kontribusi)"
+  [hidHeader]="false"
+  [isSkeleton]="false"
+  [loading]="loadingPage"
+>
+  <div class="card-breadcrumb">
+    Data Penilaian Pegawai / Daftar Data Penilaian Pegawai / Inovasi, Penghargaan, dan Kontribusi
+  </div>
+
+  <!-- TABS -->
+  <div class="tpa-tab-container">
+    <div class="tpa-tab">
+      <button
+        type="button"
+        class="tpa-tab__item"
+        [class.active]="activeTab === 'target'"
+        (click)="goToTab('target')"
+      >
+        Target Kinerja Pegawai
+      </button>
+
+      <button
+        type="button"
+        class="tpa-tab__item"
+        [class.active]="activeTab === 'sikap'"
+        (click)="goToTab('sikap')"
+      >
+        Sikap Kerja
+      </button>
+
+      <button
+        type="button"
+        class="tpa-tab__item"
+        [class.active]="activeTab === 'inovasi'"
+        (click)="goToTab('inovasi')"
+      >
+        Inovasi Penghargaan dan Kontribusi
+      </button>
+    </div>
+  </div>
+
+  <!-- TOP INFO (PEGAWAI) -->
+  <div class="top-info-wrapper">
+    <div class="top-info-card">
+      <div class="top-info-card__title">Penilaian Sikap Kerja Pegawai</div>
+
+      <div class="top-info-card__body">
+        <div class="info-line">
+          <div class="info-label">Nama Pegawai</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai?.nama }}</div>
+        </div>
+
+        <div class="info-line">
+          <div class="info-label">NIP</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai?.nip }}</div>
+        </div>
+
+        <div class="info-line">
+          <div class="info-label">Lokasi Kerja</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai?.lokasi }}</div>
+        </div>
+
+        <div class="info-line">
+          <div class="info-label">Periode Penilaian</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai?.periode }}</div>
+        </div>
+
+        <div class="info-line">
+          <div class="info-label">Deskripsi Kerja Sebagai</div>
+          <div class="info-sep">:</div>
+          <div class="info-value">{{ pegawai?.deskripsi }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESKRIPSI -->
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="font-weight-bold mb-1">IPK (Inovasi, Penghargaan, dan Kontribusi)</div>
+      <div class="text-muted f-13">
+        Berikut daftar kegiatan TPA dalam hal inovasi, penghargaan, dan kontribusi.
+        Penilaian merujuk pada beberapa parameter berdasarkan dokumen yang diunggah TPA pada menu detail pegawai (i-Gracias)
+        dan berdasarkan inovasi yang disetujui oleh Pimpinan tertinggi di Fakultas/Direktorat.
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+    INOVASI
+  ========================= -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="section-card">
+        <div class="section-header">INOVASI</div>
+        <div class="section-body">
+
+          <div class="section-top mb-3">
+            <div class="section-left">
+              <div class="font-weight-bold text-uppercase mb-1">Kerja Sama Tim</div>
+              <div class="text-muted f-13">
+                Sikap pegawai dalam menunjukkan keterampilan bekerja dalam kelompok melalui kepemimpinan partisipatif,
+                tanggung jawab bersama, kesediaan tujuan yang saling mengikat serta berkomitmen untuk mencapai nilai yang sudah disepakati sebelumnya.
+              </div>
+            </div>
+
+            <div class="section-right">
+              <div class="table-search">
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Cari"
+                  [(ngModel)]="searchInovasi"
+                  (keyup.enter)="applySearch('inovasi')"
+                />
+                <i class="icofont icofont-search-1"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table
+              datatable
+              [dtOptions]="dtOptions[1]"
+              [dtTrigger]="dtTriggerInovasi"
+              class="table table-bordered table-hover table-sm dataTable"
+            >
+              <thead class="thead-light">
+                <tr>
+                  <th>No</th>
+                  <th>Nama Kegiatan</th>
+                  <th>Detail Kategori</th>
+                  <th>Tipe Kategori</th>
+                  <th>Jabatan</th>
+                  <th>Tanggal</th>
+                  <th>Status Exclude</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+
+              <!-- ✅ tbody hanya satu -->
+              <tbody>
+                <tr *ngFor="let d of dataInovasi; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ d.namaKegiatan }}</td>
+                  <td>{{ d.detailKategori }}</td>
+                  <td>{{ d.tipeKategori }}</td>
+                  <td>{{ d.jabatan }}</td>
+                  <td>{{ d.tanggal }}</td>
+                  <td>{{ d.statusExclude }}</td>
+                  <td class="text-right">{{ d.score }}</td>
+                </tr>
+              </tbody>
+
+              <tfoot>
+                <tr>
+                  <td colspan="7" class="text-center font-weight-bold">Total Score</td>
+                  <td class="text-right font-weight-bold">{{ totalInovasi }}</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+    PENGHARGAAN
+  ========================= -->
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="section-card">
+        <div class="section-header">PENGHARGAAN</div>
+        <div class="section-body">
+
+          <div class="section-top mb-3">
+            <div class="section-left"></div>
+
+            <div class="section-right">
+              <div class="table-search">
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Cari"
+                  [(ngModel)]="searchPenghargaan"
+                  (keyup.enter)="applySearch('penghargaan')"
+                />
+                <i class="icofont icofont-search-1"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table
+              datatable
+              [dtOptions]="dtOptions[2]"
+              [dtTrigger]="dtTriggerPenghargaan"
+              class="table table-bordered table-hover table-sm dataTable"
+            >
+              <thead class="thead-light">
+                <tr>
+                  <th>No</th>
+                  <th>Nama Kegiatan</th>
+                  <th>Detail Kategori</th>
+                  <th>Tipe Kategori</th>
+                  <th>Jabatan</th>
+                  <th>Tanggal</th>
+                  <th>Status Exclude</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+
+              <!-- ✅ tbody hanya satu -->
+              <tbody>
+                <tr *ngFor="let d of dataPenghargaan; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ d.namaKegiatan }}</td>
+                  <td>{{ d.detailKategori }}</td>
+                  <td>{{ d.tipeKategori }}</td>
+                  <td>{{ d.jabatan }}</td>
+                  <td>{{ d.tanggal }}</td>
+                  <td>{{ d.statusExclude }}</td>
+                  <td class="text-right">{{ d.score }}</td>
+                </tr>
+              </tbody>
+
+              <tfoot>
+                <tr>
+                  <td colspan="7" class="text-center font-weight-bold">Total Score</td>
+                  <td class="text-right font-weight-bold">{{ totalPenghargaan }}</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+    KONTRIBUSI
+  ========================= -->
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="section-card">
+        <div class="section-header">KONTRIBUSI</div>
+        <div class="section-body">
+
+          <div class="section-top mb-3">
+            <div class="section-left"></div>
+
+            <div class="section-right">
+              <div class="table-search">
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Cari"
+                  [(ngModel)]="searchKontribusi"
+                  (keyup.enter)="applySearch('kontribusi')"
+                />
+                <i class="icofont icofont-search-1"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table
+              datatable
+              [dtOptions]="dtOptions[3]"
+              [dtTrigger]="dtTriggerKontribusi"
+              class="table table-bordered table-hover table-sm dataTable"
+            >
+              <thead class="thead-light">
+                <tr>
+                  <th>No</th>
+                  <th>Nama Kegiatan</th>
+                  <th>Detail Kategori</th>
+                  <th>Tipe Kategori</th>
+                  <th>Durasi</th>
+                  <th>Jabatan</th>
+                  <th>Tanggal</th>
+                  <th>Surat Tugas</th>
+                  <th>Status Exclude</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+
+              <!-- ✅ tbody hanya satu -->
+              <tbody>
+                <tr *ngFor="let d of dataKontribusi; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ d.namaKegiatan }}</td>
+                  <td>{{ d.detailKategori }}</td>
+                  <td>{{ d.tipeKategori }}</td>
+                  <td>{{ d.durasi }}</td>
+                  <td>{{ d.jabatan }}</td>
+                  <td>{{ d.tanggal }}</td>
+                  <td class="text-center">
+                    <button type="button" class="btn btn-outline-primary btn-sm" (click)="downloadSuratTugas(d)">
+                      <i class="ph-duotone ph-download-simple mr-1"></i> Download
+                    </button>
+                  </td>
+                  <td>{{ d.statusExclude }}</td>
+                  <td class="text-right">{{ d.score }}</td>
+                </tr>
+              </tbody>
+
+              <tfoot>
+                <tr>
+                  <td colspan="9" class="text-center font-weight-bold">Total Score</td>
+                  <td class="text-right font-weight-bold">{{ totalKontribusi }}</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+    TOTAL SCORE
+  ========================= -->
+  <div class="row mt-3 mb-2">
+    <div class="col-12">
+      <div class="section-card">
+        <div class="section-header">TOTAL SCORE</div>
+        <div class="section-body">
+          <div class="total-row">
+            <div class="total-label">Total Seluruh Score</div>
+            <div class="total-sep">:</div>
+            <div class="total-value">{{ totalAllScore }}</div>
+          </div>
+
+          <div class="total-row">
+            <div class="total-label">Total Seluruh Exclude</div>
+            <div class="total-sep">:</div>
+            <div class="total-value">{{ totalAllExclude }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</app-card>
