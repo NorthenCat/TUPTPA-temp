@@ -1,5 +1,5 @@
-import { BroadcasterService } from '../../../_services/broadcaster.service';
-import { AppService } from '../../../_services/app.service';
+import { BroadcasterService } from '../../../../_services/broadcaster.service';
+import { AppService } from '../../../../_services/app.service';
 import { PickListChart } from '../picklist-chart';
 import { Component, Input } from '@angular/core';
 
