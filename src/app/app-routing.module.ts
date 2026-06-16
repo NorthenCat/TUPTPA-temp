@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthComponent } from './shared/template/layout/auth/auth.component';
-import { AdminComponent } from './shared/template/layout/admin/admin.component';
+import { AuthComponent } from './shared/templates/layout/auth/auth.component';
+import { AdminComponent } from './shared/templates/layout/admin/admin.component';
 import { PegawaiKKGuard,AdminGuard, AuthGuard, LoginGuard, RectorGuard, SuperadminGuard } from './_classes/auth.guard';
 
 const routes: Routes = [

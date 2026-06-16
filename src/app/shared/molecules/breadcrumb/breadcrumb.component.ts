@@ -1,4 +1,4 @@
-import { NavigationItem } from 'src/app/shared/template/layout/admin/navigation/navigation';
+import { NavigationItem } from 'src/app/shared/templates/layout/admin/navigation/navigation';
 import { BroadcasterService } from 'src/app/_services/broadcaster.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
