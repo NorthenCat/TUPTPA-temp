@@ -1,26 +1,25 @@
 import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { NavCollapseComponent } from './shared/templates/layout/admin/navigation/nav-content/nav-collapse/nav-collapse.component';
-import { NavGroupComponent } from './shared/templates/layout/admin/navigation/nav-content/nav-group/nav-group.component';
-import { NavItemComponent } from './shared/templates/layout/admin/navigation/nav-content/nav-item/nav-item.component';
-import { NavSearchComponent } from './shared/templates/layout/admin/nav-bar/nav-left/nav-search/nav-search.component';
-import { NavContentComponent } from './shared/templates/layout/admin/navigation/nav-content/nav-content.component';
-import { ConfigurationComponent } from './shared/templates/layout/admin/configuration/configuration.component';
+import { NavCollapseComponent } from './shared/organisms/navigation/nav-content/nav-collapse/nav-collapse.component';
+import { NavGroupComponent } from './shared/organisms/navigation/nav-content/nav-group/nav-group.component';
+import { NavItemComponent } from './shared/organisms/navigation/nav-content/nav-item/nav-item.component';
+import { NavSearchComponent } from './shared/organisms/nav-bar/nav-left/nav-search/nav-search.component';
+import { NavContentComponent } from './shared/organisms/navigation/nav-content/nav-content.component';
+import { ConfigurationComponent } from './shared/organisms/configuration/configuration.component';
 import { BreadcrumbComponent } from './shared/molecules/breadcrumb/breadcrumb.component';
-import { NavRightComponent } from './shared/templates/layout/admin/nav-bar/nav-right/nav-right.component';
+import { NavRightComponent } from './shared/organisms/nav-bar/nav-right/nav-right.component';
 import { AdminGuard, AuthGuard, LoginGuard, RectorGuard } from './_classes/auth.guard';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NavLeftComponent } from './shared/templates/layout/admin/nav-bar/nav-left/nav-left.component';
-import { NavigationComponent } from './shared/templates/layout/admin/navigation/navigation.component';
+import { NavLeftComponent } from './shared/organisms/nav-bar/nav-left/nav-left.component';
+import { NavigationComponent } from './shared/organisms/navigation/navigation.component';
 import { ToggleFullScreenDirective } from './shared/atoms/full-screen/toggle-full-screen';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavBarComponent } from './shared/templates/layout/admin/nav-bar/nav-bar.component';
+import { NavBarComponent } from './shared/organisms/nav-bar/nav-bar.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { NavigationItem } from './shared/templates/layout/admin/navigation/navigation';
+import { NavigationItem } from './shared/organisms/navigation/navigation';
 import { BroadcasterService } from './_services/broadcaster.service';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { AdminComponent } from './shared/templates/layout/admin/admin.component';
 import { BaseInterceptor } from './_services/base.interceptor';
-import { AuthComponent } from './shared/templates/layout/auth/auth.component';
+import { LayoutComponent } from './shared/templates/layout/layout.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { OauthService } from './_services/oauth.service';
 import { MenuResolver } from './_classes/menu.resolver';
@@ -40,8 +39,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent,
-    AuthComponent,
+    LayoutComponent,
     NavigationComponent,
     NavContentComponent,
     NavGroupComponent,

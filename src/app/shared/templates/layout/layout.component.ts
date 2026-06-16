@@ -1,20 +1,21 @@
 import { BroadcasterService } from 'src/app/_services/broadcaster.service';
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { slideInAnimation } from 'src/app/animations';
 import { DefaultConfig } from 'src/app/app-config';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss'],
+  selector: 'app-layout',
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.scss'],
   animations: [
     slideInAnimation
   ]
 })
-export class AdminComponent implements OnInit {
+export class LayoutComponent implements OnInit {
+  public isAdminTemplate = false;
   public nextConfig: any;
   public navCollapsed: boolean;
   public navCollapsedMob: boolean;
@@ -24,8 +25,14 @@ export class AdminComponent implements OnInit {
     public translateService: TranslateService,
     private broadcasterService: BroadcasterService,
     private location: Location,
-    private zone: NgZone
+    private route: ActivatedRoute
   ) {
+    this.isAdminTemplate = this.route.snapshot.data && this.route.snapshot.data['template'] === 'admin';
+
+    if (!this.isAdminTemplate) {
+      return;
+    }
+
     translateService.setDefaultLang(localStorage.getItem('lang'));
     broadcasterService.changeLangBroadcast$.subscribe(res => {
       translateService.setDefaultLang(res.lang);
@@ -51,25 +58,37 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.adjustContainerSize();
+    if (this.isAdminTemplate) {
+      this.adjustContainerSize();
+    }
   }
 
   adjustContainerSize() {
     const el = (document.querySelector('.pcoded-main-container') as HTMLElement);
+    if (!el) {
+      return;
+    }
     el.style.height = 'auto';
     el.style.minHeight = `${window.innerHeight - 190}px`;
     if (this.windowWidth < 992) {
       this.nextConfig.layout = 'vertical';
       setTimeout(() => {
-        document.querySelector('.pcoded-navbar').classList.add('menupos-static');
-        (document.querySelector('#nav-ps-next') as HTMLElement).style.maxHeight = '100%'; // 100% amit
+        const navbar = document.querySelector('.pcoded-navbar');
+        const navScroll = (document.querySelector('#nav-ps-next') as HTMLElement);
+        if (navbar) {
+          navbar.classList.add('menupos-static');
+        }
+        if (navScroll) {
+          navScroll.style.maxHeight = '100%';
+        }
       }, 200);
     }
   }
 
   navMobClick() {
     if (this.windowWidth < 992) {
-      if (this.navCollapsedMob && !(document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open'))) {
+      const mobileNavigation = document.querySelector('app-navigation.pcoded-navbar');
+      if (this.navCollapsedMob && mobileNavigation && !mobileNavigation.classList.contains('mob-open')) {
         this.navCollapsedMob = !this.navCollapsedMob;
         setTimeout(() => {
           this.navCollapsedMob = !this.navCollapsedMob;

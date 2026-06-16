@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthComponent } from './shared/templates/layout/auth/auth.component';
-import { AdminComponent } from './shared/templates/layout/admin/admin.component';
+import { LayoutComponent } from './shared/templates/layout/layout.component';
 import { PegawaiKKGuard,AdminGuard, AuthGuard, LoginGuard, RectorGuard, SuperadminGuard } from './_classes/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: AdminComponent,
+    component: LayoutComponent,
     canActivate: [AuthGuard],
+    data: { template: 'admin' },
     children: [
       {
         path: '',
@@ -110,7 +110,8 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: AuthComponent,
+    component: LayoutComponent,
+    data: { template: 'blank' },
     children: [
       {
         path: 'auth',
