@@ -5,7 +5,7 @@ import { NavItemComponent } from './shared/organisms/navigation/nav-content/nav-
 import { NavSearchComponent } from './shared/organisms/nav-bar/nav-left/nav-search/nav-search.component';
 import { NavContentComponent } from './shared/organisms/navigation/nav-content/nav-content.component';
 import { ConfigurationComponent } from './shared/organisms/configuration/configuration.component';
-import { BreadcrumbComponent } from './shared/molecules/breadcrumb/breadcrumb.component';
+import { BreadcrumbComponent } from './shared/atoms/breadcrumb/breadcrumb.component';
 import { NavRightComponent } from './shared/organisms/nav-bar/nav-right/nav-right.component';
 import { AdminGuard, AuthGuard, LoginGuard, RectorGuard } from './_classes/auth.guard';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
