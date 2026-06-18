@@ -1,6 +1,7 @@
 <button
   [attr.type]="buttonType"
   [ngClass]="classes"
+  [ngbTooltip]="tooltip || null"
   [attr.aria-label]="ariaLabel || null"
   [disabled]="disabled"
   (click)="handleClick($event)">

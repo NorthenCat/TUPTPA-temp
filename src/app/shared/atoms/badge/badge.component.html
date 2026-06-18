@@ -1,0 +1,8 @@
+<ng-container [ngSwitch]="link">
+  <a *ngSwitchCase="true" href="javascript:" [ngClass]="classes">
+    <ng-content></ng-content>
+  </a>
+  <span *ngSwitchDefault [ngClass]="classes">
+    <ng-content></ng-content>
+  </span>
+</ng-container>

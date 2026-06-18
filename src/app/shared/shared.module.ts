@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AlertModule, ButtonModule } from './atoms';
+import { AlertModule, BadgeModule, ButtonModule } from './atoms';
 import { CardModule, ModalModule } from './molecules';
 import { DataFilterPipe } from './organisms/data-table/data-filter.pipe';
-import { ToastShowComponent } from './molecules/toast-show/toast-show.component';
+import { ToastShowComponent } from './atoms/toast-show/toast-show.component';
 import { TodoListRemoveDirective } from './atoms/todo/todo-list-remove.directive';
 import { TodoCardCompleteDirective } from './atoms/todo/todo-card-complete.directive';
 import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -24,9 +24,9 @@ import { SelectOptionService } from './atoms/select/select-option.service';
 import { SpinnerComponent } from './atoms/spinner/spinner.component';
 import { GalleryComponent } from './organisms/gallery/gallery.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { ToastComponent } from './molecules/toast/toast.component';
+import { ToastComponent } from './atoms/toast/toast.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ToastService } from './molecules/toast/toast.service';
+import { ToastService } from './atoms/toast/toast.service';
 import { ShortenerString } from '../_classes/shortenerString';
 import { HttpClient } from '@angular/common/http';
 import { LightboxModule } from 'ngx-lightbox';
@@ -49,6 +49,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FormsModule,
     ReactiveFormsModule,
     AlertModule,
+    BadgeModule,
     ButtonModule,
     CardModule,
     AutocompleteLibModule,
@@ -71,6 +72,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FormsModule,
     ReactiveFormsModule,
     AlertModule,
+    BadgeModule,
     ButtonModule,
     CardModule,
     ModalModule,

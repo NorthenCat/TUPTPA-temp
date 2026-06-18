@@ -15,6 +15,7 @@ export class ButtonComponent {
   @Input() extraClass = '';
   @Input() buttonClass = '';
   @Input() ariaLabel = '';
+  @Input() tooltip = '';
 
   @Output() clicked = new EventEmitter<Event>();
 

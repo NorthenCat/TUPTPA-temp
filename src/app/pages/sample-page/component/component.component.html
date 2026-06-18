@@ -4,26 +4,26 @@
       <div class="col-12 btn-display">
         <app-card cardTitle="Button" [options]="false" iconHeader="ph-duotone ph-key-return">
           <h6 class="text-muted border-bottom pb-1 f-14">Default</h6>
-          <button type="button" class="btn btn-primary" ngbTooltip="btn-primary">Primary</button>
-          <button type="button" class="btn btn-secondary" ngbTooltip="btn-secondary">Secondary</button>
-          <button type="button" class="btn btn-success" ngbTooltip="btn-success">Success</button>
-          <button type="button" class="btn btn-danger" ngbTooltip="btn-danger">Danger</button>
-          <button type="button" class="btn btn-warning" ngbTooltip="btn-warning">Warning</button>
-          <button type="button" class="btn btn-info" ngbTooltip="btn-info">Info</button>
-          <button type="button" class="btn btn-light" ngbTooltip="btn-light">Light</button>
-          <button type="button" class="btn btn-dark" ngbTooltip="btn-dark">Dark</button>
-          <button type="button" class="btn btn-link" ngbTooltip="btn-link">Link</button>
+          <app-button buttonType="button" buttonClass="btn btn-primary" tooltip="btn-primary">Primary</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-secondary" tooltip="btn-secondary">Secondary</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-success" tooltip="btn-success">Success</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-danger" tooltip="btn-danger">Danger</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-warning" tooltip="btn-warning">Warning</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-info" tooltip="btn-info">Info</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-light" tooltip="btn-light">Light</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-dark" tooltip="btn-dark">Dark</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-link" tooltip="btn-link">Link</app-button>
 
           <h6 class="text-muted border-bottom pb-1 f-14 mt-3">Outline</h6>
-          <button type="button" class="btn btn-outline-primary" ngbTooltip="btn-outline-primary">Primary</button>
-          <button type="button" class="btn btn-outline-secondary" ngbTooltip="btn-outline-secondary">Secondary</button>
-          <button type="button" class="btn btn-outline-success" ngbTooltip="btn-outline-success">Success</button>
-          <button type="button" class="btn btn-outline-danger" ngbTooltip="btn-outline-danger">Danger</button>
-          <button type="button" class="btn btn-outline-warning" ngbTooltip="btn-outline-warning">Warning</button>
-          <button type="button" class="btn btn-outline-info" ngbTooltip="btn-outline-info">Info</button>
-          <button type="button" class="btn btn-outline-light" ngbTooltip="btn-outline-light">Light</button>
-          <button type="button" class="btn btn-outline-dark" ngbTooltip="btn-outline-dark">Dark</button>
-          <button type="button" class="btn btn-outline-link" ngbTooltip="btn-outline-link">Link</button>
+          <app-button buttonType="button" buttonClass="btn btn-outline-primary" tooltip="btn-outline-primary">Primary</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-outline-secondary" tooltip="btn-outline-secondary">Secondary</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-outline-success" tooltip="btn-outline-success">Success</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-outline-danger" tooltip="btn-outline-danger">Danger</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-outline-warning" tooltip="btn-outline-warning">Warning</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-outline-info" tooltip="btn-outline-info">Info</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-outline-light" tooltip="btn-outline-light">Light</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-outline-dark" tooltip="btn-outline-dark">Dark</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-outline-link" tooltip="btn-outline-link">Link</app-button>
 
           <h6 class="text-muted border-bottom pb-1 f-14 mt-3">With Icon</h6>
           <app-button buttonType="button" buttonClass="btn btn-primary"><i class="feather icon-thumbs-up"></i> Primary</app-button>
@@ -571,63 +571,63 @@
       <div class="col-12 btn-display">
         <app-card cardTitle="Badge" [options]="false" iconHeader="ph-duotone ph-check-square">
           <h6 class="text-muted border-bottom mt-3">Contextual Variations</h6>
-          <span class="badge m-r-5 badge-primary">Primary</span>
-          <span class="badge m-r-5 badge-secondary">Secondary</span>
-          <span class="badge m-r-5 badge-success">Success</span>
-          <span class="badge m-r-5 badge-danger">Danger</span>
-          <span class="badge m-r-5 badge-warning">Warning</span>
-          <span class="badge m-r-5 badge-info">Info</span>
-          <span class="badge m-r-5 badge-light">Light</span>
-          <span class="badge badge-dark">Dark</span>
+          <app-badge variant="primary">Primary</app-badge>
+          <app-badge variant="secondary">Secondary</app-badge>
+          <app-badge variant="success">Success</app-badge>
+          <app-badge variant="danger">Danger</app-badge>
+          <app-badge variant="warning">Warning</app-badge>
+          <app-badge variant="info">Info</app-badge>
+          <app-badge variant="light">Light</app-badge>
+          <app-badge variant="dark" extraClass="">Dark</app-badge>
 
           <h6 class="text-muted border-bottom pb-1 f-14 mt-3">Pill Badges</h6>
-          <span class="badge m-r-5 badge-pill badge-primary">Primary</span>
-          <span class="badge m-r-5 badge-pill badge-secondary">Secondary</span>
-          <span class="badge m-r-5 badge-pill badge-success">Success</span>
-          <span class="badge m-r-5 badge-pill badge-danger">Danger</span>
-          <span class="badge m-r-5 badge-pill badge-warning">Warning</span>
-          <span class="badge m-r-5 badge-pill badge-info">Info</span>
-          <span class="badge m-r-5 badge-pill badge-light">Light</span>
-          <span class="badge badge-pill badge-dark">Dark</span>
+          <app-badge variant="primary" [pill]="true">Primary</app-badge>
+          <app-badge variant="secondary" [pill]="true">Secondary</app-badge>
+          <app-badge variant="success" [pill]="true">Success</app-badge>
+          <app-badge variant="danger" [pill]="true">Danger</app-badge>
+          <app-badge variant="warning" [pill]="true">Warning</app-badge>
+          <app-badge variant="info" [pill]="true">Info</app-badge>
+          <app-badge variant="light" [pill]="true">Light</app-badge>
+          <app-badge variant="dark" [pill]="true" extraClass="">Dark</app-badge>
 
           <h6 class="text-muted border-bottom pb-1 f-14 mt-3">Links</h6>
-          <a href="javascript:" class="badge m-r-5 badge-primary">Primary</a>
-          <a href="javascript:" class="badge m-r-5 badge-secondary">Secondary</a>
-          <a href="javascript:" class="badge m-r-5 badge-success">Success</a>
-          <a href="javascript:" class="badge m-r-5 badge-danger">Danger</a>
-          <a href="javascript:" class="badge m-r-5 badge-warning">Warning</a>
-          <a href="javascript:" class="badge m-r-5 badge-info">Info</a>
-          <a href="javascript:" class="badge m-r-5 badge-light">Light</a>
-          <a href="javascript:" class="badge badge-dark">Dark</a>
+          <app-badge variant="primary" [link]="true">Primary</app-badge>
+          <app-badge variant="secondary" [link]="true">Secondary</app-badge>
+          <app-badge variant="success" [link]="true">Success</app-badge>
+          <app-badge variant="danger" [link]="true">Danger</app-badge>
+          <app-badge variant="warning" [link]="true">Warning</app-badge>
+          <app-badge variant="info" [link]="true">Info</app-badge>
+          <app-badge variant="light" [link]="true">Light</app-badge>
+          <app-badge variant="dark" [link]="true" extraClass="">Dark</app-badge>
 
           <h6 class="text-muted border-bottom pb-1 f-14 mt-3">Light variant</h6>
-          <span class="badge m-r-5 badge-light-primary">Primary</span>
-          <span class="badge m-r-5 badge-light-secondary">Secondary</span>
-          <span class="badge m-r-5 badge-light-success">Success</span>
-          <span class="badge m-r-5 badge-light-danger">Danger</span>
-          <span class="badge m-r-5 badge-light-warning">Warning</span>
-          <span class="badge m-r-5 badge-light-info">Info</span>
-          <span class="badge m-r-5 badge-light-light">Light</span>
-          <span class="badge badge-light-dark">Dark</span>
+          <app-badge variant="primary" [light]="true">Primary</app-badge>
+          <app-badge variant="secondary" [light]="true">Secondary</app-badge>
+          <app-badge variant="success" [light]="true">Success</app-badge>
+          <app-badge variant="danger" [light]="true">Danger</app-badge>
+          <app-badge variant="warning" [light]="true">Warning</app-badge>
+          <app-badge variant="info" [light]="true">Info</app-badge>
+          <app-badge variant="light" [light]="true">Light</app-badge>
+          <app-badge variant="dark" [light]="true" extraClass="">Dark</app-badge>
         </app-card>
       </div>
 
       <div class="col-12 btn-display">
         <app-card cardTitle="Notification" [options]="false" iconHeader="ph-duotone ph-notification">
           <h6 class="text-muted border-bottom pb-1 f-14">Notification (Click to try!)</h6>
-          <button type="button" (click)="showAlertSuccess()" class="btn btn-success" ngbTooltip="btn-success">Success</button>
-          <button type="button" (click)="showAlertError()" class="btn btn-danger" ngbTooltip="btn-danger">Danger</button>
-          <button type="button" (click)="showAlertWarning()" class="btn btn-warning" ngbTooltip="btn-warning">Warning</button>
-          <button type="button" (click)="showAlertInfo()" class="btn btn-primary" ngbTooltip="btn-primary">Info</button>
+          <app-button buttonType="button" (click)="showAlertSuccess()" buttonClass="btn btn-success" tooltip="btn-success">Success</app-button>
+          <app-button buttonType="button" (click)="showAlertError()" buttonClass="btn btn-danger" tooltip="btn-danger">Danger</app-button>
+          <app-button buttonType="button" (click)="showAlertWarning()" buttonClass="btn btn-warning" tooltip="btn-warning">Warning</app-button>
+          <app-button buttonType="button" (click)="showAlertInfo()" buttonClass="btn btn-primary" tooltip="btn-primary">Info</app-button>
         </app-card>
 
         <app-card cardTitle="Modal" [options]="false">
           <h6 class="text-muted border-bottom pb-1 f-14">Modal (Click to try!)</h6>
-          <button type="button" (click)="modalSm.show()" class="btn btn-outline-primary" ngbTooltip="modal-sm">Small</button>
-          <button type="button" (click)="modalDefault.show()" class="btn btn-outline-primary" ngbTooltip="modal-default">Default</button>
-          <button type="button" (click)="modalLarge.show()" class="btn btn-outline-primary" ngbTooltip="modal-lg">Large</button>
-          <button type="button" (click)="modalExtraLarge.show()" class="btn btn-outline-primary" ngbTooltip="modal-xl">Extra Large</button>
-          <button type="button" (click)="modal('open')" class="btn btn-outline-primary" ngbTooltip="modal-fs">Full Screen</button>
+          <app-button buttonType="button" (click)="modalSm.show()" buttonClass="btn btn-outline-primary" tooltip="modal-sm">Small</app-button>
+          <app-button buttonType="button" (click)="modalDefault.show()" buttonClass="btn btn-outline-primary" tooltip="modal-default">Default</app-button>
+          <app-button buttonType="button" (click)="modalLarge.show()" buttonClass="btn btn-outline-primary" tooltip="modal-lg">Large</app-button>
+          <app-button buttonType="button" (click)="modalExtraLarge.show()" buttonClass="btn btn-outline-primary" tooltip="modal-xl">Extra Large</app-button>
+          <app-button buttonType="button" (click)="modal('open')" buttonClass="btn btn-outline-primary" tooltip="modal-fs">Full Screen</app-button>
         </app-card>
       </div>
 
