@@ -26,20 +26,20 @@
           <button type="button" class="btn btn-outline-link" ngbTooltip="btn-outline-link">Link</button>
 
           <h6 class="text-muted border-bottom pb-1 f-14 mt-3">With Icon</h6>
-          <button type="button" class="btn btn-primary"><i class="feather icon-thumbs-up"></i> Primary</button>
-          <button type="button" class="btn btn-secondary"><i class="feather icon-camera"></i> Secondary</button>
-          <button type="button" class="btn btn-success"><i class="feather icon-check-circle"></i> Success</button>
-          <button type="button" class="btn btn-danger"><i class="feather icon-slash"></i> Danger</button>
-          <button type="button" class="btn btn-warning"><i class="feather icon-alert-triangle"></i> Warning</button>
-          <button type="button" class="btn btn-info"><i class="feather icon-info"></i> Info</button>
+          <app-button buttonType="button" buttonClass="btn btn-primary"><i class="feather icon-thumbs-up"></i> Primary</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-secondary"><i class="feather icon-camera"></i> Secondary</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-success"><i class="feather icon-check-circle"></i> Success</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-danger"><i class="feather icon-slash"></i> Danger</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-warning"><i class="feather icon-alert-triangle"></i> Warning</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-info"><i class="feather icon-info"></i> Info</app-button>
 
           <h6 class="text-muted border-bottom pb-1 f-14 mt-3">Size</h6>
-          <button type="button" class="btn btn-outline-primary btn-sm"><i class="feather icon-thumbs-up"></i> Small button</button>
-          <button type="button" class="btn btn-secondary btn-sm"><i class="feather icon-camera"></i> Small button</button>
-          <button type="button" class="btn btn-success"><i class="feather icon-check-circle"></i> Default button</button>
-          <button type="button" class="btn btn-danger"><i class="feather icon-slash"></i> Default button</button>
-          <button type="button" class="btn btn-warning btn-lg"><i class="feather icon-alert-triangle"></i> Default button</button>
-          <button type="button" class="btn btn-info btn-lg"><i class="feather icon-info"></i> Large button</button>
+          <app-button buttonType="button" buttonClass="btn btn-outline-primary btn-sm"><i class="feather icon-thumbs-up"></i> Small button</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-secondary btn-sm"><i class="feather icon-camera"></i> Small button</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-success"><i class="feather icon-check-circle"></i> Default button</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-danger"><i class="feather icon-slash"></i> Default button</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-warning btn-lg"><i class="feather icon-alert-triangle"></i> Default button</app-button>
+          <app-button buttonType="button" buttonClass="btn btn-info btn-lg"><i class="feather icon-info"></i> Large button</app-button>
 
           <h6 class="text-muted border-bottom pb-1 f-14 mt-3">Basic Dropdown Button</h6>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
@@ -93,7 +93,7 @@
 
           <h6 class="text-muted border-bottom pb-1 f-14 mt-3">Split Dropdown Button</h6>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button type="button" class="btn btn-primary btn-sm">Primary</button>
+            <app-button buttonType="button" buttonClass="btn btn-primary btn-sm">Primary</app-button>
             <button type="button" class="btn btn-primary btn-sm dropdown-toggle-split" ngbDropdownToggle>
               <span class="sr-only">Toggle Dropdown</span>
             </button>
@@ -106,7 +106,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button type="button" class="btn btn-secondary">Secondary</button>
+            <app-button buttonType="button" buttonClass="btn btn-secondary">Secondary</app-button>
             <button type="button" class="btn btn-secondary dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
@@ -117,7 +117,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button type="button" class="btn btn-success">Success</button>
+            <app-button buttonType="button" buttonClass="btn btn-success">Success</app-button>
             <button type="button" class="btn btn-success dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
@@ -128,7 +128,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button type="button" class="btn btn-danger">Danger</button>
+            <app-button buttonType="button" buttonClass="btn btn-danger">Danger</app-button>
             <button type="button" class="btn btn-danger dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
@@ -139,7 +139,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button type="button" class="btn btn-warning">Warning</button>
+            <app-button buttonType="button" buttonClass="btn btn-warning">Warning</app-button>
             <button type="button" class="btn btn-warning dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
@@ -150,7 +150,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button type="button" class="btn btn-info">Info</button>
+            <app-button buttonType="button" buttonClass="btn btn-info">Info</app-button>
             <button type="button" class="btn btn-info dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
@@ -213,7 +213,7 @@
 
           <h6 class="text-muted border-bottom pb-1 f-14 mt-3">Split Outline Dropdown Button</h6>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button type="button" class="btn btn-outline-primary">Primary</button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-primary">Primary</app-button>
             <button type="button" class="btn btn-outline-primary dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
@@ -224,7 +224,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button type="button" class="btn btn-outline-secondary">Secondary</button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-secondary">Secondary</app-button>
             <button type="button" class="btn btn-outline-secondary dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
@@ -235,7 +235,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button type="button" class="btn btn-outline-success">Success</button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-success">Success</app-button>
             <button type="button" class="btn btn-outline-success dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
@@ -246,7 +246,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button type="button" class="btn btn-outline-danger">Danger</button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-danger">Danger</app-button>
             <button type="button" class="btn btn-outline-danger dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
@@ -257,7 +257,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button type="button" class="btn btn-outline-warning">Warning</button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-warning">Warning</app-button>
             <button type="button" class="btn btn-outline-warning dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
@@ -268,7 +268,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button type="button" class="btn btn-outline-info">Info</button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-info">Info</app-button>
             <button type="button" class="btn btn-outline-info dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
@@ -779,9 +779,9 @@
   </div>
   <div class="app-modal-footer">
     <div class="col-12 text-right middle-content p-0">
-      <button type="button" class="btn btn-secondary btn-sm" (click)="modalSm.hide()">
+      <app-button buttonType="button" buttonClass="btn btn-secondary btn-sm" (click)="modalSm.hide()">
         <i class="icofont icofont-close"></i> {{ 'ROOT.close' | translate }}
-      </button>
+      </app-button>
     </div>
   </div>
 </app-ui-modal>
@@ -802,9 +802,9 @@
   </div>
   <div class="app-modal-footer">
     <div class="col-12 text-right middle-content p-0">
-        <button type="button" class="btn btn-secondary btn-sm" (click)="modalDefault.hide()">
+        <app-button buttonType="button" buttonClass="btn btn-secondary btn-sm" (click)="modalDefault.hide()">
           <i class="icofont icofont-close"></i> {{ 'ROOT.close' | translate }}
-        </button>
+        </app-button>
     </div>
   </div>
 </app-ui-modal>
@@ -825,9 +825,9 @@
   </div>
   <div class="app-modal-footer">
     <div class="col-12 text-right middle-content p-0">
-        <button type="button" class="btn btn-secondary btn-sm" (click)="modalLarge.hide()">
+        <app-button buttonType="button" buttonClass="btn btn-secondary btn-sm" (click)="modalLarge.hide()">
           <i class="icofont icofont-close"></i> {{ 'ROOT.close' | translate }}
-        </button>
+        </app-button>
     </div>
   </div>
 </app-ui-modal>
@@ -848,9 +848,9 @@
   </div>
   <div class="app-modal-footer">
     <div class="col-12 text-right middle-content p-0">
-        <button type="button" class="btn btn-secondary btn-sm" (click)="modalExtraLarge.hide()">
+        <app-button buttonType="button" buttonClass="btn btn-secondary btn-sm" (click)="modalExtraLarge.hide()">
           <i class="icofont icofont-close"></i> {{ 'ROOT.close' | translate }}
-        </button>
+        </app-button>
     </div>
   </div>
 </app-ui-modal>
@@ -871,9 +871,9 @@
   </div>
   <div class="app-modal-footer">
     <div class="col-12 text-right middle-content p-0">
-        <button type="button" class="btn btn-secondary btn-sm" (click)="modal('close')">
+        <app-button buttonType="button" buttonClass="btn btn-secondary btn-sm" (click)="modal('close')">
           <i class="icofont icofont-close"></i> {{ 'ROOT.close' | translate }}
-        </button>
+        </app-button>
     </div>
   </div>
 </app-ui-modal>

@@ -43,7 +43,7 @@
             <label class="form-check-label" for="gridCheck">Check me out</label>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <app-button buttonType="submit" buttonClass="btn btn-primary">Sign in</app-button>
       </form>
     </app-card>
   </div>
@@ -268,12 +268,12 @@
           <div class="col-12 text-right">
             <div class="form-group mb-2">
               <div class="btn-group">
-                <button type="button" (click)="resetFormFloat()" class="btn btn-warning">
+                <app-button buttonType="button" (click)="resetFormFloat()" buttonClass="btn btn-warning">
                   <i class="icofont icofont-refresh"></i> {{ 'ROOT.reset' | translate }}
-                </button>
-                <button type="submit" class="btn btn-primary" [disabled]="formUsers.invalid">
+                </app-button>
+                <app-button buttonType="submit" buttonClass="btn btn-primary" [disabled]="formUsers.invalid">
                   <i class="ti-save"></i> {{ 'ROOT.save' | translate }}
-                </button>
+                </app-button>
               </div>
             </div>
           </div>
@@ -331,12 +331,12 @@
             <div class="col-12 text-right">
               <div class="form-group mb-2">
                 <div class="btn-group">
-                  <button type="button" (click)="resetForm()" class="btn btn-warning btn-sm">
+                  <app-button buttonType="button" (click)="resetForm()" buttonClass="btn btn-warning btn-sm">
                     <i class="icofont icofont-refresh"></i> {{ 'ROOT.reset' | translate }}
-                  </button>
-                  <button type="submit" class="btn btn-primary btn-sm" [disabled]="formPlayers.invalid">
+                  </app-button>
+                  <app-button buttonType="submit" buttonClass="btn btn-primary btn-sm" [disabled]="formPlayers.invalid">
                     <i class="ti-save"></i> {{ 'ROOT.save' | translate }}
-                  </button>
+                  </app-button>
                 </div>
               </div>
             </div>
@@ -410,9 +410,9 @@
               </ng-select>
             </div>
             <div class="col-12 col-md-2 ml-auto text-right">
-              <button type="button" class="btn btn-outline-primary py-1 f-14 rounded">
+              <app-button buttonType="button" buttonClass="btn btn-outline-primary py-1 f-14 rounded">
                 <i class="icofont icofont-filter"></i> {{ 'ROOT.apply' | translate }}
-              </button>
+              </app-button>
             </div>
           </app-filter-container>
         </div>

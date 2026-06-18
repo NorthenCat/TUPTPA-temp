@@ -90,13 +90,9 @@
       <div class="tpa-box__header">
         <div class="tpa-box__title">Objektif</div>
 
-        <button
-          type="button"
-          class="btn btn-outline-primary btn-sm tpa-btn-edit"
-          (click)="onEditObjektif()"
-        >
+        <app-button buttonType="button" buttonClass="btn btn-outline-primary btn-sm tpa-btn-edit" (click)="onEditObjektif()">
           <i class="icofont icofont-pencil-alt-5 mr-1"></i> Edit
-        </button>
+        </app-button>
       </div>
 
       <div class="tpa-box__body">
@@ -109,12 +105,12 @@
         ></textarea>
 
         <div class="tpa-form-actions" *ngIf="isObjektifEdit">
-          <button type="button" class="btn btn-outline-secondary btn-sm px-4" (click)="onCancelObjektif()">
+          <app-button buttonType="button" buttonClass="btn btn-outline-secondary btn-sm px-4" (click)="onCancelObjektif()">
             Batal
-          </button>
-          <button type="button" class="btn btn-primary btn-sm px-4" (click)="onSaveObjektif()">
+          </app-button>
+          <app-button buttonType="button" buttonClass="btn btn-primary btn-sm px-4" (click)="onSaveObjektif()">
             Simpan
-          </button>
+          </app-button>
         </div>
 
         <div class="tpa-note-yellow mt-3">
@@ -189,20 +185,20 @@
                 (keyup.enter)="onSearch()"
                 (ngModelChange)="onKeywordChange()"
               />
-              <button type="button" class="tpa-search__btn" (click)="onSearch()">
+              <app-button buttonType="button" buttonClass="tpa-search__btn" (click)="onSearch()">
                 <i class="icofont icofont-search"></i>
-              </button>
+              </app-button>
             </div>
           </div>
 
           <div class="tpa-toolbar__right">
-            <button type="button" class="btn btn-outline-primary btn-sm tpa-btn-outline" (click)="downloadSKI()">
+            <app-button buttonType="button" buttonClass="btn btn-outline-primary btn-sm tpa-btn-outline" (click)="downloadSKI()">
               <i class="ph-duotone ph-download-simple mr-1"></i> Download SKI
-            </button>
+            </app-button>
 
-            <button type="button" class="btn btn-primary btn-sm tpa-btn-primary" (click)="openTambahTkp()">
+            <app-button buttonType="button" buttonClass="btn btn-primary btn-sm tpa-btn-primary" (click)="openTambahTkp()">
               <i class="icofont icofont-plus mr-1"></i> Tambah Target Kinerja Pegawai
-            </button>
+            </app-button>
           </div>
         </div>
 
@@ -237,9 +233,9 @@
                 <td>{{ row.referensi }}</td>
 
                 <td class="text-center">
-                  <button type="button" class="btn btn-outline-success btn-sm tpa-btn-download">
+                  <app-button buttonType="button" buttonClass="btn btn-outline-success btn-sm tpa-btn-download">
                     <i class="ph-duotone ph-download-simple mr-1"></i> Download
-                  </button>
+                  </app-button>
                 </td>
 
                 <td class="text-center">
@@ -252,15 +248,15 @@
                   </button>
 
 
-                  <button type="button" class="btn tpa-icon-btn tpa-icon-btn--primary" (click)="onEditRow(row)">
+                  <app-button buttonType="button" buttonClass="btn tpa-icon-btn tpa-icon-btn--primary" (click)="onEditRow(row)">
                     <i class="icofont icofont-ui-edit"></i>
-                  </button>
+                  </app-button>
                 </td>
 
                 <td class="text-center">
-                  <button type="button" class="btn tpa-expand-btn" (click)="toggleExpand(row)">
+                  <app-button buttonType="button" buttonClass="btn tpa-expand-btn" (click)="toggleExpand(row)">
                     <i class="icofont" [ngClass]="row.expanded ? 'icofont-simple-up' : 'icofont-simple-down'"></i>
-                  </button>
+                  </app-button>
                 </td>
               </tr>
             </tbody>
@@ -279,13 +275,13 @@
     </div>
 
     <div class="tpa-footer-actions">
-      <button type="button" class="btn tpa-btn-draft" (click)="simpanDraftDTKP()">
+      <app-button buttonType="button" buttonClass="btn tpa-btn-draft" (click)="simpanDraftDTKP()">
         Simpan Draft DTKP
-      </button>
+      </app-button>
 
-      <button type="button" class="btn tpa-btn-submit" (click)="ajukanDTKP()">
+      <app-button buttonType="button" buttonClass="btn tpa-btn-submit" (click)="ajukanDTKP()">
         Ajukan DTKP
-      </button>
+      </app-button>
     </div>
 
   </div>
@@ -312,9 +308,9 @@
 <!-- ========================= -->
 <div class="tpa-modal-wrap" *ngIf="showDeleteConfirm">
   <div class="tpa-modal-card">
-    <button type="button" class="tpa-modal-close" (click)="closeDeleteConfirm()" aria-label="Close">
+    <app-button buttonType="button" buttonClass="tpa-modal-close" (click)="closeDeleteConfirm()" ariaLabel="Close">
       &times;
-    </button>
+    </app-button>
 
     <div class="tpa-modal-body text-center">
       <div class="tpa-modal-icon tpa-modal-icon--danger">
@@ -331,23 +327,13 @@
     </div>
 
     <div class="tpa-modal-footer">
-      <button
-        type="button"
-        class="btn btn-primary btn-lg tpa-btn-wide"
-        (click)="closeDeleteConfirm()"
-        [disabled]="loadingDelete"
-      >
+      <app-button buttonType="button" buttonClass="btn btn-primary btn-lg tpa-btn-wide" (click)="closeDeleteConfirm()" [disabled]="loadingDelete">
         Batal
-      </button>
+      </app-button>
 
-      <button
-        type="button"
-        class="btn btn-outline-secondary btn-lg tpa-btn-wide"
-        (click)="confirmDelete()"
-        [disabled]="loadingDelete"
-      >
+      <app-button buttonType="button" buttonClass="btn btn-outline-secondary btn-lg tpa-btn-wide" (click)="confirmDelete()" [disabled]="loadingDelete">
         Ya, Hapus
-      </button>
+      </app-button>
     </div>
   </div>
 </div>
@@ -357,9 +343,9 @@
 <!-- ========================= -->
 <div class="tpa-modal-wrap" *ngIf="showDeleteSuccess">
   <div class="tpa-modal-card">
-    <button type="button" class="tpa-modal-close" (click)="closeDeleteSuccess()" aria-label="Close">
+    <app-button buttonType="button" buttonClass="tpa-modal-close" (click)="closeDeleteSuccess()" ariaLabel="Close">
       &times;
-    </button>
+    </app-button>
 
     <div class="tpa-modal-body text-center">
       <div class="tpa-modal-icon tpa-modal-icon--success">
@@ -374,9 +360,9 @@
     </div>
 
     <div class="tpa-modal-footer">
-      <button type="button" class="btn btn-primary btn-lg w-100" (click)="closeDeleteSuccess()">
+      <app-button buttonType="button" buttonClass="btn btn-primary btn-lg w-100" (click)="closeDeleteSuccess()">
         Selesai
-      </button>
+      </app-button>
     </div>
   </div>
 </div>

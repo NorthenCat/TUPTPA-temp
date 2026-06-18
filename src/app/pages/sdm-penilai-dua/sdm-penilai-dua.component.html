@@ -37,14 +37,9 @@
         </div>
 
         <div class="col-12 col-md-2 text-right d-flex align-items-center justify-content-end">
-          <button
-            type="button"
-            class="btn btn-outline-primary py-1 f-14 rounded"
-            (click)="applyFilter()"
-            [disabled]="isApplyDisabled"
-          >
+          <app-button buttonType="button" buttonClass="btn btn-outline-primary py-1 f-14 rounded" (click)="applyFilter()" [disabled]="isApplyDisabled">
             <i class="icofont icofont-filter"></i> Terapkan
-          </button>
+          </app-button>
         </div>
       </app-filter-container>
 
@@ -56,13 +51,13 @@
         <div class="dt-filter-host" #dtFilterHost></div>
 
         <div class="ddt-actions-source">
-          <button type="button" class="btn btn-primary py-1 f-14 rounded mr-2" (click)="openGenerateIpk()">
+          <app-button buttonType="button" buttonClass="btn btn-primary py-1 f-14 rounded mr-2" (click)="openGenerateIpk()">
             <i class="icofont icofont-refresh"></i> Generate Data IPK
-          </button>
+          </app-button>
 
-          <button type="button" class="btn btn-success py-1 f-14 rounded" (click)="openBangkitkanData()" [disabled]="loadingTable">
+          <app-button buttonType="button" buttonClass="btn btn-success py-1 f-14 rounded" (click)="openBangkitkanData()" [disabled]="loadingTable">
             <i class="icofont icofont-plus"></i> Bangkitkan Data
-          </button>
+          </app-button>
         </div>
       </div>
 
@@ -102,9 +97,9 @@
               <td class="text-center">{{ data.jumlahPenilaian }}</td>
               <td class="text-center">{{ data.penilaianSelesai }}</td>
               <td class="text-center">
-                <button type="button" class="btn btn-outline-secondary btn-sm" (click)="onDetail(data)">
+                <app-button buttonType="button" buttonClass="btn btn-outline-secondary btn-sm" (click)="onDetail(data)">
                   <i class="ti-eye"></i> Detail
-                </button>
+                </app-button>
               </td>
             </tr>
           </tbody>
@@ -165,22 +160,13 @@
 
   <div class="app-modal-footer">
     <div class="col-12 text-right p-0">
-      <button
-        type="button"
-        class="btn btn-light btn-sm mr-2"
-        (click)="closeGenerateIpk()"
-      >
+      <app-button buttonType="button" buttonClass="btn btn-light btn-sm mr-2" (click)="closeGenerateIpk()">
         Batal
-      </button>
+      </app-button>
 
-      <button
-        type="button"
-        class="btn btn-primary btn-sm"
-        (click)="confirmGenerateIpk()"
-        [disabled]="formGenerateIpk.invalid || loadingModal"
-      >
+      <app-button buttonType="button" buttonClass="btn btn-primary btn-sm" (click)="confirmGenerateIpk()" [disabled]="formGenerateIpk.invalid || loadingModal">
         Simpan
-      </button>
+      </app-button>
     </div>
   </div>
 </app-ui-modal>
@@ -190,9 +176,9 @@
 <app-ui-modal #modalBangkitkanData [containerClick]="false" [hideFooter]="false" [loading]="loadingModalBangkitkan">
   <div class="app-modal-header">
     <h5 class="modal-title">Bangkitkan Data</h5>
-    <button type="button" class="close basic-close" aria-label="Close" (click)="closeBangkitkanData()">
+    <app-button buttonType="button" buttonClass="close basic-close" ariaLabel="Close" (click)="closeBangkitkanData()">
       <span aria-hidden="true">&times;</span>
-    </button>
+    </app-button>
   </div>
 
   <div class="app-modal-body">
@@ -255,18 +241,13 @@
 
   <div class="app-modal-footer">
     <div class="col-12 text-right p-0">
-      <button type="button" class="btn btn-light btn-sm mr-2" (click)="closeBangkitkanData()">
+      <app-button buttonType="button" buttonClass="btn btn-light btn-sm mr-2" (click)="closeBangkitkanData()">
         Batal
-      </button>
+      </app-button>
 
-      <button
-        type="button"
-        class="btn btn-primary btn-sm"
-        (click)="confirmBangkitkanData()"
-        [disabled]="formBangkitkanData.invalid || loadingModalBangkitkan"
-      >
+      <app-button buttonType="button" buttonClass="btn btn-primary btn-sm" (click)="confirmBangkitkanData()" [disabled]="formBangkitkanData.invalid || loadingModalBangkitkan">
         Bangkitkan
-      </button>
+      </app-button>
     </div>
   </div>
 </app-ui-modal>

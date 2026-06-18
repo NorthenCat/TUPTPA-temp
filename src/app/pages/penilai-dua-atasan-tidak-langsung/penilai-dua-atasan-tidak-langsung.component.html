@@ -23,14 +23,9 @@
         </div>
 
         <div class="col-12 col-md-2 text-right d-flex align-items-center justify-content-end">
-          <button
-            type="button"
-            class="btn btn-outline-primary py-1 f-14 rounded"
-            (click)="applyFilter()"
-            [disabled]="isApplyDisabled"
-          >
+          <app-button buttonType="button" buttonClass="btn btn-outline-primary py-1 f-14 rounded" (click)="applyFilter()" [disabled]="isApplyDisabled">
             <i class="icofont icofont-filter"></i> Terapkan
-          </button>
+          </app-button>
         </div>
       </app-filter-container>
 
@@ -70,13 +65,9 @@
               <td class="text-center">{{ data.jumlahPenilaian }}</td>
               <td class="text-center">{{ data.penilaianSelesai }}</td>
               <td class="text-center">
-                <button
-                  type="button"
-                  class="btn btn-outline-secondary btn-sm"
-                  (click)="onDetail(data)"
-                >
+                <app-button buttonType="button" buttonClass="btn btn-outline-secondary btn-sm" (click)="onDetail(data)">
                   <i class="ti-eye"></i> Detail
-                </button>
+                </app-button>
               </td>
             </tr>
           </tbody>

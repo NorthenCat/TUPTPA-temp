@@ -23,13 +23,9 @@
           </div>
         </div>
         <div class="col-12 col-md-6 text-md-right mt-3 mt-md-0">
-          <button
-            type="button"
-            class="btn btn-primary btn-sm rounded"
-            (click)="openModal()"
-          >
+          <app-button buttonType="button" buttonClass="btn btn-primary btn-sm rounded" (click)="openModal()">
             <i class="icofont icofont-plus"></i> Tambah Template
-          </button>
+          </app-button>
         </div>
       </div>
 
@@ -77,21 +73,13 @@
               <td class="text-uppercase">{{ row.dibuatOleh }}</td>
 
               <td>
-                <button
-                  type="button"
-                  class="btn btn-warning btn-sm mr-1"
-                  (click)="onEdit(row)"
-                >
+                <app-button buttonType="button" buttonClass="btn btn-warning btn-sm mr-1" (click)="onEdit(row)">
                   <i class="ti-pencil"></i>
-                </button>
+                </app-button>
 
-                <button
-                  type="button"
-                  class="btn btn-primary btn-sm"
-                  (click)="onDetail(row)"
-                >
+                <app-button buttonType="button" buttonClass="btn btn-primary btn-sm" (click)="onDetail(row)">
                   <i class="ti-eye"></i>
-                </button>
+                </app-button>
               </td>
             </tr>
           </tbody>
@@ -119,14 +107,9 @@
   <div class="app-modal-header">
     <h5 class="modal-title">Buat Konten Periode Penilaian</h5>
 
-    <button
-      type="button"
-      class="close basic-close"
-      aria-label="Close"
-      (click)="closeModal()"
-    >
+    <app-button buttonType="button" buttonClass="close basic-close" ariaLabel="Close" (click)="closeModal()">
       <span aria-hidden="true">&times;</span>
-    </button>
+    </app-button>
   </div>
 
   <div class="app-modal-body">
@@ -168,14 +151,9 @@
               (change)="onNativeDateChange('tglMulai', $event)"
             />
 
-            <button
-              type="button"
-              class="mt-icon-btn"
-              aria-label="Kalender"
-              (click)="openNativePicker(pickerMulai)"
-            >
+            <app-button buttonType="button" buttonClass="mt-icon-btn" ariaLabel="Kalender" (click)="openNativePicker(pickerMulai)">
               <i class="icofont icofont-calendar"></i>
-            </button>
+            </app-button>
           </div>
 
           <div
@@ -204,14 +182,9 @@
               (change)="onNativeDateChange('tglAkhir', $event)"
             />
 
-            <button
-              type="button"
-              class="mt-icon-btn"
-              aria-label="Kalender"
-              (click)="openNativePicker(pickerAkhir)"
-            >
+            <app-button buttonType="button" buttonClass="mt-icon-btn" ariaLabel="Kalender" (click)="openNativePicker(pickerAkhir)">
               <i class="icofont icofont-calendar"></i>
-            </button>
+            </app-button>
           </div>
 
           <div
@@ -242,14 +215,9 @@
             (change)="onNativeDateChange('tmt', $event)"
           />
 
-          <button
-            type="button"
-            class="mt-icon-btn"
-            aria-label="Kalender"
-            (click)="openNativePicker(pickerTmt)"
-          >
+          <app-button buttonType="button" buttonClass="mt-icon-btn" ariaLabel="Kalender" (click)="openNativePicker(pickerTmt)">
             <i class="icofont icofont-calendar"></i>
-          </button>
+          </app-button>
         </div>
 
         <div
@@ -272,13 +240,13 @@
 
       <!-- Footer tombol -->
       <div class="d-flex justify-content-end mt-3">
-        <button type="button" class="btn btn-secondary btn-sm mr-2" (click)="closeModal()">
+        <app-button buttonType="button" buttonClass="btn btn-secondary btn-sm mr-2" (click)="closeModal()">
           <i class="icofont icofont-close"></i> Batal
-        </button>
+        </app-button>
 
-        <button type="submit" class="btn btn-success btn-sm" [disabled]="form.invalid">
+        <app-button buttonType="submit" buttonClass="btn btn-success btn-sm" [disabled]="form.invalid">
           <i class="icofont icofont-save"></i> Simpan
-        </button>
+        </app-button>
       </div>
     </form>
   </div>

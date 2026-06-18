@@ -68,13 +68,9 @@
           </div>
 
           <div class="col-12 col-md-2 ml-auto text-right">
-            <button
-              type="button"
-              class="btn btn-outline-primary py-1 f-14 rounded px-4"
-              (click)="applyFilter()"
-            >
+            <app-button buttonType="button" buttonClass="btn btn-outline-primary py-1 f-14 rounded px-4" (click)="applyFilter()">
               Terapkan
-            </button>
+            </app-button>
           </div>
         </app-filter-container>
       </div>
@@ -92,9 +88,9 @@
               (keyup.enter)="onSearch()"
             />
             <div class="input-group-append">
-              <button class="btn btn-secondary" type="button" (click)="onSearch()">
+              <app-button buttonClass="btn btn-secondary" buttonType="button" (click)="onSearch()">
                 <i class="ti-search"></i>
-              </button>
+              </app-button>
             </div>
           </div>
         </div>

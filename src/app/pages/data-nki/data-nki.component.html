@@ -27,21 +27,21 @@
 
       <!-- ACTION BUTTONS -->
       <div class="nki-action-bar">
-        <button type="button" class="btn nki-btn nki-btn--ipk" (click)="exportIpk()">
+        <app-button buttonType="button" buttonClass="btn nki-btn nki-btn--ipk" (click)="exportIpk()">
           <i class="ph-duotone ph-download-simple mr-1"></i> Export IPK
-        </button>
+        </app-button>
 
-        <button type="button" class="btn nki-btn nki-btn--excel" (click)="exportExcel()">
+        <app-button buttonType="button" buttonClass="btn nki-btn nki-btn--excel" (click)="exportExcel()">
           <i class="ph-duotone ph-download-simple mr-1"></i> Export Excel
-        </button>
+        </app-button>
 
-        <button type="button" class="btn nki-btn nki-btn--umpan" (click)="unduhUmpanBalik()">
+        <app-button buttonType="button" buttonClass="btn nki-btn nki-btn--umpan" (click)="unduhUmpanBalik()">
           <i class="ph-duotone ph-download-simple mr-1"></i> Unduh Umpan Balik
-        </button>
+        </app-button>
 
-        <button type="button" class="btn nki-btn nki-btn--bangkit" (click)="membangkitkan()">
+        <app-button buttonType="button" buttonClass="btn nki-btn nki-btn--bangkit" (click)="membangkitkan()">
           <i class="ph-duotone ph-plus-circle mr-1"></i> Membangkitkan
-        </button>
+        </app-button>
       </div>
 
       <!-- SEARCH BAR -->
@@ -88,9 +88,9 @@
               <td class="text-center">{{ row.kelebihanPoint | number:'1.2-2' }}</td>
               <td class="text-center">{{ row.statusApprove }}</td>
               <td class="text-center">
-                <button type="button" class="btn btn-warning btn-sm nki-btn-detail" (click)="openDetail(row)">
+                <app-button buttonType="button" buttonClass="btn btn-warning btn-sm nki-btn-detail" (click)="openDetail(row)">
                   <i class="icofont icofont-eye-alt mr-1"></i> Detail
-                </button>
+                </app-button>
               </td>
             </tr>
           </tbody>

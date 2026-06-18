@@ -18,16 +18,16 @@
           </ng-select>
         </div>
         <div class="col-12 col-md-2 ml-auto text-right">
-          <button type="button" class="btn btn-outline-primary py-1 f-14 rounded" (click)="getData()">
+          <app-button buttonType="button" buttonClass="btn btn-outline-primary py-1 f-14 rounded" (click)="getData()">
             <i class="icofont icofont-filter"></i> {{ 'ROOT.apply' | translate }}
-          </button>
+          </app-button>
         </div>
       </app-filter-container>
       <div class="row pt-2">
         <div class="col-12 col-md-2 ml-auto text-right">
-          <button type="button" class="btn btn-outline-success py-1 f-14 rounded" (click)="openForm('create', null)">
+          <app-button buttonType="button" buttonClass="btn btn-outline-success py-1 f-14 rounded" (click)="openForm('create', null)">
             <i class="icofont icofont-plus"></i> {{ 'ROOT.add_data' | translate }}
-          </button>
+          </app-button>
         </div>
       </div>
       
@@ -54,16 +54,12 @@
               <td>{{ data.statusLabel }}</td>
               <td>{{ data.vendortypename }}</td>
               <td>
-                <button 
-                  class="btn btn-warning btn-sm me-1" 
-                  (click)="openForm('edit', data)">
+                <app-button buttonClass="btn btn-warning btn-sm me-1" (click)="openForm('edit', data)">
                   <i class="ti-pencil"></i>
-                </button>
-                <button 
-                  class="btn btn-primary btn-sm" 
-                  (click)="onView(data)">
+                </app-button>
+                <app-button buttonClass="btn btn-primary btn-sm" (click)="onView(data)">
                   <i class="ti-eye"></i>
-                </button>
+                </app-button>
               </td>
 
             </tr>
@@ -129,12 +125,12 @@
   </div>
   <div class="app-modal-footer">
     <div class="col-12 text-right middle-content p-0 btn-group">
-      <button type="button" class="btn btn-secondary btn-sm" (click)="closeForm()">
+      <app-button buttonType="button" buttonClass="btn btn-secondary btn-sm" (click)="closeForm()">
         <i class="icofont icofont-close"></i> {{ 'ROOT.close' | translate }}
-      </button>
-      <button type="button" class="btn btn-success btn-sm" (click)="confirmSave()">
+      </app-button>
+      <app-button buttonType="button" buttonClass="btn btn-success btn-sm" (click)="confirmSave()">
         <i class="icofont icofont-save"></i> {{ 'ROOT.save' | translate }}
-      </button>
+      </app-button>
     </div>
   </div>
 </app-ui-modal>

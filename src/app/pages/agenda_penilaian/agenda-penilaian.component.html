@@ -25,13 +25,13 @@
         </div>
 
         <div class="col-12 col-md-2 ml-auto text-right">
-          <button
-            type="button"
-            class="btn btn-outline-primary py-1 f-14 rounded"
+          <app-button
+            buttonType="button"
+            buttonClass="btn btn-outline-primary py-1 f-14 rounded"
             (click)="applyPeriodeFilter()"
           >
             <i class="icofont icofont-filter"></i> Terapkan
-          </button>
+          </app-button>
         </div>
       </app-filter-container>
 
@@ -39,13 +39,13 @@
       <div class="row pt-2 align-items-center">
         <!-- kiri: tombol tambah agenda -->
         <div class="col-12 col-md-8">
-          <button
-            type="button"
-            class="btn btn-success py-1 f-14 rounded"
+          <app-button
+            buttonType="button"
+            buttonClass="btn btn-success py-1 f-14 rounded"
             (click)="openAgendaModal()"
           >
             <i class="icofont icofont-plus"></i> Tambah Agenda
-          </button>
+          </app-button>
         </div>
       </div>
 
@@ -80,12 +80,12 @@
                 </span>
               </td>
               <td>
-                <button type="button" class="btn btn-warning btn-sm mr-1" (click)="onActionClick('edit', r)">
+                <app-button buttonType="button" buttonClass="btn btn-warning btn-sm mr-1" (click)="onActionClick('edit', r)">
                   <i class="ti-pencil"></i>
-                </button>
-                <button type="button" class="btn btn-primary btn-sm" (click)="onActionClick('view', r)">
+                </app-button>
+                <app-button buttonType="button" buttonClass="btn btn-primary btn-sm" (click)="onActionClick('view', r)">
                   <i class="ti-eye"></i>
-                </button>
+                </app-button>
               </td>
             </tr>
           </tbody>
@@ -112,14 +112,14 @@
 >
   <div class="app-modal-header">
     <h5 class="modal-title">Tambah Agenda Penilaian</h5>
-    <button
-      type="button"
-      class="close basic-close"
-      aria-label="Close"
+    <app-button
+      buttonType="button"
+      buttonClass="close basic-close"
+      ariaLabel="Close"
       (click)="closeAgendaModal()"
     >
       <span aria-hidden="true">&times;</span>
-    </button>
+    </app-button>
   </div>
 
   <div class="app-modal-body">
@@ -173,14 +173,14 @@
                   class="mt-native-date"
                   (change)="onStepDateChange(i, 'start', $event)"
                 />
-                <button
-                  type="button"
-                  class="mt-icon-btn"
+                <app-button
+                  buttonType="button"
+                  buttonClass="mt-icon-btn"
                   (click)="openNativePicker(mulaiPicker)"
-                  aria-label="Kalender"
+                  ariaLabel="Kalender"
                 >
                   <i class="icofont icofont-calendar"></i>
-                </button>
+                </app-button>
               </div>
             </div>
 
@@ -200,14 +200,14 @@
                   class="mt-native-date"
                   (change)="onStepDateChange(i, 'end', $event)"
                 />
-                <button
-                  type="button"
-                  class="mt-icon-btn"
+                <app-button
+                  buttonType="button"
+                  buttonClass="mt-icon-btn"
                   (click)="openNativePicker(akhirPicker)"
-                  aria-label="Kalender"
+                  ariaLabel="Kalender"
                 >
                   <i class="icofont icofont-calendar"></i>
-                </button>
+                </app-button>
               </div>
             </div>
           </div>
@@ -218,22 +218,22 @@
 
   <div class="app-modal-footer">
     <div class="col-12 text-right p-0">
-      <button
-        type="button"
-        class="btn btn-light btn-sm mr-2"
+      <app-button
+        buttonType="button"
+        buttonClass="btn btn-light btn-sm mr-2"
         (click)="closeAgendaModal()"
       >
         Batal
-      </button>
+      </app-button>
 
-      <button
-        type="button"
-        class="btn btn-primary btn-sm"
+      <app-button
+        buttonType="button"
+        buttonClass="btn btn-primary btn-sm"
         (click)="submitAgenda()"
         [disabled]="formAgenda.invalid || loadingModal"
       >
         Tambah
-      </button>
+      </app-button>
     </div>
   </div>
 </app-ui-modal>

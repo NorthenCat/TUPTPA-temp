@@ -11,9 +11,9 @@
 
       <div class="row align-items-center mb-2">
         <div class="col-12 col-md-6">
-          <button type="button" class="btn btn-success btn-sm rounded" (click)="openForm('create', null)">
+          <app-button buttonType="button" buttonClass="btn btn-success btn-sm rounded" (click)="openForm('create', null)">
             <i class="icofont icofont-plus"></i> Tambah Query
-          </button>
+          </app-button>
         </div>
       </div>
 
@@ -44,12 +44,12 @@
               <td>{{ d.createdBy }}</td>
               <td>{{ d.createdAt }}</td>
               <td class="text-center">
-                <button class="btn btn-outline-warning btn-sm btn-action mr-1" (click)="openForm('edit', d)">
+                <app-button buttonClass="btn btn-outline-warning btn-sm btn-action mr-1" (click)="openForm('edit', d)">
                   <i class="ti-pencil"></i>
-                </button>
-                <button class="btn btn-outline-primary btn-sm btn-action" (click)="goDetail(d)">
+                </app-button>
+                <app-button buttonClass="btn btn-outline-primary btn-sm btn-action" (click)="goDetail(d)">
                   <i class="ti-eye"></i>
-                </button>
+                </app-button>
               </td>
             </tr>
           </tbody>
@@ -130,18 +130,13 @@
 
   <div class="app-modal-footer">
     <div class="col-12 text-right p-0">
-      <button type="button" class="btn btn-light btn-sm mr-2 btn-modal" (click)="closeForm()">
+      <app-button buttonType="button" buttonClass="btn btn-light btn-sm mr-2 btn-modal" (click)="closeForm()">
         Batal
-      </button>
+      </app-button>
 
-      <button
-        type="button"
-        class="btn btn-primary btn-sm btn-modal"
-        (click)="confirmSave()"
-        [disabled]="formManajemenData.invalid || loadingModal"
-      >
+      <app-button buttonType="button" buttonClass="btn btn-primary btn-sm btn-modal" (click)="confirmSave()" [disabled]="formManajemenData.invalid || loadingModal">
         Simpan
-      </button>
+      </app-button>
     </div>
   </div>
 </app-ui-modal>

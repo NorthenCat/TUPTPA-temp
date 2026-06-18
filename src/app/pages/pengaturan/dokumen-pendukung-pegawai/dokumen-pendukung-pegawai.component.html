@@ -39,9 +39,9 @@
         </div>
 
         <div class="col-12 col-md-2 ml-auto text-right">
-          <button type="button" class="btn btn-outline-primary py-1 f-14 rounded" (click)="onApplyFilter()">
+          <app-button buttonType="button" buttonClass="btn btn-outline-primary py-1 f-14 rounded" (click)="onApplyFilter()">
             <i class="icofont icofont-filter"></i> {{ 'ROOT.apply' | translate }}
-          </button>
+          </app-button>
         </div>
       </app-filter-container>
 
@@ -85,17 +85,13 @@
                 </span>
               </td>
               <td class="text-center">
-                <button
-                  class="btn btn-outline-warning btn-sm btn-action mr-1"
-                  (click)="onEdit(data)">
+                <app-button buttonClass="btn btn-outline-warning btn-sm btn-action mr-1" (click)="onEdit(data)">
                   <i class="ti-pencil"></i>
-                </button>
+                </app-button>
 
-                <button
-                  class="btn btn-outline-primary btn-sm btn-action"
-                  (click)="onView(data)">
+                <app-button buttonClass="btn btn-outline-primary btn-sm btn-action" (click)="onView(data)">
                   <i class="ti-eye"></i>
-                </button>
+                </app-button>
               </td>
             </tr>
           </tbody>

@@ -13,10 +13,16 @@ export class ButtonComponent {
   @Input() block = false;
   @Input() disabled = false;
   @Input() extraClass = '';
+  @Input() buttonClass = '';
+  @Input() ariaLabel = '';
 
   @Output() clicked = new EventEmitter<Event>();
 
-  get classes(): string[] {
+  get classes(): string {
+    if (this.buttonClass) {
+      return this.buttonClass;
+    }
+
     const type = this.outline ? `btn-outline-${this.variant}` : `btn-${this.variant}`;
     return [
       'btn',
@@ -24,7 +30,7 @@ export class ButtonComponent {
       this.size ? `btn-${this.size}` : '',
       this.block ? 'btn-block' : '',
       this.extraClass
-    ].filter(Boolean);
+    ].filter(Boolean).join(' ');
   }
 
   handleClick(event: Event) {

@@ -14,9 +14,9 @@
           </ng-select>
         </div>
         <div class="col-12 col-md-2 ml-auto text-right">
-          <button type="button" class="btn btn-outline-primary py-1 f-14 rounded" (click)="applyFilter()">
+          <app-button buttonType="button" buttonClass="btn btn-outline-primary py-1 f-14 rounded" (click)="applyFilter()">
             <i class="icofont icofont-filter"></i> {{ 'ROOT.apply' | translate }}
-          </button>
+          </app-button>
         </div>
       </app-filter-container>
 
@@ -24,13 +24,13 @@
       <div class="row pt-2">
         <div class="col-12 col-md-8">
 
-          <button type="button" class="btn btn-success py-1 f-14 rounded mr-2" (click)="openUploadExcel()">
+          <app-button buttonType="button" buttonClass="btn btn-success py-1 f-14 rounded mr-2" (click)="openUploadExcel()">
             <i class="icofont icofont-plus"></i> Tambahkan Data Excel
-          </button>
+          </app-button>
 
-          <button type="button" class="btn btn-success py-1 f-14 rounded" (click)="openPerData()">
+          <app-button buttonType="button" buttonClass="btn btn-success py-1 f-14 rounded" (click)="openPerData()">
             <i class="icofont icofont-plus"></i> Tambahkan Data per Data
-          </button>
+          </app-button>
         </div>
       </div>
 
@@ -64,9 +64,9 @@
               </td>
 
               <td class="text-center">
-                <button type="button" class="btn btn-warning btn-sm" (click)="openEditPerData(row)">
+                <app-button buttonType="button" buttonClass="btn btn-warning btn-sm" (click)="openEditPerData(row)">
                   <i class="ti-pencil"></i> Ubah
-                </button>
+                </app-button>
               </td>
             </tr>
           </tbody>
@@ -80,9 +80,9 @@
 <app-ui-modal #modalUploadExcel [containerClick]="false" [hideFooter]="false" [loading]="loadingModal">
   <div class="app-modal-header">
     <h5 class="modal-title">Tambah NKU</h5>
-    <button type="button" class="close basic-close" aria-label="Close" (click)="closeUploadExcel()">
+    <app-button buttonType="button" buttonClass="close basic-close" ariaLabel="Close" (click)="closeUploadExcel()">
       <span aria-hidden="true">&times;</span>
-    </button>
+    </app-button>
   </div>
 
   <div class="app-modal-body">
@@ -106,9 +106,9 @@
           <input #fileInput type="file" accept=".xls,.xlsx" style="display: none" (change)="onFileSelected($event)" />
 
           <div class="d-flex align-items-center">
-            <button type="button" class="btn btn-primary btn-sm mr-2" (click)="triggerPickFile()">
+            <app-button buttonType="button" buttonClass="btn btn-primary btn-sm mr-2" (click)="triggerPickFile()">
               <i class="icofont icofont-upload-alt"></i> Upload Bukti
-            </button>
+            </app-button>
             <span class="text-muted">{{ selectedFileName || 'No File Chosen' }}</span>
           </div>
 
@@ -120,14 +120,13 @@
 
   <div class="app-modal-footer">
     <div class="col-12 text-right p-0">
-      <button type="button" class="btn btn-light btn-sm mr-2" (click)="closeUploadExcel()">
+      <app-button buttonType="button" buttonClass="btn btn-light btn-sm mr-2" (click)="closeUploadExcel()">
         Batal
-      </button>
+      </app-button>
 
-      <button type="button" class="btn btn-primary btn-sm" (click)="saveUploadExcel()"
-        [disabled]="formUploadExcel.invalid || loadingModal">
+      <app-button buttonType="button" buttonClass="btn btn-primary btn-sm" (click)="saveUploadExcel()" [disabled]="formUploadExcel.invalid || loadingModal">
         Simpan
-      </button>
+      </app-button>
     </div>
   </div>
 </app-ui-modal>
@@ -136,9 +135,9 @@
 <app-ui-modal #modalPerData [containerClick]="false" [hideFooter]="false" [loading]="loadingModalPerData">
   <div class="app-modal-header">
     <h5 class="modal-title">{{ perDataMode === 'edit' ? 'Ubah NKU per Data' : 'Tambah NKU per Data' }}</h5>
-    <button type="button" class="close basic-close" aria-label="Close" (click)="closePerData()">
+    <app-button buttonType="button" buttonClass="close basic-close" ariaLabel="Close" (click)="closePerData()">
       <span aria-hidden="true">&times;</span>
-    </button>
+    </app-button>
   </div>
 
   <div class="app-modal-body">
@@ -187,14 +186,13 @@
 
   <div class="app-modal-footer">
     <div class="col-12 text-right p-0">
-      <button type="button" class="btn btn-light btn-sm mr-2" (click)="closePerData()">
+      <app-button buttonType="button" buttonClass="btn btn-light btn-sm mr-2" (click)="closePerData()">
         Batal
-      </button>
+      </app-button>
 
-      <button type="button" class="btn btn-primary btn-sm" (click)="savePerData()"
-        [disabled]="formPerData.invalid || loadingModalPerData">
+      <app-button buttonType="button" buttonClass="btn btn-primary btn-sm" (click)="savePerData()" [disabled]="formPerData.invalid || loadingModalPerData">
         Simpan
-      </button>
+      </app-button>
     </div>
   </div>
 </app-ui-modal>

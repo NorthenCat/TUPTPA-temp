@@ -10,15 +10,12 @@
     <div class="dmp-card-header-row">
       <div class="dmp-card-title">Informasi Umum</div>
 
-      <button
-        type="button"
-        class="btn btn-sm btn-primary dmp-info-edit-btn"
-        (click)="onEditInformasiUmum()">
+      <app-button buttonType="button" buttonClass="btn btn-sm btn-primary dmp-info-edit-btn" (click)="onEditInformasiUmum()">
         <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
           <path d="M13.2425 2.53955C14.407 1.37488 16.2952 1.37483 17.4599 2.53943C18.6244 3.70393 18.6244 5.59195 17.46 6.75652L16.7171 7.49948C17.7709 8.55749 17.7696 10.2694 16.7132 11.3258L15.2271 12.8119C14.983 13.056 14.5873 13.056 14.3432 12.8119C14.0991 12.5679 14.0991 12.1721 14.3432 11.9281L15.8294 10.4419C16.3975 9.87368 16.3989 8.95326 15.8333 8.38341L7.50155 16.7161C7.16285 17.0549 6.73678 17.293 6.27078 17.4039L2.4364 18.3169C2.22527 18.3671 2.00317 18.3043 1.8497 18.1508C1.69623 17.9973 1.63336 17.7752 1.68363 17.5641L2.59662 13.7295C2.70754 13.2637 2.94555 12.8377 3.28415 12.4991L13.2425 2.53955Z" fill="#747677"/>
         </svg>
         Edit
-      </button>
+      </app-button>
     </div>
 
     <div class="dmp-info-table">
@@ -40,13 +37,10 @@
         </option>
       </select>
 
-      <button
-        type="button"
-        class="btn btn-primary dmp-btn-tambah-komponen"
-        (click)="onTambahKomponen()">
+      <app-button buttonType="button" buttonClass="btn btn-primary dmp-btn-tambah-komponen" (click)="onTambahKomponen()">
         <span class="dmp-btn-icon">+</span>
         Tambah Komponen
-      </button>
+      </app-button>
     </div>
 
     <!-- =================== KOMPONEN 1 =================== -->
@@ -56,25 +50,19 @@
         <h3 class="inner-title">Komponen 1: DTKP</h3>
 
         <div class="dmp-inner-actions">
-          <button
-            type="button"
-            class="btn dmp-btn-outline"
-            (click)="onUbahKomponen()">
+          <app-button buttonType="button" buttonClass="btn dmp-btn-outline" (click)="onUbahKomponen()">
             <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M13.2425 2.53955C14.407 1.37488 16.2952 1.37483 17.4599 2.53943C18.6244 3.70393 18.6244 5.59195 17.46 6.75652L16.7171 7.49948C17.7709 8.55749 17.7696 10.2694 16.7132 11.3258L15.2271 12.8119C14.983 13.056 14.5873 13.056 14.3432 12.8119C14.0991 12.5679 14.0991 12.1721 14.3432 11.9281L15.8294 10.4419C16.3975 9.87368 16.3989 8.95326 15.8333 8.38341L7.50155 16.7161C7.16285 17.0549 6.73678 17.293 6.27078 17.4039L2.4364 18.3169C2.22527 18.3671 2.00317 18.3043 1.8497 18.1508C1.69623 17.9973 1.63336 17.7752 1.68363 17.5641L2.59662 13.7295C2.70754 13.2637 2.94555 12.8377 3.28415 12.4991L13.2425 2.53955Z" fill="#747677"/>
             </svg>
             <span>Ubah Komponen</span>
-          </button>
+          </app-button>
 
-          <button
-            type="button"
-            class="btn dmp-btn-outline"
-            (click)="onTambahButir()">
+          <app-button buttonType="button" buttonClass="btn dmp-btn-outline" (click)="onTambahButir()">
             <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M10.4167 3.95825C10.4167 3.61307 10.1369 3.33325 9.79171 3.33325C9.44653 3.33325 9.16671 3.61307 9.16671 3.95825V9.16659H3.95837C3.6132 9.16659 3.33337 9.44641 3.33337 9.79159C3.33337 10.1368 3.6132 10.4166 3.95837 10.4166H9.16671V15.6249C9.16671 15.9701 9.44653 16.2499 9.79171 16.2499C10.1369 16.2499 10.4167 15.9701 10.4167 15.6249V10.4166H15.625C15.9702 10.4166 16.25 10.1368 16.25 9.79159C16.25 9.44641 15.9702 9.16659 15.625 9.16659H10.4167V3.95825Z" fill="#747677"/>
             </svg>
             <span>Tambah Butir</span>
-          </button>
+          </app-button>
         </div>
       </div>
 
@@ -84,36 +72,27 @@
           <div class="dmp-acc-title">{{ item.title }}</div>
 
           <div class="dmp-acc-actions">
-            <button
-              type="button"
-              class="btn dmp-btn-ubah"
-              (click)="onUbahSection(item); $event.stopPropagation()">
+            <app-button buttonType="button" buttonClass="btn dmp-btn-ubah" (click)="onUbahSection(item); $event.stopPropagation()">
               <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M13.2425 2.53955C14.407 1.37488 16.2952 1.37483 17.4599 2.53943C18.6244 3.70393 18.6244 5.59195 17.46 6.75652L16.7171 7.49948C17.7709 8.55749 17.7696 10.2694 16.7132 11.3258L15.2271 12.8119C14.983 13.056 14.5873 13.056 14.3432 12.8119C14.0991 12.5679 14.0991 12.1721 14.3432 11.9281L15.8294 10.4419C16.3975 9.87368 16.3989 8.95326 15.8333 8.38341L7.50155 16.7161C7.16285 17.0549 6.73678 17.293 6.27078 17.4039L2.4364 18.3169C2.22527 18.3671 2.00317 18.3043 1.8497 18.1508C1.69623 17.9973 1.63336 17.7752 1.68363 17.5641L2.59662 13.7295C2.70754 13.2637 2.94555 12.8377 3.28415 12.4991L13.2425 2.53955Z" fill="#747677"/>
               </svg>
               <span>Ubah</span>
-            </button>
+            </app-button>
 
-            <button
-              type="button"
-              class="btn dmp-btn-tambah"
-              (click)="onTambahSection(item); $event.stopPropagation()">
+            <app-button buttonType="button" buttonClass="btn dmp-btn-tambah" (click)="onTambahSection(item); $event.stopPropagation()">
               <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M10.4167 3.95825C10.4167 3.61307 10.1369 3.33325 9.79171 3.33325C9.44653 3.33325 9.16671 3.61307 9.16671 3.95825V9.16659H3.95837C3.6132 9.16659 3.33337 9.44641 3.33337 9.79159C3.33337 10.1368 3.6132 10.4166 3.95837 10.4166H9.16671V15.6249C9.16671 15.9701 9.44653 16.2499 9.79171 16.2499C10.1369 16.2499 10.4167 15.9701 10.4167 15.6249V10.4166H15.625C15.9702 10.4166 16.25 10.1368 16.25 9.79159C16.25 9.44641 15.9702 9.16659 15.625 9.16659H10.4167V3.95825Z" fill="white"/>
               </svg>
               <span>Tambah</span>
-            </button>
+            </app-button>
 
-            <button
-              type="button"
-              class="dmp-acc-toggle"
-              (click)="toggleAccordion(dtkpItems, item)">
+            <app-button buttonType="button" buttonClass="dmp-acc-toggle" (click)="toggleAccordion(dtkpItems, item)">
               <span class="dmp-acc-chevron" [class.dmp-acc-chevron--open]="item.open">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="dmp-acc-chevron-icon">
                   <path d="M3.57745 6.91083C3.90289 6.58539 4.43053 6.58539 4.75596 6.91083L10 12.1549L15.2441 6.91083C15.5696 6.58539 16.0972 6.58539 16.4226 6.91083C16.7481 7.23626 16.7481 7.7639 16.4226 8.08934L10.5893 13.9227C10.2639 14.2481 9.73622 14.2481 9.41079 13.9227L3.57745 8.08934C3.25201 7.7639 3.25201 7.23626 3.57745 6.91083Z" fill="#2D2E2E"/>
                 </svg>
               </span>
-            </button>
+            </app-button>
           </div>
         </div>
 
@@ -137,19 +116,19 @@
         <h3 class="inner-title">Komponen 2: Sikap Kerja</h3>
 
         <div class="dmp-inner-actions">
-          <button type="button" class="btn dmp-btn-outline" (click)="onUbahKomponen()">
+          <app-button buttonType="button" buttonClass="btn dmp-btn-outline" (click)="onUbahKomponen()">
             <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M13.2425 2.53955C14.407 1.37488 16.2952 1.37483 17.4599 2.53943C18.6244 3.70393 18.6244 5.59195 17.46 6.75652L16.7171 7.49948C17.7709 8.55749 17.7696 10.2694 16.7132 11.3258L15.2271 12.8119C14.983 13.056 14.5873 13.056 14.3432 12.8119C14.0991 12.5679 14.0991 12.1721 14.3432 11.9281L15.8294 10.4419C16.3975 9.87368 16.3989 8.95326 15.8333 8.38341L7.50155 16.7161C7.16285 17.0549 6.73678 17.293 6.27078 17.4039L2.4364 18.3169C2.22527 18.3671 2.00317 18.3043 1.8497 18.1508C1.69623 17.9973 1.63336 17.7752 1.68363 17.5641L2.59662 13.7295C2.70754 13.2637 2.94555 12.8377 3.28415 12.4991L13.2425 2.53955Z" fill="#747677"/>
             </svg>
             <span>Ubah Komponen</span>
-          </button>
+          </app-button>
 
-          <button type="button" class="btn dmp-btn-outline" (click)="onTambahButir()">
+          <app-button buttonType="button" buttonClass="btn dmp-btn-outline" (click)="onTambahButir()">
             <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M10.4167 3.95825C10.4167 3.61307 10.1369 3.33325 9.79171 3.33325C9.44653 3.33325 9.16671 3.61307 9.16671 3.95825V9.16659H3.95837C3.6132 9.16659 3.33337 9.44641 3.33337 9.79159C3.33337 10.1368 3.6132 10.4166 3.95837 10.4166H9.16671V15.6249C9.16671 15.9701 9.44653 16.2499 9.79171 16.2499C10.1369 16.2499 10.4167 15.9701 10.4167 15.6249V10.4166H15.625C15.9702 10.4166 16.25 10.1368 16.25 9.79159C16.25 9.44641 15.9702 9.16659 15.625 9.16659H10.4167V3.95825Z" fill="#747677"/>
             </svg>
             <span>Tambah Butir</span>
-          </button>
+          </app-button>
         </div>
       </div>
 
@@ -158,27 +137,27 @@
           <div class="dmp-acc-title">{{ s.title }}</div>
 
           <div class="dmp-acc-actions">
-            <button type="button" class="btn dmp-btn-ubah" (click)="onUbahSikap(s); $event.stopPropagation()">
+            <app-button buttonType="button" buttonClass="btn dmp-btn-ubah" (click)="onUbahSikap(s); $event.stopPropagation()">
               <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M13.2425 2.53955C14.407 1.37488 16.2952 1.37483 17.4599 2.53943C18.6244 3.70393 18.6244 5.59195 17.46 6.75652L16.7171 7.49948C17.7709 8.55749 17.7696 10.2694 16.7132 11.3258L15.2271 12.8119C14.983 13.056 14.5873 13.056 14.3432 12.8119C14.0991 12.5679 14.0991 12.1721 14.3432 11.9281L15.8294 10.4419C16.3975 9.87368 16.3989 8.95326 15.8333 8.38341L7.50155 16.7161C7.16285 17.0549 6.73678 17.293 6.27078 17.4039L2.4364 18.3169C2.22527 18.3671 2.00317 18.3043 1.8497 18.1508C1.69623 17.9973 1.63336 17.7752 1.68363 17.5641L2.59662 13.7295C2.70754 13.2637 2.94555 12.8377 3.28415 12.4991L13.2425 2.53955Z" fill="#747677"/>
               </svg>
               <span>Ubah</span>
-            </button>
+            </app-button>
 
-            <button type="button" class="btn dmp-btn-tambah" (click)="onTambahButirSikap(s); $event.stopPropagation()">
+            <app-button buttonType="button" buttonClass="btn dmp-btn-tambah" (click)="onTambahButirSikap(s); $event.stopPropagation()">
               <svg class="dmp-btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M10.4167 3.95825C10.4167 3.61307 10.1369 3.33325 9.79171 3.33325C9.44653 3.33325 9.16671 3.61307 9.16671 3.95825V9.16659H3.95837C3.6132 9.16659 3.33337 9.44641 3.33337 9.79159C3.33337 10.1368 3.6132 10.4166 3.95837 10.4166H9.16671V15.6249C9.16671 15.9701 9.44653 16.2499 9.79171 16.2499C10.1369 16.2499 10.4167 15.9701 10.4167 15.6249V10.4166H15.625C15.9702 10.4166 16.25 10.1368 16.25 9.79159C16.25 9.44641 15.9702 9.16659 15.625 9.16659H10.4167V3.95825Z" fill="white"/>
               </svg>
               <span>Tambah</span>
-            </button>
+            </app-button>
 
-            <button type="button" class="dmp-acc-toggle" (click)="toggleAccordion(sikapKerja, s)">
+            <app-button buttonType="button" buttonClass="dmp-acc-toggle" (click)="toggleAccordion(sikapKerja, s)">
               <span class="dmp-acc-chevron" [class.dmp-acc-chevron--open]="s.open">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="dmp-acc-chevron-icon">
                   <path d="M3.57745 6.91083C3.90289 6.58539 4.43053 6.58539 4.75596 6.91083L10 12.1549L15.2441 6.91083C15.5696 6.58539 16.0972 6.58539 16.4226 6.91083C16.7481 7.23626 16.7481 7.7639 16.4226 8.08934L10.5893 13.9227C10.2639 14.2481 9.73622 14.2481 9.41079 13.9227L3.57745 8.08934C3.25201 7.7639 3.25201 7.23626 3.57745 6.91083Z" fill="#2D2E2E"/>
                 </svg>
               </span>
-            </button>
+            </app-button>
           </div>
         </div>
 
@@ -348,7 +327,7 @@
   <div class="tk-modal-dialog" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
     <div class="tk-modal-header">
       <h3 class="tk-modal-title">Tambah Komponen</h3>
-      <button type="button" class="tk-modal-close" (click)="closeTambahKomponen()" aria-label="Tutup">×</button>
+      <app-button buttonType="button" buttonClass="tk-modal-close" (click)="closeTambahKomponen()" ariaLabel="Tutup">×</app-button>
     </div>
 
     <form [formGroup]="formTambahKomponen" (ngSubmit)="submitTambahKomponen()" class="tk-modal-body">
@@ -434,8 +413,8 @@
 
       <!-- Footer -->
       <div class="tk-modal-footer">
-        <button type="button" class="btn btn-light tk-btn-ghost" (click)="closeTambahKomponen()">Batal</button>
-        <button type="submit" class="btn tk-btn-primary" [disabled]="formTambahKomponen.invalid">Simpan</button>
+        <app-button buttonType="button" buttonClass="btn btn-light tk-btn-ghost" (click)="closeTambahKomponen()">Batal</app-button>
+        <app-button buttonType="submit" buttonClass="btn tk-btn-primary" [disabled]="formTambahKomponen.invalid">Simpan</app-button>
       </div>
     </form>
   </div>

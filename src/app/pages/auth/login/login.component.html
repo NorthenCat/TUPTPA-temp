@@ -34,9 +34,9 @@
             [ngClass]="lf.password.invalid && lf.password.touched?'is-invalid':(lf.password.valid?'is-valid':'')"
             >
             <label for="password">Password</label>
-            <button type="button" class="btn btn-sm btn-pwd" (click)="passwordHidden = !passwordHidden" aria-label="show-hidden-password">
+            <app-button buttonType="button" buttonClass="btn btn-sm btn-pwd" (click)="passwordHidden = !passwordHidden" ariaLabel="show-hidden-password">
               <i class="fa fa-{{ passwordHidden?'eye':'eye-slash' }}"></i>
-            </button>
+            </app-button>
             <div class="error-info" *ngIf="lf.password.errors?.required">{{ 'ERROR.required' | translate }}</div>
           </div>
           <!-- <div class="input-group mb-3">
@@ -55,11 +55,11 @@
             <span *ngIf="this.loading" class="load-text"> Loading...</span>
             <span *ngIf="!this.loading" class="btn-text"><i class="situicon situicon-telu"></i> Login</span>
           </button> -->
-          <button class="btn btn-red event-btn btn-block mb-0 d-flex justify-content-center" type="submit" [disabled]="loginForm.invalid || loading">
+          <app-button buttonClass="btn btn-red event-btn btn-block mb-0 d-flex justify-content-center" buttonType="submit" [disabled]="loginForm.invalid || loading">
             <span *ngIf="this.loading" class="spinner-grow spinner-grow-sm mr-1 align-self-center" role="status"></span>
             <span *ngIf="this.loading" class="btn-text"> {{ 'ROOT.loading' | translate }}...</span>
             <span *ngIf="!this.loading" class="btn-text d-flex align-self-center"><i class="satuicon satuicon-telu mr-1 align-self-center"></i> Login SSO</span>
-          </button>
+          </app-button>
           <div class="text-center">
             <div class="saprator cust my-4 d-block d-xl-none d-lg-none"><span style="font-size: 12px;">Powered By:</span></div>
             <img src="assets/images/auth/SITU.png" alt="" class="img-fluid mb-4 d-block d-xl-none d-lg-none">
