@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonComponent } from './button.component';
 
 @NgModule({
@@ -9,6 +9,7 @@ import { ButtonComponent } from './button.component';
   ],
   imports: [
     CommonModule,
+    NgbDropdownModule,
     NgbTooltipModule
   ],
   exports: [

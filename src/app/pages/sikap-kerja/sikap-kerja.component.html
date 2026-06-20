@@ -10,32 +10,29 @@
 
   <div class="tpa-tab-container">
     <div class="tpa-tab">
-      <button
-        type="button"
-        class="tpa-tab__item"
-        [class.active]="activeTab === 'target'"
+      <app-button
+        buttonType="button"
+        [buttonClass]="activeTab === 'target' ? 'tpa-tab__item active' : 'tpa-tab__item'"
         (click)="goToTab('target')"
       >
         Target Kinerja Pegawai
-      </button>
+      </app-button>
 
-      <button
-        type="button"
-        class="tpa-tab__item"
-        [class.active]="activeTab === 'sikap'"
+      <app-button
+        buttonType="button"
+        [buttonClass]="activeTab === 'sikap' ? 'tpa-tab__item active' : 'tpa-tab__item'"
         (click)="goToTab('sikap')"
       >
         Sikap Kerja
-      </button>
+      </app-button>
 
-      <button
-        type="button"
-        class="tpa-tab__item"
-        [class.active]="activeTab === 'inovasi'"
+      <app-button
+        buttonType="button"
+        [buttonClass]="activeTab === 'inovasi' ? 'tpa-tab__item active' : 'tpa-tab__item'"
         (click)="goToTab('inovasi')"
       >
         Inovasi, Penghargaan dan Kontribusi
-      </button>
+      </app-button>
     </div>
   </div>
 

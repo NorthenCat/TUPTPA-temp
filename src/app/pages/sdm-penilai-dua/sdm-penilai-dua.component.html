@@ -113,9 +113,9 @@
 <app-ui-modal #modalGenerateIpk [containerClick]="false" [hideFooter]="false" [loading]="loadingModal">
   <div class="app-modal-header">
     <h5 class="modal-title">Generate Data IPK</h5>
-    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="closeGenerateIpk()">
+    <app-button buttonType="button" buttonClass="close basic-close" dataDismiss="modal" ariaLabel="Close" (click)="closeGenerateIpk()">
       <span aria-hidden="true">&times;</span>
-    </button>
+    </app-button>
   </div>
 
   <div class="app-modal-body">
@@ -252,5 +252,4 @@
   </div>
 </app-ui-modal>
 <!-- MODAL BANGKITKAN DATA - END -->
-
 

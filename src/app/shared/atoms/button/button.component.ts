@@ -16,6 +16,10 @@ export class ButtonComponent {
   @Input() buttonClass = '';
   @Input() ariaLabel = '';
   @Input() tooltip = '';
+  @Input() title = '';
+  @Input() dataDismiss = '';
+  @Input() dropdownToggle = false;
+  @Input() buttonStyle: { [key: string]: string } | null = null;
 
   @Output() clicked = new EventEmitter<Event>();
 

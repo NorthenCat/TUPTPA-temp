@@ -76,8 +76,9 @@
 <app-ui-modal #modalDefault [containerClick]="false" [hideFooter]="false" [loading]="loadingModal">
   <div class="app-modal-header">
     <h5 class="modal-title">Form {{formType==='create'?'Tambah':'Ubah'}}</h5>
-    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="closeForm()"><span
-        aria-hidden="true">&times;</span></button>
+    <app-button buttonType="button" buttonClass="close basic-close" dataDismiss="modal" ariaLabel="Close" (click)="closeForm()">
+      <span aria-hidden="true">&times;</span>
+    </app-button>
   </div>
   <div class="app-modal-body">
     <form class="row" [formGroup]="formVendor">

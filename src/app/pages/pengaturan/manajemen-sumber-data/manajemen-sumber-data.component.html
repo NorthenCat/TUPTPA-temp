@@ -63,15 +63,15 @@
 <app-ui-modal #modalDefault [containerClick]="false" [hideFooter]="false" [loading]="loadingModal">
   <div class="app-modal-header modal-md-header">
     <h5 class="modal-title modal-md-title">Tambah Manajemen Data</h5>
-    <button
-      type="button"
-      class="close basic-close"
-      data-dismiss="modal"
-      aria-label="Close"
+    <app-button
+      buttonType="button"
+      buttonClass="close basic-close"
+      dataDismiss="modal"
+      ariaLabel="Close"
       (click)="closeForm()"
     >
       <span aria-hidden="true">&times;</span>
-    </button>
+    </app-button>
   </div>
 
   <div class="app-modal-body modal-md-body">

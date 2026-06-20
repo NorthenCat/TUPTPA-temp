@@ -1,9 +1,33 @@
 <button
+  *ngIf="dropdownToggle; else defaultButton"
+  ngbDropdownToggle
   [attr.type]="buttonType"
   [ngClass]="classes"
+  [ngStyle]="buttonStyle"
   [ngbTooltip]="tooltip || null"
   [attr.aria-label]="ariaLabel || null"
+  [attr.title]="title || null"
+  [attr.data-dismiss]="dataDismiss || null"
   [disabled]="disabled"
   (click)="handleClick($event)">
-  <ng-content></ng-content>
+  <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
 </button>
+
+<ng-template #defaultButton>
+  <button
+    [attr.type]="buttonType"
+    [ngClass]="classes"
+    [ngStyle]="buttonStyle"
+    [ngbTooltip]="tooltip || null"
+    [attr.aria-label]="ariaLabel || null"
+    [attr.title]="title || null"
+    [attr.data-dismiss]="dataDismiss || null"
+    [disabled]="disabled"
+    (click)="handleClick($event)">
+    <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+  </button>
+</ng-template>
+
+<ng-template #buttonContent>
+  <ng-content></ng-content>
+</ng-template>

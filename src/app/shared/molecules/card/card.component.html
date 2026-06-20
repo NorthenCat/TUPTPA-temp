@@ -7,9 +7,9 @@
     <p *ngIf="!customHeader && cardCaption" [ngClass]="captionClass">{{cardCaption}}</p>
     <div class="card-header-right" *ngIf="this.options && !customHeader" [ngSwitch]="isCollapseMenu">
       <div *ngSwitchCase="false" class="btn-group card-option dropdown" ngbDropdown>
-        <button type="button" class="btn dropdown-toggle btn-icon" aria-label="button-toggle" ngbDropdownToggle>
+        <app-button buttonType="button" buttonClass="btn dropdown-toggle btn-icon" ariaLabel="button-toggle" [dropdownToggle]="true">
           <i class="feather icon-more-horizontal"></i>
-        </button>
+        </app-button>
         <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right" ngbDropdownMenu>
           <li class="dropdown-item full-card" (click)="fullCardToggle(toAnimate, '', true)">
             <a href="javascript:">

@@ -43,7 +43,7 @@
 
           <h6 class="text-muted border-bottom pb-1 f-14 mt-3">Basic Dropdown Button</h6>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button class="btn btn-primary" ngbDropdownToggle type="button">Primary</button>
+            <app-button buttonType="button" buttonClass="btn btn-primary" [dropdownToggle]="true">Primary</app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -51,7 +51,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button class="btn btn-secondary" ngbDropdownToggle type="button">Secondary</button>
+            <app-button buttonType="button" buttonClass="btn btn-secondary" [dropdownToggle]="true">Secondary</app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -59,7 +59,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button class="btn btn-success" ngbDropdownToggle type="button">Success</button>
+            <app-button buttonType="button" buttonClass="btn btn-success" [dropdownToggle]="true">Success</app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -67,7 +67,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button class="btn btn-danger" ngbDropdownToggle type="button">Danger</button>
+            <app-button buttonType="button" buttonClass="btn btn-danger" [dropdownToggle]="true">Danger</app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -75,7 +75,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button class="btn btn-warning" ngbDropdownToggle type="button">Warning</button>
+            <app-button buttonType="button" buttonClass="btn btn-warning" [dropdownToggle]="true">Warning</app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -83,7 +83,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button class="btn btn-info" ngbDropdownToggle type="button">Info</button>
+            <app-button buttonType="button" buttonClass="btn btn-info" [dropdownToggle]="true">Info</app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -94,9 +94,9 @@
           <h6 class="text-muted border-bottom pb-1 f-14 mt-3">Split Dropdown Button</h6>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
             <app-button buttonType="button" buttonClass="btn btn-primary btn-sm">Primary</app-button>
-            <button type="button" class="btn btn-primary btn-sm dropdown-toggle-split" ngbDropdownToggle>
+            <app-button buttonType="button" buttonClass="btn btn-primary btn-sm dropdown-toggle-split" [dropdownToggle]="true">
               <span class="sr-only">Toggle Dropdown</span>
-            </button>
+            </app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -107,7 +107,7 @@
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
             <app-button buttonType="button" buttonClass="btn btn-secondary">Secondary</app-button>
-            <button type="button" class="btn btn-secondary dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
+            <app-button buttonType="button" buttonClass="btn btn-secondary dropdown-toggle-split" [dropdownToggle]="true"><span class="sr-only">Toggle Dropdown</span></app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -118,7 +118,7 @@
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
             <app-button buttonType="button" buttonClass="btn btn-success">Success</app-button>
-            <button type="button" class="btn btn-success dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
+            <app-button buttonType="button" buttonClass="btn btn-success dropdown-toggle-split" [dropdownToggle]="true"><span class="sr-only">Toggle Dropdown</span></app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -129,7 +129,7 @@
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
             <app-button buttonType="button" buttonClass="btn btn-danger">Danger</app-button>
-            <button type="button" class="btn btn-danger dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
+            <app-button buttonType="button" buttonClass="btn btn-danger dropdown-toggle-split" [dropdownToggle]="true"><span class="sr-only">Toggle Dropdown</span></app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -140,7 +140,7 @@
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
             <app-button buttonType="button" buttonClass="btn btn-warning">Warning</app-button>
-            <button type="button" class="btn btn-warning dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
+            <app-button buttonType="button" buttonClass="btn btn-warning dropdown-toggle-split" [dropdownToggle]="true"><span class="sr-only">Toggle Dropdown</span></app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -151,7 +151,7 @@
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
             <app-button buttonType="button" buttonClass="btn btn-info">Info</app-button>
-            <button type="button" class="btn btn-info dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
+            <app-button buttonType="button" buttonClass="btn btn-info dropdown-toggle-split" [dropdownToggle]="true"><span class="sr-only">Toggle Dropdown</span></app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -163,7 +163,7 @@
 
           <h6 class="text-muted border-bottom pb-1 f-14 mt-3">Basic Outline Dropdown Button</h6>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button class="btn btn-outline-primary" ngbDropdownToggle type="button">Primary</button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-primary" [dropdownToggle]="true">Primary</app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -171,7 +171,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button class="btn btn-outline-secondary" ngbDropdownToggle type="button">Secondary</button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-secondary" [dropdownToggle]="true">Secondary</app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -179,7 +179,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button class="btn btn-outline-success" ngbDropdownToggle type="button">Success</button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-success" [dropdownToggle]="true">Success</app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -187,7 +187,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button class="btn btn-outline-danger" ngbDropdownToggle type="button">Danger</button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-danger" [dropdownToggle]="true">Danger</app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -195,7 +195,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button class="btn btn-outline-warning" ngbDropdownToggle type="button">Warning</button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-warning" [dropdownToggle]="true">Warning</app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -203,7 +203,7 @@
             </div>
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
-            <button class="btn btn-outline-info" ngbDropdownToggle type="button">Info</button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-info" [dropdownToggle]="true">Info</app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -214,7 +214,7 @@
           <h6 class="text-muted border-bottom pb-1 f-14 mt-3">Split Outline Dropdown Button</h6>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
             <app-button buttonType="button" buttonClass="btn btn-outline-primary">Primary</app-button>
-            <button type="button" class="btn btn-outline-primary dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-primary dropdown-toggle-split" [dropdownToggle]="true"><span class="sr-only">Toggle Dropdown</span></app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -225,7 +225,7 @@
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
             <app-button buttonType="button" buttonClass="btn btn-outline-secondary">Secondary</app-button>
-            <button type="button" class="btn btn-outline-secondary dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-secondary dropdown-toggle-split" [dropdownToggle]="true"><span class="sr-only">Toggle Dropdown</span></app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -236,7 +236,7 @@
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
             <app-button buttonType="button" buttonClass="btn btn-outline-success">Success</app-button>
-            <button type="button" class="btn btn-outline-success dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-success dropdown-toggle-split" [dropdownToggle]="true"><span class="sr-only">Toggle Dropdown</span></app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -247,7 +247,7 @@
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
             <app-button buttonType="button" buttonClass="btn btn-outline-danger">Danger</app-button>
-            <button type="button" class="btn btn-outline-danger dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-danger dropdown-toggle-split" [dropdownToggle]="true"><span class="sr-only">Toggle Dropdown</span></app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -258,7 +258,7 @@
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
             <app-button buttonType="button" buttonClass="btn btn-outline-warning">Warning</app-button>
-            <button type="button" class="btn btn-outline-warning dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-warning dropdown-toggle-split" [dropdownToggle]="true"><span class="sr-only">Toggle Dropdown</span></app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -269,7 +269,7 @@
           </div>
           <div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'bottom-left'">
             <app-button buttonType="button" buttonClass="btn btn-outline-info">Info</app-button>
-            <button type="button" class="btn btn-outline-info dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle Dropdown</span></button>
+            <app-button buttonType="button" buttonClass="btn btn-outline-info dropdown-toggle-split" [dropdownToggle]="true"><span class="sr-only">Toggle Dropdown</span></app-button>
             <div ngbDropdownMenu>
               <a class="dropdown-item" href="javascript:">Action</a>
               <a class="dropdown-item" href="javascript:">Another action</a>
@@ -768,7 +768,7 @@
 <app-ui-modal #modalSm dialogClass="header-telu modal-sm" [containerClick]="false" [hideFooter]="false">
   <div class="app-modal-header">
     <h5 class="modal-title">Modal Small</h5>
-    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalSm.hide()"><span aria-hidden="true">&times;</span></button>
+    <app-button buttonType="button" buttonClass="close basic-close" dataDismiss="modal" ariaLabel="Close" (click)="modalSm.hide()"><span aria-hidden="true">&times;</span></app-button>
   </div>
   <div class="app-modal-body">
     <div class="col-12">
@@ -791,7 +791,7 @@
 <app-ui-modal #modalDefault dialogClass="header-telu" [containerClick]="true" [hideFooter]="false">
   <div class="app-modal-header">
     <h5 class="modal-title">Modal Default</h5>
-    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button>
+    <app-button buttonType="button" buttonClass="close basic-close" dataDismiss="modal" ariaLabel="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></app-button>
   </div>
   <div class="app-modal-body">
     <div class="col-12">
@@ -814,7 +814,7 @@
 <app-ui-modal #modalLarge dialogClass="modal-lg" [containerClick]="true" hideFooter="true" hideHeader="true">
   <div class="app-modal-header">
     <h5 class="modal-title">Modal Large</h5>
-    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalLarge.hide()"><span aria-hidden="true">&times;</span></button>
+    <app-button buttonType="button" buttonClass="close basic-close" dataDismiss="modal" ariaLabel="Close" (click)="modalLarge.hide()"><span aria-hidden="true">&times;</span></app-button>
   </div>
   <div class="app-modal-body">
     <div class="col-12 mt-2 text-center">
@@ -837,7 +837,7 @@
 <app-ui-modal #modalExtraLarge dialogClass="modal-xl" [containerClick]="true" [hideFooter]="false">
   <div class="app-modal-header">
     <h5 class="modal-title">Modal Extra Large</h5>
-    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalExtraLarge.hide()"><span aria-hidden="true">&times;</span></button>
+    <app-button buttonType="button" buttonClass="close basic-close" dataDismiss="modal" ariaLabel="Close" (click)="modalExtraLarge.hide()"><span aria-hidden="true">&times;</span></app-button>
   </div>
   <div class="app-modal-body">
     <div class="col-12">
@@ -860,7 +860,7 @@
 <app-ui-modal #modalFullScreen dialogClass="modal-fs" [containerClick]="true" [hideFooter]="false">
   <div class="app-modal-header">
     <h5 class="modal-title">Modal Full Screen</h5>
-    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modal('close')"><span aria-hidden="true">&times;</span></button>
+    <app-button buttonType="button" buttonClass="close basic-close" dataDismiss="modal" ariaLabel="Close" (click)="modal('close')"><span aria-hidden="true">&times;</span></app-button>
   </div>
   <div class="app-modal-body">
     <div class="col-12 text-center">

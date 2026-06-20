@@ -5,17 +5,17 @@
 
   <div class="tpa-tab-container">
     <div class="tpa-tab">
-      <button type="button" class="tpa-tab__item" [class.active]="activeTab === 'target'" (click)="goToTab('target')">
+      <app-button buttonType="button" [buttonClass]="activeTab === 'target' ? 'tpa-tab__item active' : 'tpa-tab__item'" (click)="goToTab('target')">
         Target Kinerja Pegawai
-      </button>
+      </app-button>
 
-      <button type="button" class="tpa-tab__item" [class.active]="activeTab === 'sikap'" (click)="goToTab('sikap')">
+      <app-button buttonType="button" [buttonClass]="activeTab === 'sikap' ? 'tpa-tab__item active' : 'tpa-tab__item'" (click)="goToTab('sikap')">
         Sikap Kerja
-      </button>
+      </app-button>
 
-      <button type="button" class="tpa-tab__item" [class.active]="activeTab === 'inovasi'" (click)="goToTab('inovasi')">
+      <app-button buttonType="button" [buttonClass]="activeTab === 'inovasi' ? 'tpa-tab__item active' : 'tpa-tab__item'" (click)="goToTab('inovasi')">
         Inovasi, Penghargaan dan Kontribusi
-      </button>
+      </app-button>
     </div>
   </div>
 
@@ -125,11 +125,11 @@
             </app-button>
 
             <ng-container *ngIf="roleContext !== 'PEGAWAI' || currentKondisi !== 'KONDISI_1'">
-              <button type="button" class="btn btn-primary btn-sm tpa-btn-primary ml-2" (click)="openTambahTkp()"
+              <app-button buttonType="button" buttonClass="btn btn-primary btn-sm tpa-btn-primary ml-2" (click)="openTambahTkp()"
                 [disabled]="isTambahTkpDisabled || dataTable?.length >= 20">
                 <i class="icofont icofont-plus mr-1"></i>
                 Tambah Target Kinerja Pegawai
-              </button>
+              </app-button>
             </ng-container>
           </div>
         </div>
@@ -175,10 +175,10 @@
                       </app-button>
                     </td>
                     <td class="text-center">
-                      <button type="button" class="btn tpa-expand-btn" style="position: relative;"
+                      <app-button buttonType="button" buttonClass="btn tpa-expand-btn" [buttonStyle]="{ position: 'relative' }"
                         (click)="toggleExpandDT(row, $event)">
                         <i class="icofont" [ngClass]="row.expanded ? 'icofont-simple-up' : 'icofont-simple-down'"></i>
-                      </button>
+                      </app-button>
                     </td>
                   </tr>
                 </ng-container>
@@ -241,9 +241,9 @@
 
             <div *ngIf="showAksiLainnyaDropdown" class="btn-group tpa-aksi-lainnya-group" ngbDropdown
               placement="top-right" [container]="'body'">
-              <button type="button" class="btn tpa-btn-aksi-lainnya" ngbDropdownToggle>
+              <app-button buttonType="button" buttonClass="btn tpa-btn-aksi-lainnya" [dropdownToggle]="true">
                 Aksi Lainnya
-              </button>
+              </app-button>
               <div class="dropdown-menu dropdown-menu-right tpa-aksi-lainnya-menu" ngbDropdownMenu>
                 <app-button *ngIf="actions.reviseTarget.show" buttonType="button" buttonClass="dropdown-item tpa-dd-action tpa-dd-action--outline" [disabled]="actions.reviseTarget.disabled" (click)="reviseTargetDtkp()">
                   Revisi DTKP
@@ -289,16 +289,16 @@
   <div class="app-modal-body">
     <div class="d-flex justify-content-end mb-3">
       <div class="tpa-modal-actions">
-        <button *ngIf="roleContext !== 'PEGAWAI'" type="button" class="btn btn-outline-danger btn-sm px-3 mr-2"
+        <app-button *ngIf="roleContext !== 'PEGAWAI'" buttonType="button" buttonClass="btn btn-outline-danger btn-sm px-3 mr-2"
           (click)="openDeleteActiveRowTkp()" [disabled]="(rowsTkp?.length || 0) <= MIN_TKP"
           title="Hapus target yang sedang aktif">
           <i class="icofont icofont-trash mr-1"></i> Hapus
-        </button>
+        </app-button>
 
-        <button type="button" class="btn btn-outline-primary btn-sm px-3" (click)="addRowTkp()"
+        <app-button buttonType="button" buttonClass="btn btn-outline-primary btn-sm px-3" (click)="addRowTkp()"
           [disabled]="rowsTkp?.length >= 20">
           <i class="icofont icofont-plus mr-1"></i> Tambah
-        </button>
+        </app-button>
       </div>
     </div>
 
