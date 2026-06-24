@@ -177,14 +177,14 @@
         <div class="tpa-toolbar">
           <div class="tpa-toolbar__left">
             <div class="tpa-search">
-              <input
+              <app-input
                 type="text"
-                class="tpa-search__input"
+                inputClass="tpa-search__input"
                 placeholder="Cari"
                 [(ngModel)]="keyword"
                 (keyup.enter)="onSearch()"
                 (ngModelChange)="onKeywordChange()"
-              />
+              ></app-input>
               <app-button buttonType="button" buttonClass="tpa-search__btn" (click)="onSearch()">
                 <i class="icofont icofont-search"></i>
               </app-button>

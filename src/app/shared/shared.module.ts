@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AlertModule, BadgeModule, ButtonModule } from './atoms';
+import { AlertModule, BadgeModule, ButtonModule, InputModule } from './atoms';
 import { CardModule, ModalModule } from './molecules';
 import { DataFilterPipe } from './organisms/data-table/data-filter.pipe';
 import { ToastShowComponent } from './atoms/toast-show/toast-show.component';
@@ -20,6 +20,9 @@ import { RadarChartComponent } from './organisms/custom-chart/radar-chart/radar-
 import { AreaChartComponent } from './organisms/custom-chart/area-chart/area-chart.component';
 import { ApexChartService } from './organisms/chart/apex-chart/apex-chart.service';
 import { BarChartComponent } from './organisms/custom-chart/bar-chart/bar-chart.component';
+import { ContentShellComponent } from './molecules/content-shell/content-shell.component';
+import { PageContentComponent } from './organisms/page-content/page-content.component';
+import { PageTemplateComponent } from './templates/page-template/page-template.component';
 import { SelectOptionService } from './atoms/select/select-option.service';
 import { SpinnerComponent } from './atoms/spinner/spinner.component';
 import { GalleryComponent } from './organisms/gallery/gallery.component';
@@ -51,6 +54,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AlertModule,
     BadgeModule,
     ButtonModule,
+    InputModule,
     CardModule,
     AutocompleteLibModule,
     ModalModule,
@@ -74,6 +78,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AlertModule,
     BadgeModule,
     ButtonModule,
+    InputModule,
     CardModule,
     ModalModule,
     DataFilterPipe,
@@ -94,7 +99,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PieDonutChartComponent,
     RadarChartComponent,
     AreaChartComponent,
-    BarChartComponent
+    BarChartComponent,
+    ContentShellComponent,
+    PageContentComponent,
+    PageTemplateComponent
   ],
   declarations: [
     DataFilterPipe,
@@ -114,7 +122,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PieDonutChartComponent,
     RadarChartComponent,
     AreaChartComponent,
-    BarChartComponent
+    BarChartComponent,
+    ContentShellComponent,
+    PageContentComponent,
+    PageTemplateComponent
   ],
   providers: [
     {

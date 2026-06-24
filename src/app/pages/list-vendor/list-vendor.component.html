@@ -1,3 +1,4 @@
+<app-page-template>
 <div class="row">
   <div class="col-sm-12">
     <app-card cardTitle="{{ 'Kumpulan Vendor' }}" [hidHeader]="false" [isSkeleton]="false" [loading]="loadingTable">
@@ -96,8 +97,8 @@
       <div class="col-12">
         <div class="form-group mb-3">
           <label class="form-label">{{ 'ROOT.name' | translate }}</label>
-          <input type="text" class="form-control" formControlName="name" placeholder="Input nama vendor"
-            [ngClass]="fv.name.invalid && fv.name.touched?'is-invalid':(fv.name.valid?'is-valid':'')">
+          <app-input type="text" formControlName="name" placeholder="Input nama vendor"
+            [isInvalid]="fv.name.invalid && fv.name.touched" [isValid]="fv.name.valid"></app-input>
           <div class="error-info" *ngIf="fv.name.errors?.required">{{ 'ERROR.required' | translate }}</div>
         </div>
       </div>
@@ -105,8 +106,8 @@
       <div class="col-12">
         <div class="form-group mb-3">
           <label class="form-label">{{ 'ROOT.desc' | translate }}</label>
-          <input type="text" class="form-control" formControlName="desc" placeholder="Input Deskripsi Vendor"
-            [ngClass]="fv.desc.invalid && fv.desc.touched?'is-invalid':(fv.desc.valid?'is-valid':'')">
+          <app-input type="text" formControlName="desc" placeholder="Input Deskripsi Vendor"
+            [isInvalid]="fv.desc.invalid && fv.desc.touched" [isValid]="fv.desc.valid"></app-input>
           <div class="error-info" *ngIf="fv.desc.errors?.required">{{ 'ERROR.required' | translate }}</div>
         </div>
       </div>
@@ -136,3 +137,4 @@
   </div>
 </app-ui-modal>
 <!-- MODAL DEFAULT - END -->
+</app-page-template>

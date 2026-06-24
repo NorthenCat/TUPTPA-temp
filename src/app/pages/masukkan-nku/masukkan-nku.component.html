@@ -1,3 +1,4 @@
+<app-page-template>
 <div class="row">
   <div class="col-sm-12">
     <app-card cardTitle="Daftar Nilai Kerja Unit" [hidHeader]="false" [isSkeleton]="false" [loading]="loadingTable">
@@ -160,8 +161,8 @@
       <div class="col-12">
         <div class="form-group mb-3">
           <label class="form-label">Nilai NKU</label>
-          <input type="number" class="form-control" formControlName="nilai" placeholder="Masukkan Nilai NKU"
-            [ngClass]="fp.nilai.invalid && fp.nilai.touched ? 'is-invalid' : (fp.nilai.valid ? 'is-valid' : '')" />
+          <app-input type="number" formControlName="nilai" placeholder="Masukkan Nilai NKU"
+            [isInvalid]="fp.nilai.invalid && fp.nilai.touched" [isValid]="fp.nilai.valid"></app-input>
           <div class="error-info" *ngIf="fp.nilai.errors?.required && fp.nilai.touched">Wajib diisi</div>
           <div class="error-info" *ngIf="fp.nilai.errors?.min && fp.nilai.touched">Minimal 0</div>
           <div class="error-info" *ngIf="fp.nilai.errors?.max && fp.nilai.touched">Maksimal 1000</div>
@@ -197,3 +198,4 @@
   </div>
 </app-ui-modal>
 <!-- MODAL TAMBAH NKU PER DATA - END -->
+</app-page-template>

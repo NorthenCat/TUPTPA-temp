@@ -1,3 +1,4 @@
+<app-page-template>
 <!-- manajemen-data-detail.component.html -->
 <div class="row">
   <div class="col-sm-12">
@@ -79,14 +80,13 @@
       <div class="row mb-2">
         <div class="col-12 col-md-5 ml-auto">
           <div class="input-group">
-            <input
+            <app-input
               type="text"
-              class="form-control"
               placeholder="Cari..."
               [(ngModel)]="keyword"
               (ngModelChange)="onSearchChange($event)"
               (keyup.enter)="onSearch()"
-            />
+            ></app-input>
             <div class="input-group-append">
               <app-button buttonClass="btn btn-secondary" buttonType="button" (click)="onSearch()">
                 <i class="ti-search"></i>
@@ -126,3 +126,4 @@
     </app-card>
   </div>
 </div>
+</app-page-template>

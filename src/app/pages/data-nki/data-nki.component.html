@@ -1,3 +1,4 @@
+<app-page-template>
 <div class="row">
   <div class="col-sm-12">
     <app-card cardTitle="Daftar Data NKI" [hidHeader]="false" [isSkeleton]="false" [loading]="loadingTable">
@@ -43,19 +44,6 @@
           <i class="ph-duotone ph-plus-circle mr-1"></i> Membangkitkan
         </app-button>
       </div>
-
-      <!-- SEARCH BAR -->
-      <!-- <div class="nki-search-bar">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search" [(ngModel)]="keyword" (keyup.enter)="onSearch()"
-            (ngModelChange)="onKeywordChange()" />
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button" (click)="onSearch()">
-              <i class="icofont icofont-search-1"></i>
-            </button>
-          </div>
-        </div>
-      </div> -->
 
       <!-- TABLE -->
       <div class="table-responsive pb-1 pt-0">
@@ -104,3 +92,4 @@
     </app-card>
   </div>
 </div>
+</app-page-template>

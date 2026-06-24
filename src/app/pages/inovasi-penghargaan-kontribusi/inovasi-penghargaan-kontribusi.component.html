@@ -1,3 +1,4 @@
+<app-page-template>
 <app-card
   cardTitle="IPK (Inovasi, Penghargaan, dan Kontribusi)"
   [hidHeader]="false"
@@ -108,13 +109,13 @@
 
             <div class="section-right">
               <div class="table-search">
-                <input
+                <app-input
                   type="text"
-                  class="form-control form-control-sm"
+                  extraClass="form-control-sm"
                   placeholder="Cari"
                   [(ngModel)]="searchInovasi"
                   (keyup.enter)="applySearch('inovasi')"
-                />
+                ></app-input>
                 <i class="icofont icofont-search-1"></i>
               </div>
             </div>
@@ -182,13 +183,13 @@
 
             <div class="section-right">
               <div class="table-search">
-                <input
+                <app-input
                   type="text"
-                  class="form-control form-control-sm"
+                  extraClass="form-control-sm"
                   placeholder="Cari"
                   [(ngModel)]="searchPenghargaan"
                   (keyup.enter)="applySearch('penghargaan')"
-                />
+                ></app-input>
                 <i class="icofont icofont-search-1"></i>
               </div>
             </div>
@@ -256,13 +257,13 @@
 
             <div class="section-right">
               <div class="table-search">
-                <input
+                <app-input
                   type="text"
-                  class="form-control form-control-sm"
+                  extraClass="form-control-sm"
                   placeholder="Cari"
                   [(ngModel)]="searchKontribusi"
                   (keyup.enter)="applySearch('kontribusi')"
-                />
+                ></app-input>
                 <i class="icofont icofont-search-1"></i>
               </div>
             </div>
@@ -349,3 +350,4 @@
   </div>
 
 </app-card>
+</app-page-template>

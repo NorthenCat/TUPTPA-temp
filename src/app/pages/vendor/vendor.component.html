@@ -1,3 +1,4 @@
+<app-page-template>
 <div class="row">
   <div class="col-sm-12">
     <app-card cardTitle="{{ 'Vendor' }}" hidHeader="true">
@@ -5,9 +6,9 @@
 
       <div class="py-5">
         <div *ngIf="showLabel">Nama</div>
-        <!-- <input type="text" [value]="vendor" (change)="onChangeVendor($event)"> -->
-         <input type="text" [ngModel]="vendor">
+         <app-input type="text" [ngModel]="vendor"></app-input>
       </div>
     </app-card>
   </div>
 </div>
+</app-page-template>

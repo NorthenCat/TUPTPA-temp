@@ -1,3 +1,4 @@
+<app-page-template>
 <div class="row">
   <div class="col-sm-12">
     <app-card
@@ -12,13 +13,13 @@
        <div class="row mb-4 align-items-center search-action-container">
         <div class="col-12 col-md-6">
           <div class="mt-search">
-            <input
+            <app-input
               type="text"
-              class="form-control mt-search__input"
+              extraClass="mt-search__input"
               placeholder="Cari"
               [(ngModel)]="searchTerm"
               (input)="onSearchChange()"
-            />
+            ></app-input>
             <i class="icofont icofont-search mt-search__icon"></i>
           </div>
         </div>
@@ -117,12 +118,11 @@
       <!-- Nama Periode -->
       <div class="form-group">
         <label class="mt-label">Nama Periode</label>
-        <input
+        <app-input
           formControlName="namaPeriode"
           type="text"
-          class="form-control"
           placeholder="*misal 2018/2019 Genap, atau Triwulan II 2019"
-        />
+        ></app-input>
         <div
           class="text-danger small mt-1"
           *ngIf="t('namaPeriode') && t('namaPeriode').invalid && t('namaPeriode').touched"
@@ -136,13 +136,12 @@
         <div class="col-12 col-md-6">
           <label class="mt-label">Tanggal Mulai Periode</label>
           <div class="mt-input-icon">
-            <input
+            <app-input
               formControlName="tglMulai"
               type="text"
-              class="form-control"
               placeholder="Pilih Tanggal Mulai"
-              readonly
-            />
+              [readonly]="true"
+            ></app-input>
 
             <input
               #pickerMulai
@@ -167,13 +166,12 @@
         <div class="col-12 col-md-6">
           <label class="mt-label">Tanggal Akhir Periode</label>
           <div class="mt-input-icon">
-            <input
+            <app-input
               formControlName="tglAkhir"
               type="text"
-              class="form-control"
               placeholder="Pilih Tanggal Akhir"
-              readonly
-            />
+              [readonly]="true"
+            ></app-input>
 
             <input
               #pickerAkhir
@@ -200,13 +198,12 @@
       <div class="form-group mt-2">
         <label class="mt-label">Terhitung Mulai Tanggal (TMT)</label>
         <div class="mt-input-icon">
-          <input
+          <app-input
             formControlName="tmt"
             type="text"
-            class="form-control"
             placeholder="Pilih Tanggal"
-            readonly
-          />
+            [readonly]="true"
+          ></app-input>
 
           <input
             #pickerTmt
@@ -252,3 +249,4 @@
   </div>
 </app-ui-modal>
 <!-- MODAL DEFAULT - END -->
+</app-page-template>

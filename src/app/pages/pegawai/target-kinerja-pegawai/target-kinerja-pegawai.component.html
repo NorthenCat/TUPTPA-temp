@@ -1,3 +1,4 @@
+<app-page-template>
 <app-card cardTitle="Target Kinerja Pegawai" [hidHeader]="false" [isSkeleton]="false" [loading]="loadingPage">
   <div class="card-breadcrumb">
     Data Penilaian Pegawai / Daftar Data Penilaian Pegawai / Target Kinerja Pegawai
@@ -127,8 +128,8 @@
             <div class="tpa-searchbar-inline">
               <label class="tpa-searchbar-inline__label mb-0">Search:</label>
 
-              <input type="text" class="form-control tpa-searchbar-inline__input" [(ngModel)]="keyword"
-                (keyup.enter)="onSearch()" (ngModelChange)="onKeywordChange()" />
+              <app-input type="text" extraClass="tpa-searchbar-inline__input" [(ngModel)]="keyword"
+                (keyup.enter)="onSearch()" (ngModelChange)="onKeywordChange()"></app-input>
             </div>
           </div>
 
@@ -362,8 +363,8 @@
               </td>
 
               <td>
-                <input type="text" class="form-control tkp-input" placeholder="Enter key result..."
-                  [(ngModel)]="row.key_result" />
+                <app-input type="text" extraClass="tkp-input" placeholder="Enter key result..."
+                  [(ngModel)]="row.key_result"></app-input>
               </td>
 
               <td>
@@ -409,31 +410,31 @@
                     <!-- TARGET -->
                     <div class="tkp-panel__label">Target</div>
                     <div>
-                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.targetTw1" />
+                      <app-input type="number" extraClass="tkp-input" [(ngModel)]="row.targetTw1"></app-input>
                     </div>
                     <div>
-                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.targetTw2" />
+                      <app-input type="number" extraClass="tkp-input" [(ngModel)]="row.targetTw2"></app-input>
                     </div>
                     <div>
-                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.targetTw3" />
+                      <app-input type="number" extraClass="tkp-input" [(ngModel)]="row.targetTw3"></app-input>
                     </div>
                     <div>
-                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.targetTw4" />
+                      <app-input type="number" extraClass="tkp-input" [(ngModel)]="row.targetTw4"></app-input>
                     </div>
 
                     <!-- ACHIEVEMENT -->
                     <div class="tkp-panel__label">Achievement</div>
                     <div>
-                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.achievementTw1" />
+                      <app-input type="number" extraClass="tkp-input" [(ngModel)]="row.achievementTw1"></app-input>
                     </div>
                     <div>
-                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.achievementTw2" />
+                      <app-input type="number" extraClass="tkp-input" [(ngModel)]="row.achievementTw2"></app-input>
                     </div>
                     <div>
-                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.achievementTw3" />
+                      <app-input type="number" extraClass="tkp-input" [(ngModel)]="row.achievementTw3"></app-input>
                     </div>
                     <div>
-                      <input type="number" class="form-control tkp-input" [(ngModel)]="row.achievementTw4" />
+                      <app-input type="number" extraClass="tkp-input" [(ngModel)]="row.achievementTw4"></app-input>
                     </div>
 
                     <!-- EVIDENCE TARGET -->
@@ -652,16 +653,16 @@
                   <div class="tkp-panel__head text-center">TW4</div>
 
                   <div class="tkp-panel__label">Target</div>
-                  <input class="form-control tkp-input" [(ngModel)]="editTkp.targetTw1" />
-                  <input class="form-control tkp-input" [(ngModel)]="editTkp.targetTw2" />
-                  <input class="form-control tkp-input" [(ngModel)]="editTkp.targetTw3" />
-                  <input class="form-control tkp-input" [(ngModel)]="editTkp.targetTw4" />
+                  <app-input extraClass="tkp-input" [(ngModel)]="editTkp.targetTw1"></app-input>
+                  <app-input extraClass="tkp-input" [(ngModel)]="editTkp.targetTw2"></app-input>
+                  <app-input extraClass="tkp-input" [(ngModel)]="editTkp.targetTw3"></app-input>
+                  <app-input extraClass="tkp-input" [(ngModel)]="editTkp.targetTw4"></app-input>
 
                   <div class="tkp-panel__label">Realisasi</div>
-                  <input class="form-control tkp-input" [(ngModel)]="editTkp.realisasiTw1" />
-                  <input class="form-control tkp-input" [(ngModel)]="editTkp.realisasiTw2" />
-                  <input class="form-control tkp-input" [(ngModel)]="editTkp.realisasiTw3" />
-                  <input class="form-control tkp-input" [(ngModel)]="editTkp.realisasiTw4" />
+                  <app-input extraClass="tkp-input" [(ngModel)]="editTkp.realisasiTw1"></app-input>
+                  <app-input extraClass="tkp-input" [(ngModel)]="editTkp.realisasiTw2"></app-input>
+                  <app-input extraClass="tkp-input" [(ngModel)]="editTkp.realisasiTw3"></app-input>
+                  <app-input extraClass="tkp-input" [(ngModel)]="editTkp.realisasiTw4"></app-input>
 
                   <div class="tkp-panel__label">Evidence Realisasi</div>
 
@@ -778,3 +779,4 @@
     </div>
   </div>
 </div>
+</app-page-template>

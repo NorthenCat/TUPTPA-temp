@@ -1,3 +1,4 @@
+<app-page-template>
 <section class="dmp-page card">
   <!-- =================== HEADER =================== -->
   <div class="dmp-header">
@@ -334,24 +335,24 @@
 
       <!-- Nomor Urut -->
       <label class="tk-label">Nomor Urut</label>
-      <input
+      <app-input
         type="number"
-        class="tk-input"
+        inputClass="tk-input"
         formControlName="nomorUrut"
         placeholder="Masukkan Nomor Urut"
-      />
+      ></app-input>
       <div class="tk-error" *ngIf="c('nomorUrut').invalid && c('nomorUrut').touched">
         Nomor urut wajib diisi
       </div>
 
       <!-- Label -->
       <label class="tk-label">Label</label>
-      <input
+      <app-input
         type="text"
-        class="tk-input"
+        inputClass="tk-input"
         formControlName="label"
         placeholder="*misal 2018/2019 Genap, atau Triwulan II 2019"
-      />
+      ></app-input>
       <div class="tk-error" *ngIf="c('label').invalid && c('label').touched">
         Label wajib diisi
       </div>
@@ -359,15 +360,15 @@
       <!-- Bobot Komponen -->
       <label class="tk-label">Bobot Komponen</label>
       <div class="tk-input-suffix">
-        <input
+        <app-input
           type="number"
-          class="tk-input"
+          inputClass="tk-input"
           formControlName="bobot"
           placeholder="Masukkan Bobot"
           min="0"
           max="100"
           step="0.01"
-        />
+        ></app-input>
         <span class="tk-suffix">% (Persen)</span>
       </div>
       <div class="tk-error" *ngIf="c('bobot').invalid && c('bobot').touched">
@@ -420,3 +421,4 @@
   </div>
 </div>
 
+</app-page-template>

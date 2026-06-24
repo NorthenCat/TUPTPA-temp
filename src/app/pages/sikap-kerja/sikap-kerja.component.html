@@ -1,3 +1,4 @@
+<app-page-template>
 <app-card
   cardTitle="Penilaian Sikap Kerja Pegawai"
   [hidHeader]="false"
@@ -146,15 +147,15 @@
                   <div class="sikap-subsection__content">
                     <div class="sikap-score-input">
                       <label class="sikap-score-input__label">Input Nilai</label>
-                      <input
+                      <app-input
                         type="number"
-                        class="form-control sikap-score-input__field"
+                        extraClass="sikap-score-input__field"
                         min="0"
                         max="100"
                         placeholder="0"
                         [(ngModel)]="nilaiHarmonyKomunikasi"
                         (ngModelChange)="onHarmonyNilaiChange()"
-                      >
+                      ></app-input>
                     </div>
 
                     <div class="sikap-keterangan">
@@ -209,15 +210,15 @@
                   <div class="sikap-subsection__content">
                     <div class="sikap-score-input">
                       <label class="sikap-score-input__label">Input Nilai</label>
-                      <input
+                      <app-input
                         type="number"
-                        class="form-control sikap-score-input__field"
+                        extraClass="sikap-score-input__field"
                         min="0"
                         max="100"
                         placeholder="0"
                         [(ngModel)]="nilaiHarmonyKolaborasi"
                         (ngModelChange)="onHarmonyNilaiChange()"
-                      >
+                      ></app-input>
                     </div>
 
                     <div class="sikap-keterangan">
@@ -273,15 +274,15 @@
                   <div class="sikap-subsection__content">
                     <div class="sikap-score-input">
                       <label class="sikap-score-input__label">Input Nilai</label>
-                      <input
+                      <app-input
                         type="number"
-                        class="form-control sikap-score-input__field"
+                        extraClass="sikap-score-input__field"
                         min="0"
                         max="100"
                         placeholder="0"
                         [(ngModel)]="nilaiHarmonyKerjaSamaTim"
                         (ngModelChange)="onHarmonyNilaiChange()"
-                      >
+                      ></app-input>
                     </div>
 
                     <div class="sikap-keterangan">
@@ -337,15 +338,15 @@
                   <div class="sikap-subsection__content">
                     <div class="sikap-score-input">
                       <label class="sikap-score-input__label">Input Nilai</label>
-                      <input
+                      <app-input
                         type="number"
-                        class="form-control sikap-score-input__field"
+                        extraClass="sikap-score-input__field"
                         min="0"
                         max="100"
                         placeholder="0"
                         [(ngModel)]="nilaiHarmonySoliditas"
                         (ngModelChange)="onHarmonyNilaiChange()"
-                      >
+                      ></app-input>
                     </div>
 
                     <div class="sikap-keterangan">
@@ -427,15 +428,15 @@
                   <div class="sikap-subsection__content">
                     <div class="sikap-score-input">
                       <label class="sikap-score-input__label">Input Nilai</label>
-                      <input
+                      <app-input
                         type="number"
-                        class="form-control sikap-score-input__field"
+                        extraClass="sikap-score-input__field"
                         min="0"
                         max="100"
                         placeholder="0"
                         [(ngModel)]="nilaiExcellenceRoleModel"
                         (ngModelChange)="onExcellenceNilaiChange()"
-                      >
+                      ></app-input>
                     </div>
 
                     <div class="sikap-keterangan">
@@ -490,15 +491,15 @@
                   <div class="sikap-subsection__content">
                     <div class="sikap-score-input">
                       <label class="sikap-score-input__label">Input Nilai</label>
-                      <input
+                      <app-input
                         type="number"
-                        class="form-control sikap-score-input__field"
+                        extraClass="sikap-score-input__field"
                         min="0"
                         max="100"
                         placeholder="0"
                         [(ngModel)]="nilaiExcellenceTanggungJawab"
                         (ngModelChange)="onExcellenceNilaiChange()"
-                      >
+                      ></app-input>
                     </div>
 
                     <div class="sikap-keterangan">
@@ -554,15 +555,15 @@
                   <div class="sikap-subsection__content">
                     <div class="sikap-score-input">
                       <label class="sikap-score-input__label">Input Nilai</label>
-                      <input
+                      <app-input
                         type="number"
-                        class="form-control sikap-score-input__field"
+                        extraClass="sikap-score-input__field"
                         min="0"
                         max="100"
                         placeholder="0"
                         [(ngModel)]="nilaiExcellenceEtikaProfesi"
                         (ngModelChange)="onExcellenceNilaiChange()"
-                      >
+                      ></app-input>
                     </div>
 
                     <div class="sikap-keterangan">
@@ -617,15 +618,15 @@
                   <div class="sikap-subsection__content">
                     <div class="sikap-score-input">
                       <label class="sikap-score-input__label">Input Nilai</label>
-                      <input
+                      <app-input
                         type="number"
-                        class="form-control sikap-score-input__field"
+                        extraClass="sikap-score-input__field"
                         min="0"
                         max="100"
                         placeholder="0"
                         [(ngModel)]="nilaiExcellenceMenjagaCitraInstitusi"
                         (ngModelChange)="onExcellenceNilaiChange()"
-                      >
+                      ></app-input>
                     </div>
 
                     <div class="sikap-keterangan">
@@ -707,15 +708,15 @@
                   <div class="sikap-subsection__content">
                     <div class="sikap-score-input">
                       <label class="sikap-score-input__label">Input Nilai</label>
-                      <input
+                      <app-input
                         type="number"
-                        class="form-control sikap-score-input__field"
+                        extraClass="sikap-score-input__field"
                         min="0"
                         max="100"
                         placeholder="0"
                         [(ngModel)]="nilaiIntegrityEtosKerja"
                         (ngModelChange)="onIntegrityNilaiChange()"
-                      >
+                      ></app-input>
                     </div>
 
                     <div class="sikap-keterangan">
@@ -770,15 +771,15 @@
                   <div class="sikap-subsection__content">
                     <div class="sikap-score-input">
                       <label class="sikap-score-input__label">Input Nilai</label>
-                      <input
+                      <app-input
                         type="number"
-                        class="form-control sikap-score-input__field"
+                        extraClass="sikap-score-input__field"
                         min="0"
                         max="100"
                         placeholder="0"
                         [(ngModel)]="nilaiIntegrityMediatek"
                         (ngModelChange)="onIntegrityNilaiChange()"
-                      >
+                      ></app-input>
                     </div>
 
                     <div class="sikap-keterangan">
@@ -832,15 +833,15 @@
                   <div class="sikap-subsection__content">
                     <div class="sikap-score-input">
                       <label class="sikap-score-input__label">Input Nilai</label>
-                      <input
+                      <app-input
                         type="number"
-                        class="form-control sikap-score-input__field"
+                        extraClass="sikap-score-input__field"
                         min="0"
                         max="100"
                         placeholder="0"
                         [(ngModel)]="nilaiIntegrityKerjaCerdas"
                         (ngModelChange)="onIntegrityNilaiChange()"
-                      >
+                      ></app-input>
                     </div>
 
                     <div class="sikap-keterangan">
@@ -895,15 +896,15 @@
                   <div class="sikap-subsection__content">
                     <div class="sikap-score-input">
                       <label class="sikap-score-input__label">Input Nilai</label>
-                      <input
+                      <app-input
                         type="number"
-                        class="form-control sikap-score-input__field"
+                        extraClass="sikap-score-input__field"
                         min="0"
                         max="100"
                         placeholder="0"
                         [(ngModel)]="nilaiIntegrityInisiatif"
                         (ngModelChange)="onIntegrityNilaiChange()"
-                      >
+                      ></app-input>
                     </div>
 
                     <div class="sikap-keterangan">
@@ -959,15 +960,15 @@
                   <div class="sikap-subsection__content">
                     <div class="sikap-score-input">
                       <label class="sikap-score-input__label">Input Nilai</label>
-                      <input
+                      <app-input
                         type="number"
-                        class="form-control sikap-score-input__field"
+                        extraClass="sikap-score-input__field"
                         min="0"
                         max="100"
                         placeholder="0"
                         [(ngModel)]="nilaiIntegrityDisiplin"
                         (ngModelChange)="onIntegrityNilaiChange()"
-                      >
+                      ></app-input>
                     </div>
 
                     <div class="sikap-keterangan">
@@ -1076,3 +1077,4 @@
           </div>
         </div>
 </app-card>
+</app-page-template>

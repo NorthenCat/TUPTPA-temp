@@ -1,3 +1,4 @@
+<app-page-template>
 <div class="row">
   <div class="col-sm-12">
     <app-card
@@ -160,13 +161,12 @@
             <!-- Mulai -->
             <div class="col-12 col-md-6">
               <div class="mt-input-icon">
-                <input
+                <app-input
                   type="text"
-                  class="form-control"
                   [value]="s.startDisplay || ''"
                   placeholder="Pilih Tanggal Mulai"
-                  readonly
-                />
+                  [readonly]="true"
+                ></app-input>
                 <input
                   #mulaiPicker
                   type="date"
@@ -187,13 +187,12 @@
             <!-- Akhir -->
             <div class="col-12 col-md-6 mt-2 mt-md-0">
               <div class="mt-input-icon">
-                <input
+                <app-input
                   type="text"
-                  class="form-control"
                   [value]="s.endDisplay || ''"
                   placeholder="Pilih Tanggal Akhir"
-                  readonly
-                />
+                  [readonly]="true"
+                ></app-input>
                 <input
                   #akhirPicker
                   type="date"
@@ -238,3 +237,4 @@
   </div>
 </app-ui-modal>
 <!-- MODAL TAMBAH AGENDA - END -->
+</app-page-template>

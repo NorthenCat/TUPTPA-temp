@@ -1,3 +1,4 @@
+<app-page-template>
 <div class="row">
   <div class="col-sm-12">
 
@@ -79,13 +80,13 @@
       <div class="col-12">
         <div class="form-group mb-3">
           <label class="form-label label-lg">Nama Data</label>
-          <input
+          <app-input
             type="text"
-            class="form-control input-lg"
+            extraClass="input-lg"
             formControlName="namaData"
             placeholder="Masukkan Nama Data"
-            [ngClass]="fv.namaData.invalid && fv.namaData.touched ? 'is-invalid' : (fv.namaData.valid ? 'is-valid' : '')"
-          />
+            [isInvalid]="fv.namaData.invalid && fv.namaData.touched" [isValid]="fv.namaData.valid"
+          ></app-input>
           <div class="error-info" *ngIf="fv.namaData.errors?.required && fv.namaData.touched">Wajib diisi</div>
         </div>
       </div>
@@ -93,13 +94,13 @@
       <div class="col-12">
         <div class="form-group mb-3">
           <label class="form-label label-lg">Nama View Query</label>
-          <input
+          <app-input
             type="text"
-            class="form-control input-lg"
+            extraClass="input-lg"
             formControlName="namaViewQuery"
             placeholder="Masukkan Nama View Query"
-            [ngClass]="fv.namaViewQuery.invalid && fv.namaViewQuery.touched ? 'is-invalid' : (fv.namaViewQuery.valid ? 'is-valid' : '')"
-          />
+            [isInvalid]="fv.namaViewQuery.invalid && fv.namaViewQuery.touched" [isValid]="fv.namaViewQuery.valid"
+          ></app-input>
           <div class="error-info" *ngIf="fv.namaViewQuery.errors?.required && fv.namaViewQuery.touched">Wajib diisi</div>
         </div>
       </div>
@@ -141,3 +142,4 @@
   </div>
 </app-ui-modal>
 <!-- MODAL DEFAULT - END -->
+</app-page-template>

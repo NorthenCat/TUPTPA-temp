@@ -1,3 +1,4 @@
+<app-page-template>
 <div class="row">
   <div class="col-12">
     <app-card cardTitle="Form Controls" headerClass="text-center" [isSkeleton]="false" [loading]="loadingTableBasic">
@@ -5,25 +6,25 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="Email" autocomplete="email">
+            <app-input type="email" id="inputEmail4" placeholder="Email" autocomplete="email"></app-input>
           </div>
           <div class="form-group col-md-6">
             <label for="inputPassword4">Password</label>
-            <input type="password" class="form-control" id="inputPassword4" placeholder="Password" autocomplete="new-password">
+            <app-input type="password" id="inputPassword4" placeholder="Password" autocomplete="new-password"></app-input>
           </div>
         </div>
         <div class="form-group">
           <label for="inputAddress">Address</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="Jl. Telekomunikasi no.1">
+          <app-input type="text" id="inputAddress" placeholder="Jl. Telekomunikasi no.1"></app-input>
         </div>
         <div class="form-group">
           <label for="inputAddress2">Address 2</label>
-          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+          <app-input type="text" id="inputAddress2" placeholder="Apartment, studio, or floor"></app-input>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity">
+            <app-input type="text" id="inputCity"></app-input>
           </div>
           <div class="form-group col-md-4">
             <label for="inputState">State</label>
@@ -34,7 +35,7 @@
           </div>
           <div class="form-group col-md-2">
             <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
+            <app-input type="text" id="inputZip"></app-input>
           </div>
         </div>
         <div class="form-group">
@@ -53,19 +54,19 @@
         <div class="form-group row">
           <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control-plaintext" id="staticEmail" value="email@telu.ac.id" readonly>
+            <app-input type="text" inputClass="form-control-plaintext" id="staticEmail" value="email@telu.ac.id" [readonly]="true"></app-input>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputReadonly" class="col-sm-3 col-form-label">Readonly</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="inputReadonly" placeholder="Readonly" value="123456" readonly>
+            <app-input type="text" id="inputReadonly" placeholder="Readonly" value="123456" [readonly]="true"></app-input>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputDisabled" class="col-sm-3 col-form-label">Disabled</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="inputDisabled" placeholder="Disabled" value="stardhtz" disabled>
+            <app-input type="text" id="inputDisabled" placeholder="Disabled" value="stardhtz" [disabled]="true"></app-input>
           </div>
         </div>
         <fieldset class="form-group">
@@ -182,20 +183,20 @@
         <div class="row">
           <div class="col-12 col-md-6">
             <div class="form-floating mb-3">
-              <input type="text" class="floating-control" id="username" autocomplete="username"
-              required formControlName="username" aria-label="username" placeholder="username"
-              [ngClass]="fu.username.invalid && fu.username.touched?'is-invalid':(fu.username.valid?'is-valid':'')"
-              >
+              <app-input type="text" inputClass="floating-control" id="username" autocomplete="username"
+              [required]="true" formControlName="username" ariaLabel="username" placeholder="username"
+              [isInvalid]="fu.username.invalid && fu.username.touched" [isValid]="fu.username.valid"
+              ></app-input>
               <label for="username">Username</label>
               <div class="error-info" *ngIf="fu.username.errors?.required">{{ 'ERROR.required' | translate }}</div>
             </div>
           </div>
           <div class="col-12 col-md-6">
             <div class="form-floating mb-3">
-              <input type="password" class="floating-control" id="password" autocomplete="current-password"
-              required formControlName="password" aria-label="password" placeholder="password"
-              [ngClass]="fu.password.invalid && fu.password.touched?'is-invalid':(fu.password.valid?'is-valid':'')"
-              >
+              <app-input type="password" inputClass="floating-control" id="password" autocomplete="current-password"
+              [required]="true" formControlName="password" ariaLabel="password" placeholder="password"
+              [isInvalid]="fu.password.invalid && fu.password.touched" [isValid]="fu.password.valid"
+              ></app-input>
               <label for="password">Password</label>
               <div class="error-info" *ngIf="fu.password.errors?.required">{{ 'ERROR.required' | translate }}</div>
             </div>
@@ -212,10 +213,10 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="form-floating mb-3">
-              <input type="email" class="floating-control" id="email"
-              required formControlName="email" aria-label="email" placeholder="email"
-              [ngClass]="fu.email.invalid && fu.email.touched?'is-invalid':(fu.email.valid?'is-valid':'')"
-              >
+              <app-input type="email" inputClass="floating-control" id="email"
+              [required]="true" formControlName="email" ariaLabel="email" placeholder="email"
+              [isInvalid]="fu.email.invalid && fu.email.touched" [isValid]="fu.email.valid"
+              ></app-input>
               <label for="email">Email</label>
               <div class="error-info" *ngIf="fu.email.errors?.required">{{ 'ERROR.required' | translate }}</div>
               <div class="error-info" *ngIf="fu.email.errors?.email">{{ 'ERROR.email' | translate }}</div>
@@ -223,10 +224,10 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="form-floating mb-3">
-              <input type="number" class="floating-control" id="age"
-              required formControlName="age" aria-label="age" placeholder="age"
-              [ngClass]="fu.age.invalid && fu.age.touched?'is-invalid':(fu.age.valid?'is-valid':'')"
-              >
+              <app-input type="number" inputClass="floating-control" id="age"
+              [required]="true" formControlName="age" ariaLabel="age" placeholder="age"
+              [isInvalid]="fu.age.invalid && fu.age.touched" [isValid]="fu.age.valid"
+              ></app-input>
               <label for="age">Age</label>
               <div class="error-info" *ngIf="fu.age.errors?.required">{{ 'ERROR.required' | translate }}</div>
               <div class="error-info" *ngIf="fu.age.errors?.min">{{ 'ERROR.min_age' | translate }}</div>
@@ -235,10 +236,10 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="form-floating mb-3">
-              <input type="text" class="floating-control" id="country" autocomplete="country"
-              required formControlName="country" aria-label="country" placeholder="country"
-              [ngClass]="fu.country.invalid && fu.country.touched?'is-invalid':(fu.country.valid?'is-valid':'')"
-              >
+              <app-input type="text" inputClass="floating-control" id="country" autocomplete="country"
+              [required]="true" formControlName="country" ariaLabel="country" placeholder="country"
+              [isInvalid]="fu.country.invalid && fu.country.touched" [isValid]="fu.country.valid"
+              ></app-input>
               <label for="country">Negara</label>
               <div class="error-info" *ngIf="fu.country.errors?.required">{{ 'ERROR.required' | translate }}</div>
             </div>
@@ -300,30 +301,30 @@
             <div class="col-sm-12 col-md-4">
               <div class="form-group mb-2">
                 <label class="form-label">{{ 'ROOT.position' | translate }}</label>
-                <input
-                  type="text" class="form-control" name="position" required formControlName="position" aria-label="position"
-                  [ngClass]="fp.position.invalid && fp.position.touched?'is-invalid':(fp.position.valid?'is-valid':'')"
-                >
+                <app-input
+                  type="text" name="position" [required]="true" formControlName="position" ariaLabel="position"
+                  [isInvalid]="fp.position.invalid && fp.position.touched" [isValid]="fp.position.valid"
+                ></app-input>
                 <label *ngIf="fp.position.errors?.required && fp.position.touched" class="invalid-feedback">Please input position!</label>
               </div>
             </div>
             <div class="col-sm-6 col-md-2">
               <div class="form-group mb-2">
                 <label class="form-label">{{ 'ROOT.country' | translate }}</label>
-                <input
-                  type="text" class="form-control" name="country" required formControlName="country" aria-label="country"
-                  [ngClass]="fp.country.invalid && fp.country.touched?'is-invalid':(fp.country.valid?'is-valid':'')"
-                >
+                <app-input
+                  type="text" name="country" [required]="true" formControlName="country" ariaLabel="country"
+                  [isInvalid]="fp.country.invalid && fp.country.touched" [isValid]="fp.country.valid"
+                ></app-input>
                 <label *ngIf="fp.country.errors?.required && fp.country.touched" class="invalid-feedback">Please input country!</label>
               </div>
             </div>
             <div class="col-sm-6 col-md-2">
               <div class="form-group mb-2">
                 <label class="form-label">{{ 'ROOT.nns' | translate }}</label>
-                <input
-                  type="number" min="1" max="99" class="form-control" name="number" required formControlName="number" aria-label="number"
-                  [ngClass]="fp.number.invalid && fp.number.touched?'is-invalid':(fp.number.valid?'is-valid':'')"
-                >
+                <app-input
+                  type="number" min="1" max="99" name="number" [required]="true" formControlName="number" ariaLabel="number"
+                  [isInvalid]="fp.number.invalid && fp.number.touched" [isValid]="fp.number.valid"
+                ></app-input>
                 <label *ngIf="fp.number.errors?.required && fp.number.touched" class="invalid-feedback">Please input number!</label>
                 <label *ngIf="fp.number.errors?.max && fp.number.touched" class="invalid-feedback">Maximum number is 99!</label>
               </div>
@@ -469,3 +470,4 @@
   </div>
 </div>
 
+</app-page-template>
